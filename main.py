@@ -24,7 +24,6 @@ shop = ['Pokeball', 'Potion', 'Elixir']   # Set the pokemart items
 
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
 
-
 # Enemy stats
 enemyname = 'bob'
 enemyattacks = ['test1', 'test2', 'test3', 'test4']
@@ -34,8 +33,7 @@ enemymaxhp = 100
 
 def setGender():   # Define setGender as a function
     genders = ['Boy', 'Girl'] # Create a list of available genders that the user can choose
-    printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
-    printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
+
     printTextBox('Are you a boy or a girl?') # Ask for the user's gender
     printOptionList(genders) # Print the list of gender that the user can choose
     choice = getUserDecision('Choose a gender', genders) # Ask for the index of the user's decision, then store it
@@ -152,6 +150,9 @@ def incrementValue(maximumvalue, currentvalue, incrementamount):
 #    party.append[starter]
 #print(party)
 
+printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
+printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
+
 while True:     # Loop until the user chooses name and gender and confirms
     name = setName()    # Call the setName function to choose a name
     gender = setGender()    # Call the setGender function to choose a gender
@@ -174,4 +175,4 @@ while True:     # Loop until the user chooses a starter
         break   # End loop
     else:   # Check if user chose no
         print('Ok, lets try again.')    # Tell user we will restart choice
-party = party.append[starters[starter_choice]]  # Have to add attacks / other stuff etc
+party.append(starters[starter_choice])  # Have to add attacks / other stuff etc
