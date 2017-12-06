@@ -12,7 +12,7 @@ inventory = []  # Set user's inventory
 currentpokemon = 0 # Index of the user's current pokemon
 
 # Stats of user's pokemon
-partynames = [] # Create a list of pokemon that the user has
+partynames = [] # Create a list of the names of the pokemon that the user has
 partyattacks = [] # Create a list of attacks for each pokemon that the user has
 partydmg = [] # Create a list of the damage values for each move of every pokemon that the user has
 partycurrentpp = [] # Create a list of PP values for each move of every pokemon that the user has
@@ -20,12 +20,12 @@ partymaxpp = [] # Create a list of the max PP values for each move of every poke
 partycurrenthp = [] # Create a list of the current hp values for each pokemon that the user has
 partymaxhp = [] # Create a list of the max hp values for each pokemon that the user has
 
-# Pokedex
-pokemonlist = ['Bulbasaur', 'Charmander', 'Squirtle']
-pokemonattacks = [['grass1', 'grass2', 'grass3', 'grass4'], ['fire1', 'fire2', 'fire3', 'fire4'], ['water1', 'water2', 'water3', 'water4']]
-pokemondmg = [[2, 4, 6, 8], [2, 4, 6, 8], [2, 4, 6, 8]]
-pokemonpp = [[0, 5, 10, 15], [0, 5, 10, 15], [0, 5, 10, 15]]
-pokemonhp = [50, 50, 50]
+# Stats of all pokemon
+pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle'] # List of the names of every pokemon
+pokemonattacks = [['grass1', 'grass2', 'grass3', 'grass4'], ['fire1', 'fire2', 'fire3', 'fire4'], ['water1', 'water2', 'water3', 'water4']] # List of the attacks of every pokemon
+pokemondmg = [[2, 4, 6, 8], [2, 4, 6, 8], [2, 4, 6, 8]] # List of the default damage values for the attacks of every pokemon
+pokemonpp = [[0, 5, 10, 15], [0, 5, 10, 15], [0, 5, 10, 15]] # List of the default PP values for the attacks of every pokemon
+pokemonhp = [50, 50, 50] # List of the default HP values of every pokemon
 
 # Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
@@ -178,11 +178,11 @@ while True:     # Loop until the user chooses a starter
     else:   # Check if user chose no
         print('Ok, lets try again.')    # Tell user we will restart choice
 
-starter_choice = pokemonlist.index(starter_choice)
-partynames.append(pokemonlist[starter_choice])  # Have to add attacks / other stuff etc
-partyattacks.append(pokemonattacks[starter_choice])
-partydmg.append(pokemondmg[starter_choice])
-partycurrentpp.append(pokemonpp[starter_choice])
-partymaxpp.append(pokemonpp[starter_choice])
-partycurrenthp.append(pokemonhp[starter_choice])
-partymaxhp.append(pokemonhp[starter_choice])
+starter_choice = pokemonnames.index(starter_choice) # Find the index of the chosen pokemon
+partynames.append(pokemonnames[starter_choice])  # Add the name of the starter pokemon to the user's party
+partyattacks.append(pokemonattacks[starter_choice]) # Add the attacks of the starter pokemon to the user's party
+partydmg.append(pokemondmg[starter_choice]) # Add the damage values of the starter pokemon's attacks to the user's party
+partycurrentpp.append(pokemonpp[starter_choice]) # Add the PP values of the starter pokemon's attacks to the user's party
+partymaxpp.append(pokemonpp[starter_choice]) # Add the max PP values of the starter pokemon's attacks to the user's party
+partycurrenthp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pokemon to the user's party
+partymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
