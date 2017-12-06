@@ -46,12 +46,6 @@ def starterPick():  # Define starterPick as a function
     starters = ['Bulbasaur', 'Charmander', 'Squirtle'] # Create a list of starter pokemon that the user can choose
     printOptionList(starters) # Print the list of starter pokemon that the user can choose
     choice = getUserDecision('Choose a starter', starters) # Ask for the index of the user's choice, then store it
-    if starters[choice] == 'Bulbasaur':   # Check if user chose bulbasaur
-        printTextBox('Congratulations! You chose Bulbasaur, the grass type pokémon!')
-    elif starters[choice] == 'Charmander':  # Check if user chose charmander
-        printTextBox('Congratulations! You chose Charmander, the fire type pokemon!')
-    elif starters[choice] == 'Squirtle':  # Check if the user chose squirtle
-        printTextBox('Congratulations! You chose Squirtle, the water type pokemon!')
     return starters[choice] # Return the starter pokemon that the user chose
 
 def pokeMartGive(current_pokedollars, shopping_stuff):   # Define pokeMartGive as a function
