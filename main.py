@@ -106,10 +106,10 @@ def printOptionList(optionlist):
     for index in range(0, len(optionlist)):
         print(str(index + 1) + '. ' + optionlist[index]) # Print all of the variables in the given list
 
-def getUserDecision(optionlist):
+def getUserDecision(inputmessage, optionlist):
     while True:
         try:
-            index = input('Choose an option (Enter a number): ') # Ask for the user's decision as a number, then store it
+            index = input(inputmessage + ' (Enter a number):') # Ask for the user's decision as a number, then store it
             print('') # Print an empty line
             index = int(index) - 1 # Cast the integer value of the user's input, then store it
             optionlist[index] # Check to see if an option exists at the specified index
