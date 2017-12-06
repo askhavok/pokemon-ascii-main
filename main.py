@@ -27,7 +27,7 @@ enemymovedmg = [4, 3, 2, 5]
 enemyhp = 100
 enemymaxhp = 100
 
-def professorGender():   # Define professorGender as a function
+def setGender():   # Define setGender as a function
     genders = ['Boy', 'Girl'] # Create a list of available genders that the user can choose
     printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
     printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
@@ -36,29 +36,11 @@ def professorGender():   # Define professorGender as a function
     choice = getUserDecision(genders) # Ask for the index of the user's decision, then store it
     return genders[choice]   # Return the user's gender to the main code
 
-def professorName():    # Define professorName as a function
+def setName():    # Define setName as a function
     alias = '0'    # Set the user's name blank
     printTextBox('What is your name?')
     alias = input(': ')     # Print Oak's speech
     return alias    # Return the user's name to the main code
-
-def areYouSure(sex, alias):     # Define areYouSure as a function
-    if sex == '1':   # Check if user chose boy
-        sure = input('So youre a boy and your name is ' + alias + '? Press 1 for yes, press 2 for no')   # Confirm user's choices
-    elif sex == '2':     # Check if user chose girl
-        sure = input('So youre a girl and your name is ' + alias + '? Press 1 for yes, press 2 for no')  # Confirm user's choices
-    else:   # Check for error statements
-        print('Error?')     # Print error statement
-        sure = '2'  # Set the loop to restart
-    if sure == '1':     # Check if the user chose to continue
-        printTextBox('Congratulations ' + alias + ', and welcome again to the world of pokémon! Enjoy the world!')
-    elif sure == '2':   # Check if user chose to restart
-        printTextBox('Please choose again')
-    else:   # Check for errors
-        print('An error occured, set up will restart')  # Print error code
-        sure = '2'  # Set the setup to restart
-    return sure     # Return the value of whether to restart or continue to the main code
-    # MAKE SURE TO WRITE WHILE LOOP FOR THIS
 
 def starterPick():  # Define starterPick as a function
     printTextBox('Choose your starter')
@@ -89,10 +71,6 @@ def pokeMartGive(current_pokedollars, shopping_stuff):   # Define pokeMartGive a
             print('You bought an elixir!')  # Print to user what they bought
     shopping_stuff.remove('Quit the shop')
     return current_pokedollars  # Return the user's money to the main code
-
-def pokeMartList(shopping_things):
-    printTextBox('Welcome to the item shop!')
-    printOptionList(shopping_things)
 
 def printPokemonStats(pokemonname, maximumhp, currenthp):
     healthbar = 20 # Create a health bar with a length of 20 characters
