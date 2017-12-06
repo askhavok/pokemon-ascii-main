@@ -20,9 +20,11 @@ maxpp = [[0, 5, 10, 15], [0, 5, 10, 15]] # Create a list of the max PP values fo
 hp = [50, 100] # Create a list of the current hp values for each pokemon that the user has
 maxhp = [50, 100] # Create a list of the max hp values for each pokemon that the user has
 
-shop = ['Pokeball', 'Potion', 'Elixir']   # Set the pokemart items
 
+# Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
+verification = ['Yes', 'No'] # List of options when asking for the user to verify their decisions
+shop = ['Pokeball', 'Potion', 'Elixir']   # Set the pokemart items
 
 # Enemy stats
 enemyname = 'bob'
@@ -157,14 +159,12 @@ while True:     # Loop until the user chooses name and gender and confirms
     name = setName()    # Call the setName function to choose a name
     gender = setGender()    # Call the setGender function to choose a gender
     printTextBox('Are you sure your name is ' + name + ', and you are a ' + gender + '?')   # Print a text box to ask the user to confirm
-    verification = ['Yes', 'No']    # Create a list to give user choices
     verify = getUserDecision('Press 1 for yes, press 2 for no.', verification)  # Ask the user to confirm
     if verification[verify] == 'Yes':   # Check if user chose yes
         printTextBox('Welcome ' + name + ' to the wonderful world of pokémon! There are three rare pokémon here. The pokémon are held in these pokéballs! When I was young like you, I was a serious pokémon trainer. But now, in my old age, I have only these three pokémon left. You, ' + name + ', can choose one. Go on, choose!')     # Print oak's speech
         break   # Exit the loop
     else:   # Check if user chose no
         print('Ok, lets try again.')    # Tell the user to try again
-starters = ['Bulbasaur', 'Charmander', 'Squirtle']  # Create a list with the starters
 
 while True:     # Loop until the user chooses a starter
     starter_choice = starterPick()  # Call the starterPick function to have the user choose a starter
