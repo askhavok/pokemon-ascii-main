@@ -109,7 +109,7 @@ def printOptionList(optionlist):
 def getUserDecision(inputmessage, optionlist):
     while True:
         try:
-            index = input(inputmessage + ' (Enter a number):') # Ask for the user's decision as a number, then store it
+            index = input(inputmessage + ' (Enter a number): ') # Ask for the user's decision as a number, then store it
             print('') # Print an empty line
             index = int(index) - 1 # Cast the integer value of the user's input, then store it
             optionlist[index] # Check to see if an option exists at the specified index
