@@ -57,7 +57,7 @@ def starterPick():  # Define starterPick as a function
 
 def pokeMartGive(current_pokedollars, shopping_stuff):   # Define pokeMartGive as a function
     shopping_stuff.append('Quit the shop')  # Add quit the shop to the list to show
-    pokeMartList(shopping_stuff)    # Call the pokeMartList function
+    printOptionList(shopping_stuff)
     buy = getUserDecision(shopping_stuff)   # Take user's input on what to buy
     if shopping_stuff[buy] != 'Quit the shop':
         if shopping_stuff[buy] == 'Pokeball - ¥200':  # Check if user bought a pokeball
