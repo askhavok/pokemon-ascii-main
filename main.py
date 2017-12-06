@@ -33,7 +33,7 @@ def setGender():   # Define setGender as a function
     printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
     printTextBox('Are you a boy or a girl?') # Ask for the user's gender
     printOptionList(genders) # Print the list of gender that the user can choose
-    choice = getUserDecision('Choose a gender'+ genders) # Ask for the index of the user's decision, then store it
+    choice = getUserDecision('Choose a gender', genders) # Ask for the index of the user's decision, then store it
     return genders[choice]   # Return the user's gender to the main code
 
 def setName(): # Define setName as a function
