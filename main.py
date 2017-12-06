@@ -169,7 +169,7 @@ while True:     # Loop until the user chooses name and gender and confirms
 
 while True:     # Loop until the user chooses a starter
     starter_choice = starterPick()  # Call the starterPick function to have the user choose a starter
-    printTextBox('Are you sure you want to chooses ' + starter_choice + '?')  # Ask to confirm with user starter choice
+    printTextBox('Are you sure you want to choose ' + starter_choice + '?')  # Ask to confirm with user starter choice
 
     verify = getUserDecision('Press 1 for yes, press 2 for no,', verification)  # Confirm user choice
     if verification[verify] == 'Yes':   # Check if user confirmed
