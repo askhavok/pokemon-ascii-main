@@ -8,30 +8,29 @@ import random # Import the random library
 # User stats
 name = ''
 money = 500   # Set the players money (They will start with 500)
-inventory = ['Pokeball', 'Pokeball', 'Pokeball', 'Pokeball', 'Pokeball']  # Set user's inventory
+inventory = []  # Set user's inventory
 currentpokemon = 0 # Index of the user's current pokemon
 
 # Stats of user's pokemon
-party = ['Pokemon1', 'Pokemon2'] # Create a list of pokemon that the user has
-attacks = [['fire1', 'fire2', 'fire3', 'fire4'], ['water1', 'water2', 'water3', 'water4']] # Create a list of attacks for each pokemon that the user has
-movedmg = [[2, 4, 6, 8], [2, 4, 6, 8]] # Create a list of the damage values for each move of every pokemon that the user has
-movepp = [[0, 4, 10, 15], [0, 5, 10, 15]] # Create a list of PP values for each move of every pokemon that the user has
-maxpp = [[0, 5, 10, 15], [0, 5, 10, 15]] # Create a list of the max PP values for each move of every pokemon that the user has
-hp = [50, 100] # Create a list of the current hp values for each pokemon that the user has
-maxhp = [50, 100] # Create a list of the max hp values for each pokemon that the user has
+partynames = [] # Create a list of pokemon that the user has
+partyattacks = [] # Create a list of attacks for each pokemon that the user has
+partydmg = [] # Create a list of the damage values for each move of every pokemon that the user has
+partycurrentpp = [] # Create a list of PP values for each move of every pokemon that the user has
+partymaxpp = [] # Create a list of the max PP values for each move of every pokemon that the user has
+partycurrenthp = [] # Create a list of the current hp values for each pokemon that the user has
+partymaxhp = [] # Create a list of the max hp values for each pokemon that the user has
 
+# Pokedex
+pokemonlist = ['Bulbasaur', 'Charmander', 'Squirtle']
+pokemonattacks = [['grass1', 'grass2', 'grass3', 'grass4'], ['fire1', 'fire2', 'fire3', 'fire4'], ['water1', 'water2', 'water3', 'water4']]
+pokemondmg = [[2, 4, 6, 8], [2, 4, 6, 8], [2, 4, 6, 8]]
+pokemonpp = [[0, 5, 10, 15], [0, 5, 10, 15], [0, 5, 10, 15]]
+pokemonhp = [50, 50, 50]
 
 # Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
 verification = ['Yes', 'No'] # List of options when asking for the user to verify their decisions
-shop = ['Pokeball', 'Potion', 'Elixir']   # Set the pokemart items
-
-# Enemy stats
-enemyname = 'bob'
-enemyattacks = ['test1', 'test2', 'test3', 'test4']
-enemymovedmg = [4, 3, 2, 5]
-enemyhp = 100
-enemymaxhp = 100
+shop = ['Pokeball', 'Potion', 'Elixir']   # List of items that the user can buy in the PokeMart by default
 
 def setGender():   # Define setGender as a function
     genders = ['Boy', 'Girl'] # Create a list of available genders that the user can choose
@@ -47,11 +46,12 @@ def setName(): # Define setName as a function
     return alias    # Return the user's name to the main code
 
 def starterPick():  # Define starterPick as a function
-    printTextBox('Choose your starter') # Ask the user for their starter
     starters = ['Bulbasaur', 'Charmander', 'Squirtle'] # Create a list of starter pokemon that the user can choose
+
+    printTextBox('Choose your starter') # Ask the user for their starter
     printOptionList(starters) # Print the list of starter pokemon that the user can choose
     choice = getUserDecision('Choose a starter', starters) # Ask for the index of the user's choice, then store it
-    return choice # Return the starter pokemon that the user chose
+    return starters[choice] # Return the starter pokemon that the user chose
 
 def pokeMartGive(current_pokedollars, shopping_stuff):   # Define pokeMartGive as a function
     shopping_stuff.append('Quit the shop')  # Add quit the shop to the list to show
@@ -146,11 +146,11 @@ def incrementValue(maximumvalue, currentvalue, incrementamount):
 #    name = professorName()
 #    cont = areYouSure(gender, name)
 #printTextBox('So ' + name + ', it is time to choose your starter pokemon!')
-#party NOPOSJFOKSDNFNSDIFKJNSDNF NOT WORKING WAIT FOR KEVIN
+#partynames NOPOSJFOKSDNFNSDIFKJNSDNF NOT WORKING WAIT FOR KEVIN
 #while cont == '1':
 #    starter = starterPick()
-#    party.append[starter]
-#print(party)
+#    partynames.append[starter]
+#print(partynames)
 
 printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
 printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
@@ -159,6 +159,7 @@ while True:     # Loop until the user chooses name and gender and confirms
     name = setName()    # Call the setName function to choose a name
     gender = setGender()    # Call the setGender function to choose a gender
     printTextBox('Are you sure your name is ' + name + ', and you are a ' + gender + '?')   # Print a text box to ask the user to confirm
+
     verify = getUserDecision('Press 1 for yes, press 2 for no.', verification)  # Ask the user to confirm
     if verification[verify] == 'Yes':   # Check if user chose yes
         printTextBox('Welcome ' + name + ' to the wonderful world of pokémon! There are three rare pokémon here. The pokémon are held in these pokéballs! When I was young like you, I was a serious pokémon trainer. But now, in my old age, I have only these three pokémon left. You, ' + name + ', can choose one. Go on, choose!')     # Print oak's speech
@@ -168,11 +169,20 @@ while True:     # Loop until the user chooses name and gender and confirms
 
 while True:     # Loop until the user chooses a starter
     starter_choice = starterPick()  # Call the starterPick function to have the user choose a starter
-    printTextBox('Are you sure you want to chooses ' + starters[starter_choice] + '?')  # Ask to confirm with user starter choice
+    printTextBox('Are you sure you want to chooses ' + starter_choice + '?')  # Ask to confirm with user starter choice
+
     verify = getUserDecision('Press 1 for yes, press 2 for no,', verification)  # Confirm user choice
     if verification[verify] == 'Yes':   # Check if user confirmed
-        printTextBox('Congratulations! You chose ' + starters[starter_choice] + '!')    # Tell user their choice
+        printTextBox('Congratulations! You chose ' + starter_choice + '!')    # Tell user their choice
         break   # End loop
     else:   # Check if user chose no
         print('Ok, lets try again.')    # Tell user we will restart choice
-party.append(starters[starter_choice])  # Have to add attacks / other stuff etc
+
+starter_choice = pokemonlist.index(starter_choice)
+partynames.append(pokemonlist[starter_choice])  # Have to add attacks / other stuff etc
+partyattacks.append(pokemonattacks[starter_choice])
+partydmg.append(pokemondmg[starter_choice])
+partycurrentpp.append(pokemonpp[starter_choice])
+partymaxpp.append(pokemonpp[starter_choice])
+partycurrenthp.append(pokemonhp[starter_choice])
+partymaxhp.append(pokemonhp[starter_choice])
