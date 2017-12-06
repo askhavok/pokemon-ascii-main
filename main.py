@@ -5,11 +5,14 @@
 
 import random # Import the random library
 
-money = 500   # Set the players money
-shop = ['Pokeball', 'Potion', 'Elixir']   # Set the pokemart items
+# User stats
+name = ''
+money = 500   # Set the players money (They will start with 500)
 inventory = ['Pokeball', 'Pokeball', 'Pokeball', 'Pokeball', 'Pokeball']  # Set user's inventory
+currentpokemon = 0 # Index of the user's current pokemon
 
-name = ['Pokemon1', 'Pokemon2'] # Create a list of pokemon that the user has
+# Stats of user's pokemon
+party = ['Pokemon1', 'Pokemon2'] # Create a list of pokemon that the user has
 attacks = [['fire1', 'fire2', 'fire3', 'fire4'], ['water1', 'water2', 'water3', 'water4']] # Create a list of attacks for each pokemon that the user has
 movedmg = [[2, 4, 6, 8], [2, 4, 6, 8]] # Create a list of the damage values for each move of every pokemon that the user has
 movepp = [[0, 4, 10, 15], [0, 5, 10, 15]] # Create a list of PP values for each move of every pokemon that the user has
@@ -17,10 +20,12 @@ maxpp = [[0, 5, 10, 15], [0, 5, 10, 15]] # Create a list of the max PP values fo
 hp = [50, 100] # Create a list of the current hp values for each pokemon that the user has
 maxhp = [50, 100] # Create a list of the max hp values for each pokemon that the user has
 
+shop = ['Pokeball', 'Potion', 'Elixir']   # Set the pokemart items
+
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
 
-currentpokemon = 0 # Index of the user's current pokemon
 
+# Enemy stats
 enemyname = 'bob'
 enemyattacks = ['test1', 'test2', 'test3', 'test4']
 enemymovedmg = [4, 3, 2, 5]
