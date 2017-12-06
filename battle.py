@@ -1,5 +1,3 @@
-import ./main
-
 printPokemonStats(enemyname, enemymaxhp, enemyhp) # Display the stats of the enemy pokemon
 printPokemonStats(name[currentpokemon], maxhp[currentpokemon], hp[currentpokemon]) # Display the stats of the user's current pokemon
 
