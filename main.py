@@ -33,7 +33,7 @@ def setGender():   # Define setGender as a function
     printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
     printTextBox('Are you a boy or a girl?') # Ask for the user's gender
     printOptionList(genders) # Print the list of gender that the user can choose
-    choice = getUserDecision(genders) # Ask for the index of the user's decision, then store it
+    choice = getUserDecision('Choose a gender'+ genders) # Ask for the index of the user's decision, then store it
     return genders[choice]   # Return the user's gender to the main code
 
 def setName(): # Define setName as a function
@@ -45,7 +45,7 @@ def starterPick():  # Define starterPick as a function
     printTextBox('Choose your starter') # Ask the user for their starter
     starters = ['Bulbasaur', 'Charmander', 'Squirtle'] # Create a list of starter pokemon that the user can choose
     printOptionList(starters) # Print the list of starter pokemon that the user can choose
-    choice = getUserDecision(starters) # Ask for the index of the user's choice, then store it
+    choice = getUserDecision('Choose a starter', starters) # Ask for the index of the user's choice, then store it
     if starters[choice] == 'Bulbasaur':   # Check if user chose bulbasaur
         printTextBox('Congratulations! You chose Bulbasaur, the grass type pokémon!')
     elif starters[choice] == 'Charmander':  # Check if user chose charmander
@@ -57,7 +57,7 @@ def starterPick():  # Define starterPick as a function
 def pokeMartGive(current_pokedollars, shopping_stuff):   # Define pokeMartGive as a function
     shopping_stuff.append('Quit the shop')  # Add quit the shop to the list to show
     printOptionList(shopping_stuff) # Print a list of items that the user can buy
-    buy = getUserDecision(shopping_stuff)   # Take user's input on what to buy
+    buy = getUserDecision('What do you want to buy?', shopping_stuff)   # Take user's input on what to buy
     if shopping_stuff[buy] != 'Quit the shop':
         if shopping_stuff[buy] == 'Pokeball - ¥200':  # Check if user bought a pokeball
             current_pokedollars = decrementValue(current_pokedollars, 200)    # Subtract the cost from the user's balance

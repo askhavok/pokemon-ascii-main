@@ -3,14 +3,14 @@ printPokemonStats(name[currentpokemon], maxhp[currentpokemon], hp[currentpokemon
 
 while (hp.count(0) != len(hp)) and (enemyhp > 0):
     printOptionList(battledecisions) # Display the battle decisions that the user can make
-    decision = getUserDecision(battledecisions) # Get the battle decision that the user wants to make
+    decision = getUserDecision('What will you do?', battledecisions) # Get the battle decision that the user wants to make
 
     if battledecisions[decision] == 'Attack':
         attacks[currentpokemon].append('Go Back') # Add 'Go Back' to the list of options that the user can choose in the attack menu
         printOptionList(attacks[currentpokemon]) # Display the attacks of the current pokemon that the user can use
 
         while True:
-            attack = getUserDecision(attacks[currentpokemon]) # Get the user's input for the attack they want to use
+            attack = getUserDecision('Choose an attack', attacks[currentpokemon]) # Get the user's input for the attack they want to use
 
             if attacks[currentpokemon][attack] == 'Go Back':
                 break # Exit the loop
@@ -39,7 +39,7 @@ while (hp.count(0) != len(hp)) and (enemyhp > 0):
         if len(inventory) > 0:
             inventory.append('Go Back') # Add 'Go Back' to the list of options that the user can choose in the inventory menu
             printOptionList(inventory) # Display the items that the user can use
-            item = getUserDecision(inventory) # Get the user's input for the item they want to use
+            item = getUserDecision('Choose an item', inventory) # Get the user's input for the item they want to use
 
             if inventory[item] != 'Go Back':
                 if inventory[item] == 'Elixir':
@@ -47,7 +47,7 @@ while (hp.count(0) != len(hp)) and (enemyhp > 0):
                     printOptionList(attacks[currentpokemon])
 
                     while True:
-                        attack = getUserDecision(attacks[currentpokemon])
+                        attack = getUserDecision('Which attack do you want to restore?', attacks[currentpokemon])
 
                         if attacks[currentpokemon][attack] == 'Go Back':
                             break
@@ -81,7 +81,7 @@ while (hp.count(0) != len(hp)) and (enemyhp > 0):
         printOptionList(name) # Display the names of pokemon that the user can choose
 
         while True:
-            newpokemon = getUserDecision(name) # Get the user's input for the new pokemon they want to switch to
+            newpokemon = getUserDecision('Which pokemon do you want to summon?', name) # Get the user's input for the new pokemon they want to switch to
 
             if name[newpokemon] == 'Go Back':
                 break # Exit the loop
