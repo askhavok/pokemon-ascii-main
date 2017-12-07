@@ -166,7 +166,8 @@ def incrementValue(maximumvalue, currentvalue, incrementamount):
 printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
 printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
 
-while True:     # Loop until the user chooses name and gender and confirms
+Flag = True     # Set flag to true
+while Flag == True:     # Loop until the user chooses name and gender and confirms
     name = setName()    # Call the setName function to choose a name
     gender = setGender()    # Call the setGender function to choose a gender
     printTextBox('Are you sure your name is ' + name + ', and you are a ' + gender + '?')   # Print a text box to ask the user to confirm
@@ -174,18 +175,19 @@ while True:     # Loop until the user chooses name and gender and confirms
     verify = getUserDecision('Press 1 for yes, press 2 for no.', verification)  # Ask the user to confirm
     if verification[verify] == 'Yes':   # Check if user chose yes
         printTextBox('Welcome ' + name + ' to the wonderful world of pokémon! There are three rare pokémon here. The pokémon are held in these pokéballs! When I was young like you, I was a serious pokémon trainer. But now, in my old age, I have only these three pokémon left. You, ' + name + ', can choose one. Go on, choose!')     # Print oak's speech
-        break   # Exit the loop
+        Flag == False   # Exit the loop
     else:   # Check if user chose no
         print('Ok, lets try again.')    # Tell the user to try again
-
-while True:     # Loop until the user chooses a starter
+        
+Flag = True     # Set flag to true
+while Flag == True:     # Loop until the user chooses a starter
     starter_choice = starterPick()  # Call the starterPick function to have the user choose a starter
     printTextBox('Are you sure you want to choose ' + starter_choice + '?')  # Ask to confirm with user starter choice
 
     verify = getUserDecision('Press 1 for yes, press 2 for no,', verification)  # Confirm user choice
     if verification[verify] == 'Yes':   # Check if user confirmed
         printTextBox('Congratulations! You chose ' + starter_choice + '!')    # Tell user their choice
-        break   # End loop
+        Flag == False   # End loop
     else:   # Check if user chose no
         print('Ok, lets try again.')    # Tell user we will restart choice
 
@@ -198,7 +200,7 @@ partymaxpp.append(pokemonpp[starter_choice]) # Add the max PP values of the star
 partyhp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pokemon to the user's party
 partymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
 
-printTextBox('Now that you have chosen your first pokémon, it is time for you to head out. Be careful young one, and enjoy the world of pokémon!')  # Print oak's speech
+printTextBox('Now that you have chosen your first pokémon, it is time for you to head out. Be careful young one, and enjoy the world of pokémon!')  # Print oak's speech
 printTextBox('By the way, have you met Blue? He came to choose a pokémon this morning before you came around, and I believe you two will make great rivals.')   # Print oak's speech
 # wait like 5 seconds or something
 printTextBox('Hi ' + name + ', I am your rival, Blue, and i dont know how to make this without it sounding cringy')     # print unfinished line
