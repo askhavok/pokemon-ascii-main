@@ -13,6 +13,7 @@ currentpokemon = 0 # Index of the user's current pokemon
 
 # Stats of user's pokemon
 partynames = [] # Create a list of the names of the pokemon that the user has
+partytypes = [] # Create a list of the types of every pokemon that the user has
 partyattacks = [] # Create a list of attacks for each pokemon that the user has
 partydmg = [] # Create a list of the damage values for each move of every pokemon that the user has
 partypp = [] # Create a list of PP values for each move of every pokemon that the user has
@@ -22,6 +23,7 @@ partymaxhp = [] # Create a list of the max hp values for each pokemon that the u
 
 # Stats of enemy's pokemon
 enemypartynames = [] # Create a list of the names of the pokemon that the enemy has
+enemypartytypes = [] # Create a list of the types of every pokemon that the enemy has
 enemypartyattacks = [] # Create a list of attacks for each pokemon that the enemy has
 enemypartydmg = [] # Create a list of the damage values for each move of every pokemon that the enemy has
 enemypartyhp = [] # Create a list of the current HP values fot each pokemon that the enemy has
@@ -30,6 +32,7 @@ enemypokemon = 0 # Index of the enemy's current pokemon
 
 # Stats of all pokemon
 pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle'] # List of the names of every pokemon
+pokemontypes = ['Grass', 'Fire', 'Water'] # List of every pokemon's type
 pokemonattacks = [['grass1', 'grass2', 'grass3', 'grass4'], ['fire1', 'fire2', 'fire3', 'fire4'], ['water1', 'water2', 'water3', 'water4']] # List of the attacks of every pokemon
 pokemondmg = [[2, 4, 6, 8], [2, 4, 6, 8], [2, 4, 6, 8]] # List of the default damage values for the attacks of every pokemon
 pokemonpp = [[0, 5, 10, 15], [0, 5, 10, 15], [0, 5, 10, 15]] # List of the default PP values for the attacks of every pokemon
