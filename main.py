@@ -186,3 +186,8 @@ partycurrentpp.append(pokemonpp[starter_choice]) # Add the PP values of the star
 partymaxpp.append(pokemonpp[starter_choice]) # Add the max PP values of the starter pokemon's attacks to the user's party
 partycurrenthp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pokemon to the user's party
 partymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
+
+printTextBox('Now that you have chosen your first pokémon, it is time for you to head out. Be careful young one, and enjoy the world of pokémon!')  # Print oak's speech
+printTextBox('By the way, have you met Blue? He came to choose a pokémon this morning before you came around, and I believe you two will make great rivals.')   # Print oak's speech
+# wait like 5 seconds or something
+printTextBox('Hi ' + name + ', I am your rival, Blue, and i dont know how to make this without it sounding cringy')     # print unfinished line
