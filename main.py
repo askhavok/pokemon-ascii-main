@@ -15,9 +15,9 @@ currentpokemon = 0 # Index of the user's current pokemon
 partynames = [] # Create a list of the names of the pokemon that the user has
 partyattacks = [] # Create a list of attacks for each pokemon that the user has
 partydmg = [] # Create a list of the damage values for each move of every pokemon that the user has
-partycurrentpp = [] # Create a list of PP values for each move of every pokemon that the user has
+partypp = [] # Create a list of PP values for each move of every pokemon that the user has
 partymaxpp = [] # Create a list of the max PP values for each move of every pokemon that the user has
-partycurrenthp = [] # Create a list of the current hp values for each pokemon that the user has
+partyhp = [] # Create a list of the current hp values for each pokemon that the user has
 partymaxhp = [] # Create a list of the max hp values for each pokemon that the user has
 
 # Stats of all pokemon
@@ -182,9 +182,9 @@ starter_choice = pokemonnames.index(starter_choice) # Find the index of the chos
 partynames.append(pokemonnames[starter_choice])  # Add the name of the starter pokemon to the user's party
 partyattacks.append(pokemonattacks[starter_choice]) # Add the attacks of the starter pokemon to the user's party
 partydmg.append(pokemondmg[starter_choice]) # Add the damage values of the starter pokemon's attacks to the user's party
-partycurrentpp.append(pokemonpp[starter_choice]) # Add the PP values of the starter pokemon's attacks to the user's party
+partypp.append(pokemonpp[starter_choice]) # Add the PP values of the starter pokemon's attacks to the user's party
 partymaxpp.append(pokemonpp[starter_choice]) # Add the max PP values of the starter pokemon's attacks to the user's party
-partycurrenthp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pokemon to the user's party
+partyhp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pokemon to the user's party
 partymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
 
 printTextBox('Now that you have chosen your first pokémon, it is time for you to head out. Be careful young one, and enjoy the world of pokémon!')  # Print oak's speech
