@@ -1,3 +1,40 @@
+def calculateBonusDamage(damagevalue, attackertype, defendanttype):
+    criticalchance = random.random() # Generate a random number between
+
+    if (attackertype == 'Grass') and (defendanttype == 'Fire'):
+        damagevalue /= 2 # If the attacker's type is Grass, and the defendant's type is Fire, then cut the damage value of the attack in half
+        print('Ineffective')
+    elif (attackertype == 'Grass') and (defendanttype == 'Water'):
+        damagevalue *= 2 # If the attacker's type is Grass, and the defendant's type is Water, then double the damage value of the attack
+        print('Effective')
+    elif (attackertype == 'Grass') and (defendanttype == 'Grass'):
+        damagevalue /= 2 # If the attacker and defendant's type is both Grass, then cut the damage value of the attack in half
+        print('Ineffective')
+    elif (attackertype == 'Fire') and (defendanttype == 'Grass'):
+        damagevalue *= 2 # If the attacker's type is Fire and the defendant's type is Grass, then double the damage value of the attack
+        print('Effective')
+    elif (attackertype == 'Fire') and (defendanttype == 'Water'):
+        damagevalue /= 2 # If the attacker's type is Fire, and the defendant's type is Water, then cut the damage value of the attack in half
+        print('Ineffective')
+    elif (attackertype == 'Fire') and (defendanttype == 'Fire'):
+        damagevalue /= 2 # If the attacker and defendant's type is both Fire, then cut the damage value of the attack in half
+        print('Ineffective')
+    elif (attackertype == 'Water') and (defendanttype == 'Grass'):
+        damagevalue /= 2 # If the attacker's type is Water, and the defendant's type is Grass, then cut the damage value of the attack in half
+        print('Ineffective')
+    elif (attackertype == 'Water') and (defendanttype == 'Fire'):
+        damagevalue *= 2 # If the attacker's type is Water, and the defendant's type is Fire, then double the damage value of the attackprint('Ineffective')
+        print('Effective')
+    elif (attackertype == 'Water') and (defendanttype == 'Water'):
+        damagevalue /= 2 # If the attacker and the defendant's type is both Water, then cut the damage value of the attack in half
+
+    if criticalchance < 0.1:
+        damagevalue += 0.5 * damagevalue # Increase the damage value of the current attack by 50% if the random number is below 0.1 (10% chance)
+
+    damagevalue = int(damagevalue) # Cast the integer value of damage value, then store it
+
+    return damagevalue # Return the amount of damage dealt
+
 printPokemonStats(enemypartynames[enemypokemon], enemypartymaxhp[enemypokemon], enemypartyhp[enemypokemon]) # Display the stats of the enemy pokemon
 printPokemonStats(partynames[currentpokemon], partymaxhp[currentpokemon], partyhp[currentpokemon]) # Display the stats of the user's current pokemon
 
@@ -21,14 +58,14 @@ while (partyhp.count(0) != len(partyhp)) and (enemypartyhp.count(0) != len(enemy
 
         if partyattacks[currentpokemon][attack] != 'Go Back':
             partypp[currentpokemon][attack] = decrementValue(partypp[currentpokemon][attack], 1) # Decrement the current pokemon's PP by the amount required by the move
-            damage = calculateBonusDamage(partydmg[currentpokemon][attack])
-            enemypartyhp[enemypokemon] = decrementValue(enemypartyhp[enemypokemon], partydmg[currentpokemon][attack]) # Decrement the enemy's HP by the damage value of the user's attack
+            damage = calculateBonusDamage(partydmg[currentpokemon][attack], partytypes[currentpokemon], enemypartytypes[enemypokemon])
+            enemypartyhp[enemypokemon] = decrementValue(enemypartyhp[enemypokemon], damage) # Decrement the enemy's HP by the damage value of the user's attack
 
             printTextBox(str(partynames[currentpokemon]) + ' used ' + str(partyattacks[currentpokemon][attack]) + '! ' + str(enemypartynames[enemypokemon]) + ' took ' + str(damage) + ' damage!') # Display the user's attack, and the damage it dealt
 
             attack = getBotDecision(enemypartyattacks[enemypokemon]) # Get the enemy's input for the attack they want to use
-            damage = calculateBonusDamage(enemypartydmg[enemypokemon][attack])
-            partyhp[currentpokemon] = decrementValue(partyhp[currentpokemon], enemypartydmg[enemypokemon][attack]) # Decrement the current pokemon's HP by the damage value of the enemy's attack
+            damage = calculateBonusDamage(enemypartydmg[enemypokemon][attack], enemypartytypes[enemypokemon], partytypes[currentpokemon])
+            partyhp[currentpokemon] = decrementValue(partyhp[currentpokemon], damage) # Decrement the current pokemon's HP by the damage value of the enemy's attack
 
             printTextBox(str(enemypartynames[enemypokemon]) + ' used ' + str(enemypartyattacks[enemypokemon][attack]) + '! ' + str(partynames[currentpokemon]) + ' took ' + str(damage) + ' damage!') # Display the enemy's attack, and the damage it dealt
 
