@@ -164,6 +164,7 @@ def incrementValue(maximumvalue, currentvalue, incrementamount):
 #print(partynames)
 
 printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
+input('Press Enter to continue')
 printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
 
 flag = True # Set flag to true
@@ -201,6 +202,7 @@ partyhp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pok
 partymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
 
 printTextBox('Now that you have chosen your first pokémon, it is time for you to head out. Be careful young one, and enjoy the world of pokémon!') # Print oak's speech
+input('Press Enter to continue')
 printTextBox('By the way, have you met Blue? He came to choose a pokémon this morning before you came around, and I believe you two will make great rivals.')   # Print oak's speech
-# wait like 5 seconds or something
+input('Press Enter to continue')
 printTextBox('Hi ' + name + ', I am your rival, Blue, and i dont know how to make this without it sounding cringy')     # print unfinished line
