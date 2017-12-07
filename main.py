@@ -98,6 +98,7 @@ def printPokemonStats(pokemonname, maximumhp, currenthp):
     print('') # Print an empty line
 
 def printTextBox(message):
+    print('') # Print an empty line
     textboxlength = 50 # Set all text boxes to be 50 characters long
     print('█' + '▀' * textboxlength + '█') # Print the left side of the text box, the top of the text box, and the right side of the text box
     print('█' + ' ' * textboxlength + '█') # Print the left side of the text box, and empty line, and the right side of the text box
