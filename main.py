@@ -167,6 +167,7 @@ def incrementValue(maximumvalue, currentvalue, incrementamount):
 printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
 input('Press Enter to continue')
 printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
+input('Press Enter to continue')
 
 flag = True # Set flag to true
 while flag == True:     # Loop until the user chooses name and gender and confirms
@@ -177,6 +178,7 @@ while flag == True:     # Loop until the user chooses name and gender and confir
     verify = getUserDecision('Press 1 for yes, press 2 for no.', verification)  # Ask the user to confirm
     if verification[verify] == 'Yes':   # Check if user chose yes
         printTextBox('Welcome ' + name + ' to the wonderful world of pokémon! There are three rare pokémon here. The pokémon are held in these pokéballs! When I was young like you, I was a serious pokémon trainer. But now, in my old age, I have only these three pokémon left. You, ' + name + ', can choose one. Go on, choose!')     # Print oak's speech
+        input('Press Enter to continue')
         flag = False   # Exit the loop
     else:   # Check if user chose no
         print('Ok, lets try again.')    # Tell the user to try again
