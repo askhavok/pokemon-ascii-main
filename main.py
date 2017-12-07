@@ -20,6 +20,14 @@ partymaxpp = [] # Create a list of the max PP values for each move of every poke
 partyhp = [] # Create a list of the current hp values for each pokemon that the user has
 partymaxhp = [] # Create a list of the max hp values for each pokemon that the user has
 
+# Stats of enemy's pokemon
+enemypartynames = [] # Create a list of the names of the pokemon that the enemy has
+enemypartyattacks = [] # Create a list of attacks for each pokemon that the enemy has
+enemypartydmg = [] # Create a list of the damage values for each move of every pokemon that the enemy has
+enemypartyhp = [] # Create a list of the current HP values fot each pokemon that the enemy has
+enemypartymaxhp = [] # Create a list of the max HP values for each pokemon that the enemy has
+enemypokemon = 0 # Index of the enemy's current pokemon
+
 # Stats of all pokemon
 pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle'] # List of the names of every pokemon
 pokemonattacks = [['grass1', 'grass2', 'grass3', 'grass4'], ['fire1', 'fire2', 'fire3', 'fire4'], ['water1', 'water2', 'water3', 'water4']] # List of the attacks of every pokemon
