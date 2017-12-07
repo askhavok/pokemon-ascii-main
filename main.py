@@ -152,18 +152,6 @@ def incrementValue(maximumvalue, currentvalue, incrementamount):
 
     return currentvalue # Return the new value
 
-#cont = '2'
-#while cont == '2':
-#    gender = professorGender()
-#    name = professorName()
-#    cont = areYouSure(gender, name)
-#printTextBox('So ' + name + ', it is time to choose your starter pokemon!')
-#partynames NOPOSJFOKSDNFNSDIFKJNSDNF NOT WORKING WAIT FOR KEVIN
-#while cont == '1':
-#    starter = starterPick()
-#    partynames.append[starter]
-#print(partynames)
-
 printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
 input('Press Enter to continue')
 printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
