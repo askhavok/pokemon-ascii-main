@@ -81,8 +81,8 @@ def pokeMartGive(current_pokedollars, shopping_stuff):   # Define pokeMartGive a
 def printPokemonStats(pokemonname, maximumhp, currenthp):
     healthbar = 20 # Create a health bar with a length of 20 characters
 
-    print('| ' + str(pokemonname)) # Print the name of the enemy's pokemon
-    print('| HP: ' + str(currenthp) + ' / ' + str(maximumhp)) # Print the enemy's current health
+    print('| ' + str(pokemonname)) # Print the name of the pokemon
+    print('| HP: ' + str(currenthp) + ' / ' + str(maximumhp)) # Print the pokemon's current health
 
     print('| ', end='') # Print the beginning of the health bar
     bars = int(healthbar * (currenthp / maximumhp)) # Calculate how much of the health bar is filled, cast the integer value of it, then store it
