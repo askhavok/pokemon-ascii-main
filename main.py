@@ -214,3 +214,24 @@ tall_grass = getUserDecision('', tallGrassChoice)    # Take user input on their 
     #BATTLE WITH EITHER PIDGEY OR RATTATA. USER CAN CHOOSE TO CATCH IT. AFTER DEFEATING IT, USER MAY OR MAY NOT LEVEL UP
 #elif tall_grass == 2:  # Check if user chose to skip the grass
     #CONITNUE TO NEXT BATTLE/TRAINER ON ROUTE
+
+printTextBox('You continue on your path towards the next city. On your journey, you see a pokémon trainer.')    # Print text box
+input('Press enter to continue: ')   # Pause until user continues
+printTextBox('You have been challenged to a battle by Ace Trainer Ganti!')  # Tell user of challenge
+input('Press enter to continue: ')   # Pause until user continues
+# BATTLE GANTI
+printTextBox('After defeating Ganti, you continue on the route. Again, you see a pokémon trainer. This time a lass.')   # Print text box
+input('Press enter to continue: ')   # Pause until user continues
+printTextBox('You have been challenged by Pokèmon Lass Ariel!')     # Tell user of challenge
+input('Press enter to continue: ')   # Pause until user continues
+# BATTLE ARIEL
+printTextBox('After winning the pokèmon battle, you continue onwards and arrive at Viridian City.')     # Tell user of arrival
+viridian_options = ['Pokèmon Center', 'Pokèmart', 'Pokèmon Gym']    # Create list of places at Viridian
+Flag = True
+while Flag == True:
+    print('Where would you like to go?')    # Ask user where they want to go
+    print('')   # Print empty string
+    printOptionList(viridian_options)   # Print options list/Where to go
+    viridian_choice = getUserDecision('', viridian_options)   # Take user's input
+    if viridian_choice == 1:    # Check if the user chose to go to the pokecenter
+        printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
