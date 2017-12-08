@@ -193,15 +193,19 @@ partyhp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pok
 partymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
 
 printTextBox('Now that you have chosen your first pokémon, it is time for you to head out. Be careful young one, and enjoy the world of pokémon!')  # Print oak's speech
+input('Press Enter to continue')
 printTextBox('By the way, have you met Blue? He came to choose a pokémon this morning before you came around, and I believe you two will make great rivals.')   # Print oak's speech
-# wait like 5 seconds or something
+input('Press Enter to continue')
 printTextBox('Whats up ' + name + ', I am your rival, Blue, and I want to fight you in a pokémon battle!')     # Print Blue's introduction line
+input('Press Enter to continue')
 #POKEMON BATTLE AGAINST BLUE
 #IF STATEMENT CHECKING IF USER WON OR LOST - IF LOST, GO TO POKEMON CENTER
 
 printTextBox('Congratulations on defeating Blue! You have won ¥200!')   # Congratulate user on defeating blue
+input('Press Enter to continue')
 money += 200    # Add money to the users balance
 printTextBox('Wow, congrats on the win, ' + name + '! This wont be the last you see of me, however...')     # Print Blue's losing statement
+input('Press Enter to continue')
 printTextBox('After defeating Blue, you decide to take a stroll onto the first route to try and make it to the next city. On the walk, you discover some tall grass. Would you like to walk through it to discover a pokémon?')     # Ask user about tall grass
 tallGrassChoice = ['Go in the grass', 'Continue walking']   # Make a list for the choice to go into the tall grass or not
 printOptionList(tallGrassChoice)    # Print the choices that the user can choose
