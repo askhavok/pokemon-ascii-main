@@ -1,32 +1,28 @@
 def calculateBonusDamage(damagevalue, attackertype, defendanttype):
-    criticalchance = random.random() # Generate a random number between
+    criticalchance = random.random() # Generate a random number between 0 and 1
 
     if (attackertype == 'Grass') and (defendanttype == 'Fire'):
         damagevalue /= 2 # If the attacker's type is Grass, and the defendant's type is Fire, then cut the damage value of the attack in half
-        print('Ineffective')
     elif (attackertype == 'Grass') and (defendanttype == 'Water'):
         damagevalue *= 2 # If the attacker's type is Grass, and the defendant's type is Water, then double the damage value of the attack
-        print('Effective')
+    elif (attackertype == 'Grass') and (defendanttype == 'Flying'):
+        damagevalue /= 2 # If the attacker's type is Grass and the defendant's type is Flying, then cut the damage value of the attack in half
     elif (attackertype == 'Grass') and (defendanttype == 'Grass'):
         damagevalue /= 2 # If the attacker and defendant's type is both Grass, then cut the damage value of the attack in half
-        print('Ineffective')
     elif (attackertype == 'Fire') and (defendanttype == 'Grass'):
         damagevalue *= 2 # If the attacker's type is Fire and the defendant's type is Grass, then double the damage value of the attack
-        print('Effective')
     elif (attackertype == 'Fire') and (defendanttype == 'Water'):
         damagevalue /= 2 # If the attacker's type is Fire, and the defendant's type is Water, then cut the damage value of the attack in half
-        print('Ineffective')
     elif (attackertype == 'Fire') and (defendanttype == 'Fire'):
         damagevalue /= 2 # If the attacker and defendant's type is both Fire, then cut the damage value of the attack in half
-        print('Ineffective')
     elif (attackertype == 'Water') and (defendanttype == 'Grass'):
         damagevalue /= 2 # If the attacker's type is Water, and the defendant's type is Grass, then cut the damage value of the attack in half
-        print('Ineffective')
     elif (attackertype == 'Water') and (defendanttype == 'Fire'):
-        damagevalue *= 2 # If the attacker's type is Water, and the defendant's type is Fire, then double the damage value of the attackprint('Ineffective')
-        print('Effective')
+        damagevalue *= 2 # If the attacker's type is Water, and the defendant's type is Fire, then double the damage value of the attack
     elif (attackertype == 'Water') and (defendanttype == 'Water'):
         damagevalue /= 2 # If the attacker and the defendant's type is both Water, then cut the damage value of the attack in half
+    elif (attackertype == 'Flying') and (defendanttype == 'Grass'):
+        damagevalue *= 2 # If the attacker's type is Flying and the defendant's type is Grass, then double the damage value of the attack
 
     if criticalchance < 0.1:
         damagevalue += 0.5 * damagevalue # Increase the damage value of the current attack by 50% if the random number is below 0.1 (10% chance)
