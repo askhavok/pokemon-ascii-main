@@ -153,20 +153,19 @@ def incrementValue(maximumvalue, currentvalue, incrementamount):
     return currentvalue # Return the new value
 
 printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
-input('Press Enter to continue')
+input('Press Enter to continue:')    # Take input to continue
 printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
-input('Press Enter to continue')
+input('Press Enter to continue:')    # Take input to continue
 
 flag = True # Set flag to true
 while flag == True:     # Loop until the user chooses name and gender and confirms
     name = setName()    # Call the setName function to choose a name
     gender = setGender()    # Call the setGender function to choose a gender
     printTextBox('Are you sure your name is ' + name + ', and you are a ' + gender + '?')   # Print a text box to ask the user to confirm
-
     verify = getUserDecision('Press 1 for yes, press 2 for no.', verification)  # Ask the user to confirm
     if verification[verify] == 'Yes':   # Check if user chose yes
         printTextBox('Welcome ' + name + ' to the wonderful world of pokémon! There are three rare pokémon here. The pokémon are held in these pokéballs! When I was young like you, I was a serious pokémon trainer. But now, in my old age, I have only these three pokémon left. You, ' + name + ', can choose one. Go on, choose!')     # Print oak's speech
-        input('Press Enter to continue')
+        input('Press Enter to continue:')    # Take input to continue
         flag = False   # Exit the loop
     else:   # Check if user chose no
         print('Ok, lets try again.')    # Tell the user to try again
@@ -193,19 +192,19 @@ partyhp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pok
 partymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
 
 printTextBox('Now that you have chosen your first pokémon, it is time for you to head out. Be careful young one, and enjoy the world of pokémon!')  # Print oak's speech
-input('Press Enter to continue')
+input('Press Enter to continue:')    # Take input to continue
 printTextBox('By the way, have you met Blue? He came to choose a pokémon this morning before you came around, and I believe you two will make great rivals.')   # Print oak's speech
-input('Press Enter to continue')
+input('Press Enter to continue:')    # Take input to continue
 printTextBox('Whats up ' + name + ', I am your rival, Blue, and I want to fight you in a pokémon battle!')     # Print Blue's introduction line
-input('Press Enter to continue')
+input('Press Enter to continue:')    # Take input to continue
 #POKEMON BATTLE AGAINST BLUE
-#IF STATEMENT CHECKING IF USER WON OR LOST - IF LOST, GO TO POKEMON CENTER
+#IF STATEMENT CHECKING IF USER WON OR LOST - IF LOST, GO TO POKEMON CENTER.
 
 printTextBox('Congratulations on defeating Blue! You have won ¥200!')   # Congratulate user on defeating blue
-input('Press Enter to continue')
+input('Press Enter to continue:')    # Take input to continue
 money += 200    # Add money to the users balance
 printTextBox('Wow, congrats on the win, ' + name + '! This wont be the last you see of me, however...')     # Print Blue's losing statement
-input('Press Enter to continue')
+input('Press Enter to continue:')    # Take input to continue
 printTextBox('After defeating Blue, you decide to take a stroll onto the first route to try and make it to the next city. On the walk, you discover some tall grass. Would you like to walk through it to discover a pokémon?')     # Ask user about tall grass
 tallGrassChoice = ['Go in the grass', 'Continue walking']   # Make a list for the choice to go into the tall grass or not
 printOptionList(tallGrassChoice)    # Print the choices that the user can choose
@@ -216,22 +215,51 @@ tall_grass = getUserDecision('', tallGrassChoice)    # Take user input on their 
     #CONITNUE TO NEXT BATTLE/TRAINER ON ROUTE
 
 printTextBox('You continue on your path towards the next city. On your journey, you see a pokémon trainer.')    # Print text box
-input('Press enter to continue: ')   # Pause until user continues
+input('Press Enter to continue:')    # Take input to continue
 printTextBox('You have been challenged to a battle by Ace Trainer Ganti!')  # Tell user of challenge
-input('Press enter to continue: ')   # Pause until user continues
+input('Press Enter to continue:')    # Take input to continue
 # BATTLE GANTI
+money + 200     # Add money to user's balance
+printTextBox('¥200 has been added to your inventory.')  # Tell user they won money
 printTextBox('After defeating Ganti, you continue on the route. Again, you see a pokémon trainer. This time a lass.')   # Print text box
-input('Press enter to continue: ')   # Pause until user continues
+input('Press Enter to continue:')    # Take input to continue
 printTextBox('You have been challenged by Pokèmon Lass Ariel!')     # Tell user of challenge
-input('Press enter to continue: ')   # Pause until user continues
+input('Press Enter to continue:')    # Take input to continue
 # BATTLE ARIEL
 printTextBox('After winning the pokèmon battle, you continue onwards and arrive at Viridian City.')     # Tell user of arrival
+input('Press Enter to continue:')    # Take input to continue
 viridian_options = ['Pokèmon Center', 'Pokèmart', 'Pokèmon Gym']    # Create list of places at Viridian
-Flag = True
-while Flag == True:
+Flag = True     # Make the flag true
+while Flag == True:     # Loop until the user defeats the pokemon gym
     print('Where would you like to go?')    # Ask user where they want to go
     print('')   # Print empty string
     printOptionList(viridian_options)   # Print options list/Where to go
     viridian_choice = getUserDecision('', viridian_options)   # Take user's input
-    if viridian_choice == 1:    # Check if the user chose to go to the pokecenter
+    if viridian_choice == 0:    # Check if the user chose to go to the pokecenter
         printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
+        input('Press enter to continue: ')   # Pause until user continues
+    elif viridian_choice == 1:  # Check if user chose to go to the pokemart
+        printTextBox('You have chosen to go to the Pokèmart.')  # tell user their choice
+        input('Press enter to continue: ')   # Pause until user continues
+    elif viridian_options[viridian_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
+        printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
+        input('Press enter to continue: ')   # Pause until user continues
+        # BATTLE AGAINST BROCK - WILL HAVE TWO POKEMON. A GEODUDE AND AN ONYX
+        printTextBox('Congratulations, ' + name + '! You have defeated Brock, the rock-type gym leader!')   # Print text
+        input('Press Enter to continue:')    # Take input to continue
+        money += 750    # Add money to users balance
+        printTextBox('You have earned ¥750 from winning!')  # Tell user they gained money
+        input('Press Enter to continue:')    # Take input to continue
+        printTextBox('You have won the Boulder Badge! Congratulations!')     # Inform user of their new badge
+        input('Press Enter to continue:')    # Take input to continue
+        viridian_options[2] = 'Route 2'     # Set the third option to the next route rather than the gym
+        printTextBox('You should heal before heading onto the next route.')     # Print Brock's advice
+        input('Press Enter to continue:')    # Take input to continue
+    elif viridian_options[viridian_choice] == 'Route 2' :    # Check if user chose to move onto the next route
+        printTextBox('So you decide to head onto the next route, route 2.')     # Print user's decision
+        input('Press Enter to continue:')    # Take input to continue
+        Flag = False   # Set the flag to false to exit the loop
+    else:   # Check for errors
+        print('Error: Line 255: Unhandled exception')   # Print error code
+print('On route 2, you find some tall grass.')  # Print users discoveries
+    
