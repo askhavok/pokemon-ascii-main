@@ -12,14 +12,14 @@ inventory = []  # Set user's inventory
 currentpokemon = 0 # Index of the user's current pokemon
 
 # Stats of user's pokemon
-partynames = [] # Create a list of the names of the pokemon that the user has
-partytypes = [] # Create a list of the types of every pokemon that the user has
-partyattacks = [] # Create a list of attacks for each pokemon that the user has
-partydmg = [] # Create a list of the damage values for each move of every pokemon that the user has
-partypp = [] # Create a list of PP values for each move of every pokemon that the user has
-partymaxpp = [] # Create a list of the max PP values for each move of every pokemon that the user has
-partyhp = [] # Create a list of the current hp values for each pokemon that the user has
-partymaxhp = [] # Create a list of the max hp values for each pokemon that the user has
+userpartynames = [] # Create a list of the names of the pokemon that the user has
+userpartytypes = [] # Create a list of the types of every pokemon that the user has
+userpartyattacks = [] # Create a list of attacks for each pokemon that the user has
+userpartydmg = [] # Create a list of the damage values for each move of every pokemon that the user has
+userpartypp = [] # Create a list of PP values for each move of every pokemon that the user has
+userpartymaxpp = [] # Create a list of the max PP values for each move of every pokemon that the user has
+userpartyhp = [] # Create a list of the current hp values for each pokemon that the user has
+userpartymaxhp = [] # Create a list of the max hp values for each pokemon that the user has
 
 # Stats of enemy's pokemon
 enemypartynames = [] # Create a list of the names of the pokemon that the enemy has
@@ -188,13 +188,14 @@ while flag == True:     # Loop until the user chooses a starter
         print('Ok, lets try again.')    # Tell user we will restart choice
 
 starter_choice = pokemonnames.index(starter_choice) # Find the index of the chosen pokemon
-partynames.append(pokemonnames[starter_choice])  # Add the name of the starter pokemon to the user's party
-partyattacks.append(pokemonattacks[starter_choice]) # Add the attacks of the starter pokemon to the user's party
-partydmg.append(pokemondmg[starter_choice]) # Add the damage values of the starter pokemon's attacks to the user's party
-partypp.append(pokemonpp[starter_choice]) # Add the PP values of the starter pokemon's attacks to the user's party
-partymaxpp.append(pokemonpp[starter_choice]) # Add the max PP values of the starter pokemon's attacks to the user's party
-partyhp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pokemon to the user's party
-partymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
+userpartynames.append(pokemonnames[starter_choice]) # Add the name of the starter pokemon to the user's party
+userpartytypes.append(pokemontypes[starter_choice]) # Add the type of the starter pokemon to the user's party
+userpartyattacks.append(pokemonattacks[starter_choice]) # Add the attacks of the starter pokemon to the user's party
+userpartydmg.append(pokemondmg[starter_choice]) # Add the damage values of the starter pokemon's attacks to the user's party
+userpartypp.append(pokemonpp[starter_choice]) # Add the PP values of the starter pokemon's attacks to the user's party
+userpartymaxpp.append(pokemonpp[starter_choice]) # Add the max PP values of the starter pokemon's attacks to the user's party
+userpartyhp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pokemon to the user's party
+userpartymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
 
 printTextBox('Now that you have chosen your first pokémon, it is time for you to head out. Be careful young one, and enjoy the world of pokémon!')  # Print oak's speech
 input('Press Enter to continue:')    # Take input to continue
