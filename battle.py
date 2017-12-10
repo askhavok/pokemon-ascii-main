@@ -41,7 +41,7 @@ def chooseAttack(options, maximumpp, currentpp):
 
     flag = True
     while flag == True:
-        attack = getUserDecision('Choose an attack', options)
+        attack = getUserDecision('Choose an attack', 'Choose which move you want to attack the enemy with. PP stands for Power Points, and represents how many times you can use it. Lower PP moves are usually stronger.', options)
 
         if options[attack] == 'Go Back':
             attack = 'Go Back'
@@ -61,7 +61,7 @@ def chooseItem(options, maximumhp, currenthp, maximumpp, currentpp, trainerbattl
 
     flag = True
     while flag == True:
-        item = getUserDecision('Choose an item', options)
+        item = getUserDecision('Choose an item', 'Choose an item to use. Elixirs restore PP, Potions restore HP, and Pokeballs allow you to capture a pokemon', options)
 
         if options[item] == 'Go Back':
             item = 'Go Back'
@@ -85,7 +85,7 @@ def changePokemon(options, current):
 
     flag = True
     while flag == True:
-        new = getUserDecision('Which pokemon do you want to summon?', options) # Get the user's input for the new pokemon they want to switch to
+        new = getUserDecision('Which pokemon do you want to summon?', 'Summon another pokemon thats in your party. Choose one that is effective against your opponent.', options) # Get the user's input for the new pokemon they want to switch to
 
         if options[new] == 'Go Back':
             new = 'Go Back'
@@ -109,7 +109,7 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
     battleflag = True # Set the flag to true to start the battle sequence
     while battleflag == True:
         printOptionList(battledecisions) # Display the battle decisions that the user can make
-        decision = getUserDecision('What will you do?', battledecisions) # Get the battle decision that the user wants to make
+        decision = getUserDecision('What will you do?', 'Choose what you want to do in battle.', battledecisions) # Get the battle decision that the user wants to make
 
         if battledecisions[decision] == 'Attack':
             attack = chooseAttack(party1attacks[currentpokemon], party1maxpp[currentpokemon], party1pp[currentpokemon]) # Get the user's input for the attack they want to use
