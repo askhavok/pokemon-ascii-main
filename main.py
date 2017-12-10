@@ -48,7 +48,7 @@ def setGender():   # Define setGender as a function
 
     printTextBox('Are you a boy or a girl?') # Ask for the user's gender
     printOptionList(genders) # Print the list of gender that the user can choose
-    choice = getUserDecision('Choose a gender', genders) # Ask for the index of the user's decision, then store it
+    choice = getUserDecision('Choose a gender', 'Press 1 if you are a boy, 2 if you are a girl', genders) # Ask for the index of the user's decision, then store it
     return genders[choice]   # Return the user's gender to the main code
 
 def setName(): # Define setName as a function
@@ -61,13 +61,13 @@ def starterPick():  # Define starterPick as a function
 
     printTextBox('Choose your starter') # Ask the user for their starter
     printOptionList(starters) # Print the list of starter pokemon that the user can choose
-    choice = getUserDecision('Choose a starter', starters) # Ask for the index of the user's choice, then store it
+    choice = getUserDecision('Choose a starter', 'Type 1, 2, or 3 to choose the pokemon that you will start the game with', starters) # Ask for the index of the user's choice, then store it
     return starters[choice] # Return the starter pokemon that the user chose
 
 def pokeMartGive(current_pokedollars, shopping_stuff):   # Define pokeMartGive as a function
     shopping_stuff.append('Quit the shop')  # Add quit the shop to the list to show
     printOptionList(shopping_stuff) # Print a list of items that the user can buy
-    buy = getUserDecision('What do you want to buy?', shopping_stuff)   # Take user's input on what to buy
+    buy = getUserDecision('What do you want to buy?', 'Pokeballs allow you to catch pokemon, Potions heal your current pokemon by 10 HP, Elixirs restore the PP values of all your pokemons attacks.', shopping_stuff)   # Take user's input on what to buy
     if shopping_stuff[buy] != 'Quit the shop':
         if shopping_stuff[buy] == 'Pokeball - ¥200':  # Check if user bought a pokeball
             current_pokedollars = decrementValue(current_pokedollars, 200)    # Subtract the cost from the user's balance
@@ -117,7 +117,7 @@ def printOptionList(optionlist):
     for index in range(0, len(optionlist)):
         print(str(index + 1) + '. ' + optionlist[index]) # Print all of the variables in the given list
 
-def getUserDecision(inputmessage, optionlist):
+def getUserDecision(inputmessage, helpmessage, optionlist):
     while True:
         try:
             index = input(inputmessage + ' (Enter a number): ') # Ask for the user's decision as a number, then store it
@@ -126,7 +126,10 @@ def getUserDecision(inputmessage, optionlist):
             optionlist[index] # Check to see if an option exists at the specified index
             break # Break the loop
         except ValueError:
-            print('That is not a valid decision!') # If the user does not enter an integer, tell the user that their input is invalid
+            if (index == 'h') or (index == 'H'):
+                printTextBox(helpmessage) # Print a help message if the user presses 'h'
+            else:
+                print('That is not a valid decision!') # If the user does not enter an integer, tell the user that their input is invalid
         except IndexError:
             print('There is no option at that index!') # If the user enters an index that does not exist within the decision list, tell the user that their input is invalid
 
@@ -156,13 +159,15 @@ printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! Peo
 input('Press Enter to continue:')    # Take input to continue
 printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
 input('Press Enter to continue:')    # Take input to continue
+printTextBox('You may type the letter H (not case sensitive) at any time throughout your journey for help.')
+input('Press Enter to continue:')
 
 flag = True # Set flag to true
 while flag == True:     # Loop until the user chooses name and gender and confirms
     name = setName()    # Call the setName function to choose a name
     gender = setGender()    # Call the setGender function to choose a gender
     printTextBox('Are you sure your name is ' + name + ', and you are a ' + gender + '?')   # Print a text box to ask the user to confirm
-    verify = getUserDecision('Press 1 for yes, press 2 for no.', verification)  # Ask the user to confirm
+    verify = getUserDecision('Press 1 for yes, press 2 for no.', 'Press 1 if you are OK with your decision, 2 if you are not OK with your decision', verification)  # Ask the user to confirm
     if verification[verify] == 'Yes':   # Check if user chose yes
         printTextBox('Welcome ' + name + ' to the wonderful world of pokémon! There are three rare pokémon here. The pokémon are held in these pokéballs! When I was young like you, I was a serious pokémon trainer. But now, in my old age, I have only these three pokémon left. You, ' + name + ', can choose one. Go on, choose!')     # Print oak's speech
         input('Press Enter to continue:')    # Take input to continue
@@ -175,7 +180,7 @@ while flag == True:     # Loop until the user chooses a starter
     starter_choice = starterPick()  # Call the starterPick function to have the user choose a starter
     printTextBox('Are you sure you want to choose ' + starter_choice + '?')  # Ask to confirm with user starter choice
 
-    verify = getUserDecision('Press 1 for yes, press 2 for no,', verification)  # Confirm user choice
+    verify = getUserDecision('Press 1 for yes, press 2 for no,', 'Press 1 if you are OK with your decision, 2 if you are not OK with your decision', verification)  # Confirm user choice
     if verification[verify] == 'Yes':   # Check if user confirmed
         printTextBox('Congratulations! You chose ' + starter_choice + '!')    # Tell user their choice
         flag = False   # End loop
@@ -208,7 +213,7 @@ input('Press Enter to continue:')    # Take input to continue
 printTextBox('After defeating Blue, you decide to take a stroll onto the first route to try and make it to the next city. On the walk, you discover some tall grass. Would you like to walk through it to discover a pokémon?')     # Ask user about tall grass
 tallGrassChoice = ['Go in the grass', 'Continue walking']   # Make a list for the choice to go into the tall grass or not
 printOptionList(tallGrassChoice)    # Print the choices that the user can choose
-tall_grass = getUserDecision('', tallGrassChoice)    # Take user input on their choice
+tall_grass = getUserDecision('', 'Go in the grass to encounter a pokemon, or Continue walking on the current route', tallGrassChoice)    # Take user input on their choice
 #if tall_grass == 1:     # Check if user chose to go into the grass
     #BATTLE WITH EITHER PIDGEY OR RATTATA. USER CAN CHOOSE TO CATCH IT. AFTER DEFEATING IT, USER MAY OR MAY NOT LEVEL UP
 #elif tall_grass == 2:  # Check if user chose to skip the grass
@@ -234,7 +239,7 @@ while Flag == True:     # Loop until the user defeats the pokemon gym
     print('Where would you like to go?')    # Ask user where they want to go
     print('')   # Print empty string
     printOptionList(viridian_options)   # Print options list/Where to go
-    viridian_choice = getUserDecision('', viridian_options)   # Take user's input
+    viridian_choice = getUserDecision('', 'The Pokemon Center allows you to restore your Pokemons stats, The Pokemart is a place for you to buy items, the Pokemon Gym has trainers that you can battle.', viridian_options)   # Take user's input
     if viridian_choice == 0:    # Check if the user chose to go to the pokecenter
         printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
         input('Press enter to continue: ')   # Pause until user continues
