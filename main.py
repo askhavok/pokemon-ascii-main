@@ -4,6 +4,7 @@
 # Description: Very small pokemon RPG
 
 import random # Import the random library
+import battle # Import the battle functions
 
 # User stats
 name = ''
@@ -35,7 +36,7 @@ pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey'] # Li
 pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying'] # List of every pokemon's type
 pokemonattacks = [['grass1', 'grass2'], ['fire1', 'fire2'], ['water1', 'water2'], ['n1', 'n2'], ['f1', 'f2']] # List of the attacks of every pokemon
 pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
-pokemonpp = [[0, 5], [0, 5], [0, 5], [0, 5], [2, 4]] # List of the default PP values for the attacks of every pokemon
+pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
 pokemonhp = [50, 50, 50, 50, 50] # List of the default HP values of every pokemon
 
 # Menu Options
@@ -187,8 +188,22 @@ printTextBox('By the way, have you met Blue? He came to choose a pokémon this m
 input('Press Enter to continue:')    # Take input to continue
 printTextBox('Whats up ' + name + ', I am your rival, Blue, and I want to fight you in a pokémon battle!')     # Print Blue's introduction line
 input('Press Enter to continue:')    # Take input to continue
-#POKEMON BATTLE AGAINST BLUE
-#IF STATEMENT CHECKING IF USER WON OR LOST - IF LOST, GO TO POKEMON CENTER.
+
+if (userpartynames.count('Charmander') == 1):
+    enemy = pokemonnames.index('Bulbasaur')
+elif (userpartynames.count('Bulbasaur') == 1):
+    enemy = pokemonnames.index('Squirtle')
+else:
+    enemy = pokemonnames.index('Charmander')
+
+enemypartynames.append(pokemonnames[enemy])
+enemypartytypes.append(pokemontypes[enemy])
+enemypartyattacks.append(pokemonattacks[enemy].copy())
+enemypartydmg.append(pokemondmg[enemy].copy())
+enemypartyhp.append(pokemonhp[enemy])
+enemypartymaxhp.append(pokemonhp[enemy])
+
+battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 
 printTextBox('Congratulations on defeating Blue! You have won ¥200!')   # Congratulate user on defeating blue
 input('Press Enter to continue:')    # Take input to continue
@@ -199,23 +214,60 @@ printTextBox('After defeating Blue, you decide to take a stroll onto the first r
 tallGrassChoice = ['Go in the grass', 'Continue walking']   # Make a list for the choice to go into the tall grass or not
 printOptionList(tallGrassChoice)    # Print the choices that the user can choose
 tall_grass = getUserDecision('', 'Go in the grass to encounter a pokemon, or Continue walking on the current route', tallGrassChoice)    # Take user input on their choice
-#if tall_grass == 1:     # Check if user chose to go into the grass
-    #BATTLE WITH EITHER PIDGEY OR RATTATA. USER CAN CHOOSE TO CATCH IT. AFTER DEFEATING IT, USER MAY OR MAY NOT LEVEL UP
-#elif tall_grass == 2:  # Check if user chose to skip the grass
-    #CONITNUE TO NEXT BATTLE/TRAINER ON ROUTE
+
+if tallGrassChoice[tall_grass] == 'Go in the grass':     # Check if user chose to go into the grass
+    encounter_chance = random.random()
+
+    if encounter_chance > 0.5:
+        enemy = pokemonnames.index('Pidgey')
+        printTextBox('You encountered a Pidgey!')
+    else:
+        enemy = pokemonnames.index('Rattata')
+        printTextBox('You encountered a Rattata!')
+
+    enemypartynames = [pokemonnames[enemy]]
+    enemypartytypes = [pokemontypes[enemy]]
+    enemypartyattacks = [pokemonattacks[enemy].copy()]
+    enemypartydmg = [pokemondmg[enemy].copy()]
+    enemypartyhp = [pokemonhp[enemy]]
+    enemypartymaxhp = [pokemonhp[enemy]]
+
+    battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, False)
 
 printTextBox('You continue on your path towards the next city. On your journey, you see a pokémon trainer.')    # Print text box
 input('Press Enter to continue:')    # Take input to continue
 printTextBox('You have been challenged to a battle by Ace Trainer Ganti!')  # Tell user of challenge
 input('Press Enter to continue:')    # Take input to continue
-# BATTLE GANTI
+
+enemy = pokemonnames.index('Rattata')
+enemypartynames = [pokemonnames[enemy]]
+enemypartytypes = [pokemontypes[enemy]]
+enemypartyattacks = [pokemonattacks[enemy].copy()]
+enemypartydmg = [pokemondmg[enemy].copy()]
+enemypartyhp = [pokemonhp[enemy]]
+enemypartymaxhp = [pokemonhp[enemy]]
+printTextBox('The enemy summons a Rattata!')
+
+battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+
 money += 200     # Add money to user's balance
 printTextBox('¥200 has been added to your inventory.')  # Tell user they won money
 printTextBox('After defeating Ganti, you continue on the route. Again, you see a pokémon trainer. This time a lass.')   # Print text box
 input('Press Enter to continue:')    # Take input to continue
 printTextBox('You have been challenged by Pokèmon Lass Ariel!')     # Tell user of challenge
 input('Press Enter to continue:')    # Take input to continue
-# BATTLE ARIEL
+
+enemy = pokemonnames.index('Pidgey')
+enemypartynames = [pokemonnames[enemy]]
+enemypartytypes = [pokemontypes[enemy]]
+enemypartyattacks = [pokemonattacks[enemy].copy()]
+enemypartydmg = [pokemondmg[enemy].copy()]
+enemypartyhp = [pokemonhp[enemy]]
+enemypartymaxhp = [pokemonhp[enemy]]
+printTextBox('The enemy summons a Pidgey!')
+
+battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+
 printTextBox('After winning the pokèmon battle, you continue onwards and arrive at Viridian City.')     # Tell user of arrival
 input('Press Enter to continue:')    # Take input to continue
 viridian_options = ['Pokèmon Center', 'Pokèmart', 'Pokèmon Gym']    # Create list of places at Viridian
