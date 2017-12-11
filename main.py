@@ -32,12 +32,12 @@ enemypartymaxhp = [] # Create a list of the max HP values for each pokemon that 
 enemypokemon = 0 # Index of the enemy's current pokemon
 
 # Stats of all pokemon
-pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey'] # List of the names of every pokemon
-pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying'] # List of every pokemon's type
-pokemonattacks = [['grass1', 'grass2'], ['fire1', 'fire2'], ['water1', 'water2'], ['n1', 'n2'], ['f1', 'f2']] # List of the attacks of every pokemon
-pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
-pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
-pokemonhp = [50, 50, 50, 50, 50] # List of the default HP values of every pokemon
+pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix'] # List of the names of every pokemon
+pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock'] # List of every pokemon's type
+pokemonattacks = [['g1', 'g2'], ['f1', 'f2'], ['water1', 'w2'], ['n1', 'n2'], ['f1', 'f2'], ['r1', 'r2'], ['r1', 'r2']] # List of the attacks of every pokemon
+pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
+pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
+pokemonhp = [50, 50, 50, 50, 50, 50, 50] # List of the default HP values of every pokemon
 
 # Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
