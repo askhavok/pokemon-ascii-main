@@ -225,7 +225,7 @@ input('Press Enter to continue:')    # Take input to continue
 printTextBox('You have been challenged to a battle by Ace Trainer Ganti!')  # Tell user of challenge
 input('Press Enter to continue:')    # Take input to continue
 # BATTLE GANTI
-money + 200     # Add money to user's balance
+money += 200     # Add money to user's balance
 printTextBox('¥200 has been added to your inventory.')  # Tell user they won money
 printTextBox('After defeating Ganti, you continue on the route. Again, you see a pokémon trainer. This time a lass.')   # Print text box
 input('Press Enter to continue:')    # Take input to continue
@@ -267,5 +267,32 @@ while Flag == True:     # Loop until the user defeats the pokemon gym
         Flag = False   # Set the flag to false to exit the loop
     else:   # Check for errors
         print('Error: Line 255: Unhandled exception')   # Print error code
-print('On route 2, you find some tall grass.')  # Print users discoveries
-    
+printTextBox('On route 2, you walk on the path.')  # Print users discoveries
+input('Press Enter to continue:')    # Take input to continue
+printTextBox('You spot a pokèmon trainer!')     # Print users discoveries
+input('Press Enter to continue:')    # Take input to continue
+printTextBox('Pokèmon Trainer Paul has challenged you to a battle!')    # Tell user of challenge
+input('Press Enter to continue:')    # Take input to continue
+#BATTLE PAUL
+money += 200    # Add money to user's balance
+printTextBox('¥200 has been added to your inventory.')  # Tell user they won money
+input('Press Enter to continue:')    # Take input to continue
+printTextBox('After defeating Paul, you continue on the route. You discover some tall grass. Would you like to walk in it and discover a Pokèmon?')     # Tell user about grass
+input('Press enter to continue: ')   # Pause until user continues
+printOptionList(tallGrassChoice)    # Print the choices that the user can choose
+tall_grass = getUserDecision('', 'Go in the grass to encounter a pokemon, or Continue walking on the current route', tallGrassChoice)    # Take user input on their choice
+#if tall_grass == 1:     # Check if user chose to go into the grass
+    #BATTLE WITH EITHER NIDORAN♀ OR NIDORAN♂. USER CAN CHOOSE TO CATCH IT. AFTER DEFEATING IT, USER MAY OR MAY NOT LEVEL UP
+#elif tall_grass == 2:  # Check if user chose to skip the grass
+    #CONITNUE TO NEXT BATTLE/TRAINER ON ROUTE
+printTextBox('You continue walking. As you are walking, you spot another pokèmon trainer! You confront her and she challenges you to a pokèmon battle!')    # Print challenge
+input('Press enter to continue: ')   # Pause until user continues
+printTextBox('You have been challenged to a battle by Bug Catcher Amanda!')     # Print challenge
+input('Press enter to continue: ')   # Pause until user continues
+#BATTLE AMANDA
+printTextBox('After defeating Amanda, you continue walking down the route, and find yourself at Pewter City.')  # Print arrival
+input('Press enter to continue: ')   # Pause until user continues
+pewter_options = ['Pokèmon Center', 'Pokèmart', 'Pokèmon Gym']    # Create list of places at Pewter
+Flag = True     # Set the loop to run
+while Flag == True:     # Loop until user leaves Pewter
+    print('Where would you like to go?')    # Ask player where he would like to go
