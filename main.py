@@ -4,7 +4,7 @@
 # Description: Very small pokemon RPG
 
 import random # Import the random library
-import battle # Import the battle functions
+from battle import * # Import the battle functions
 
 # User stats
 name = ''
