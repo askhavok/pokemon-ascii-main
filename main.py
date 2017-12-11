@@ -81,22 +81,6 @@ def pokeMartGive(current_pokedollars, shopping_stuff):   # Define pokeMartGive a
     shopping_stuff.remove('Quit the shop')
     return current_pokedollars  # Return the user's money to the main code
 
-def printPokemonStats(pokemonname, maximumhp, currenthp):
-    healthbar = 20 # Create a health bar with a length of 20 characters
-
-    print('| ' + str(pokemonname)) # Print the name of the pokemon
-    print('| HP: ' + str(currenthp) + ' / ' + str(maximumhp)) # Print the pokemon's current health
-
-    print('| ', end='') # Print the beginning of the health bar
-    bars = int(healthbar * (currenthp / maximumhp)) # Calculate how much of the health bar is filled, cast the integer value of it, then store it
-    emptyspaces = healthbar - bars # Calculate the number of how much of the health bar is empty
-    print('█' * bars, end='') # Print the calculated number of bars
-    print(' ' * emptyspaces, end='') # Print the calculated number of emptyspaces
-    print('|') # Print the end of the health bar
-
-    print('|______________________') # Print the bottom of the stats box
-    print('') # Print an empty line
-
 def printTextBox(message):
     print('') # Print an empty line
     textboxlength = 50 # Set all text boxes to be 50 characters long
