@@ -203,7 +203,7 @@ enemypartydmg.append(pokemondmg[enemy].copy())
 enemypartyhp.append(pokemonhp[enemy])
 enemypartymaxhp.append(pokemonhp[enemy])
 
-battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+battleSequence()
 
 printTextBox('Congratulations on defeating Blue! You have won ¥200!')   # Congratulate user on defeating blue
 input('Press Enter to continue:')    # Take input to continue
@@ -231,8 +231,9 @@ if tallGrassChoice[tall_grass] == 'Go in the grass':     # Check if user chose t
     enemypartydmg = [pokemondmg[enemy].copy()]
     enemypartyhp = [pokemonhp[enemy]]
     enemypartymaxhp = [pokemonhp[enemy]]
+    trainerbattle = False
 
-    battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, False)
+    battleSequence()
 
 printTextBox('You continue on your path towards the next city. On your journey, you see a pokémon trainer.')    # Print text box
 input('Press Enter to continue:')    # Take input to continue
@@ -247,8 +248,9 @@ enemypartydmg = [pokemondmg[enemy].copy()]
 enemypartyhp = [pokemonhp[enemy]]
 enemypartymaxhp = [pokemonhp[enemy]]
 printTextBox('The enemy summons a Rattata!')
+trainerbattle = True
 
-battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+battleSequence()
 
 money += 200     # Add money to user's balance
 printTextBox('¥200 has been added to your inventory.')  # Tell user they won money
@@ -265,8 +267,9 @@ enemypartydmg = [pokemondmg[enemy].copy()]
 enemypartyhp = [pokemonhp[enemy]]
 enemypartymaxhp = [pokemonhp[enemy]]
 printTextBox('The enemy summons a Pidgey!')
+trainerbattle = True
 
-battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+battleSequence()
 
 printTextBox('After winning the pokèmon battle, you continue onwards and arrive at Viridian City.')     # Tell user of arrival
 input('Press Enter to continue:')    # Take input to continue
