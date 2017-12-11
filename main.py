@@ -289,7 +289,25 @@ while Flag == True:     # Loop until the user defeats the pokemon gym
     elif viridian_options[viridian_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
         printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
         input('Press enter to continue: ')   # Pause until user continues
-        # BATTLE AGAINST BROCK - WILL HAVE TWO POKEMON. A GEODUDE AND AN ONYX
+        enemy = pokemonnames.index('Geodude')
+        enemypartynames = [pokemonnames[enemy]]
+        enemypartytypes = [pokemontypes[enemy]]
+        enemypartyattacks = [pokemonattacks[enemy].copy()]
+        enemypartydmg = [pokemondmg[enemy].copy()]
+        enemypartyhp = [pokemonhp[enemy]]
+        enemypartymaxhp = [pokemonhp[enemy]]
+
+        enemy = pokemonnames.index('Onix')
+        enemypartynames.append(pokemonnames[enemy])
+        enemypartytypes.append(pokemontypes[enemy])
+        enemypartyattacks.append(pokemonattacks[enemy].copy())
+        enemypartydmg.append(pokemondmg[enemy].copy())
+        enemypartyhp.append(pokemonhp[enemy])
+        enemypartymaxhp.append(pokemonhp[enemy])
+
+        printTextBox('The enemy summons a Geodude!')
+        battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+        
         printTextBox('Congratulations, ' + name + '! You have defeated Brock, the rock-type gym leader!')   # Print text
         input('Press Enter to continue:')    # Take input to continue
         money += 750    # Add money to users balance

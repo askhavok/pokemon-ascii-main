@@ -24,7 +24,7 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
     elif (attackertype == 'Grass') and (defendanttype == 'Flying'):
         damagevalue /= 2 # If the attacker's type is Grass and the defendant's type is Flying, then cut the damage value of the attack in half
     elif (attackertype == 'Grass') and (defendanttype == 'Rock'):
-        damagevalue *= 2
+        damagevalue *= 2 # If the attacker's type is Grass, and the defendant's typs is Rock, then double the damage value of the attack
     elif (attackertype == 'Grass') and (defendanttype == 'Grass'):
         damagevalue /= 2 # If the attacker and defendant's type is both Grass, then cut the damage value of the attack in half
     elif (attackertype == 'Fire') and (defendanttype == 'Grass'):
@@ -32,7 +32,7 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
     elif (attackertype == 'Fire') and (defendanttype == 'Water'):
         damagevalue /= 2 # If the attacker's type is Fire, and the defendant's type is Water, then cut the damage value of the attack in half
     elif (attackertype == 'Fire') and (defendanttype == 'Rock'):
-        damagevalue /= 2
+        damagevalue /= 2 # If the attacker's type is Fire, and the defendant's type is Rock, then cut the damage value of the attack in half
     elif (attackertype == 'Fire') and (defendanttype == 'Fire'):
         damagevalue /= 2 # If the attacker and defendant's type is both Fire, then cut the damage value of the attack in half
     elif (attackertype == 'Water') and (defendanttype == 'Grass'):
@@ -40,13 +40,13 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
     elif (attackertype == 'Water') and (defendanttype == 'Fire'):
         damagevalue *= 2 # If the attacker's type is Water, and the defendant's type is Fire, then double the damage value of the attack
     elif (attackertype == 'Water') and (defendanttype == 'Rock'):
-        damagevalue *= 2
+        damagevalue *= 2 # If the attacker's type is Water, and the defendant's type is Rock, then double the damage value of the attack
     elif (attackertype == 'Water') and (defendanttype == 'Water'):
         damagevalue /= 2 # If the attacker and the defendant's type is both Water, then cut the damage value of the attack in half
     elif (attackertype == 'Flying') and (defendanttype == 'Grass'):
         damagevalue *= 2 # If the attacker's type is Flying and the defendant's type is Grass, then double the damage value of the attack
     elif (attackertype == 'Flying') and (defendanttype == 'Rock'):
-        damagevalue /= 2
+        damagevalue /= 2 # If the attacker's type is Flying, and the defendant's type is Rock, then cut the damage value of the attack in half
     elif (attackertype == 'Rock') and (defendanttype == 'Flying'):
         damagevalue *= 2 # If the attacker's type is Rock and the defendant's type is Flying, then double the damage value of the attack
     elif (attackertype == 'Rock') and (defendanttype == 'Fire'):
