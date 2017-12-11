@@ -223,5 +223,3 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
             printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's pokemon
 
     return [party1names, party1types, party1attacks, party1dmg, party1pp, party1maxpp, party1hp, party1maxhp, items] # Return the user's whole party, and their stats after the battle
-
-battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, False)
