@@ -190,10 +190,10 @@ while flag == True:     # Loop until the user chooses a starter
 starter_choice = pokemonnames.index(starter_choice) # Find the index of the chosen pokemon
 userpartynames.append(pokemonnames[starter_choice]) # Add the name of the starter pokemon to the user's party
 userpartytypes.append(pokemontypes[starter_choice]) # Add the type of the starter pokemon to the user's party
-userpartyattacks.append(pokemonattacks[starter_choice]) # Add the attacks of the starter pokemon to the user's party
-userpartydmg.append(pokemondmg[starter_choice]) # Add the damage values of the starter pokemon's attacks to the user's party
-userpartypp.append(pokemonpp[starter_choice]) # Add the PP values of the starter pokemon's attacks to the user's party
-userpartymaxpp.append(pokemonpp[starter_choice]) # Add the max PP values of the starter pokemon's attacks to the user's party
+userpartyattacks.append(pokemonattacks[starter_choice].copy()) # Add the attacks of the starter pokemon to the user's party
+userpartydmg.append(pokemondmg[starter_choice].copy()) # Add the damage values of the starter pokemon's attacks to the user's party
+userpartypp.append(pokemonpp[starter_choice].copy()) # Add the PP values of the starter pokemon's attacks to the user's party
+userpartymaxpp.append(pokemonpp[starter_choice].copy()) # Add the max PP values of the starter pokemon's attacks to the user's party
 userpartyhp.append(pokemonhp[starter_choice]) # Add the HP values of the starter pokemon to the user's party
 userpartymaxhp.append(pokemonhp[starter_choice]) # Add the max HP values of the starter pokemon to the user's party
 
