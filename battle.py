@@ -116,11 +116,11 @@ def changePokemon(options, current):
 
     return new # Return the index of the user's new pokemon (or return 'Go Back' if they chose to go back)
 
-def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp, party1maxpp, party1hp, party1maxhp, items, party2names, party2types, party2attacks, party2dmg, party2hp, party2maxhp, trainerbattle):
+def battleSequence():
     currentpokemon = 0
     enemypokemon = 0
-    printPokemonStats(party2names[enemypokemon], party2maxhp[enemypokemon], party2hp[enemypokemon]) # Display the stats of the enemy pokemon
-    printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's current pokemon
+    printPokemonStats(enemypartynames[enemypokemon], enemypartymaxhp[enemypokemon], enemypartyhp[enemypokemon]) # Display the stats of the enemy pokemon
+    printPokemonStats(userpartynames[currentpokemon], userpartymaxhp[currentpokemon], userpartyhp[currentpokemon]) # Display the stats of the user's current pokemon
 
     battleflag = True # Set the flag to true to start the battle sequence
     while battleflag == True:
@@ -128,76 +128,79 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
         decision = getUserDecision('What will you do?', 'Choose what you want to do in battle.', battledecisions) # Get the battle decision that the user wants to make
 
         if battledecisions[decision] == 'Attack':
-            attack = chooseAttack(party1attacks[currentpokemon], party1maxpp[currentpokemon], party1pp[currentpokemon]) # Get the user's input for the attack they want to use
+            attack = chooseAttack(userpartyattacks[currentpokemon], userpartymaxpp[currentpokemon], userpartypp[currentpokemon]) # Get the user's input for the attack they want to use
 
             if attack != 'Go Back': # If the user didn't choose to attack, then continue with the attack sequence
-                party1pp[currentpokemon][attack] = decrementValue(party1pp[currentpokemon][attack], 1) # Decrement the current attack's PP by 1
-                damage = calculateBonusDamage(party1dmg[currentpokemon][attack], party1types[currentpokemon], party2types[enemypokemon]) # Calculate the amount of bonus damage that the attack will deal
-                party2hp[enemypokemon] = decrementValue(party2hp[enemypokemon], damage) # Decrement the enemy's HP by the damage value of the user's attack
+                userpartypp[currentpokemon][attack] = decrementValue(userpartypp[currentpokemon][attack], 1) # Decrement the current attack's PP by 1
+                damage = calculateBonusDamage(userpartydmg[currentpokemon][attack], userpartytypes[currentpokemon], enemypartytypes[enemypokemon]) # Calculate the amount of bonus damage that the attack will deal
+                enemypartyhp[enemypokemon] = decrementValue(enemypartyhp[enemypokemon], damage) # Decrement the enemy's HP by the damage value of the user's attack
 
-                printTextBox(str(party1names[currentpokemon]) + ' used ' + str(party1attacks[currentpokemon][attack]) + '! ' + str(party2names[enemypokemon]) + ' took ' + str(damage) + ' damage!') # Display the user's attack, and the damage it dealt
+                printTextBox(str(userpartynames[currentpokemon]) + ' used ' + str(userpartyattacks[currentpokemon][attack]) + '! ' + str(enemypartynames[enemypokemon]) + ' took ' + str(damage) + ' damage!') # Display the user's attack, and the damage it dealt
 
-                if party2hp[enemypokemon] != 0:
-                    attack = getBotDecision(party2attacks[enemypokemon]) # Get the enemy's input for the attack they want to use
-                    damage = calculateBonusDamage(party2dmg[enemypokemon][attack], party2types[enemypokemon], party1types[currentpokemon]) # Calculate the amount of bonus damage that the attack will deal
-                    party1hp[currentpokemon] = decrementValue(party1hp[currentpokemon], damage) # Decrement the current pokemon's HP by the damage value of the enemy's attack
+                if enemypartyhp[enemypokemon] != 0:
+                    attack = getBotDecision(enemypartyattacks[enemypokemon]) # Get the enemy's input for the attack they want to use
+                    damage = calculateBonusDamage(enemypartydmg[enemypokemon][attack], enemypartytypes[enemypokemon], userpartytypes[currentpokemon]) # Calculate the amount of bonus damage that the attack will deal
+                    userpartyhp[currentpokemon] = decrementValue(userpartyhp[currentpokemon], damage) # Decrement the current pokemon's HP by the damage value of the enemy's attack
 
-                    printTextBox(str(party2names[enemypokemon]) + ' used ' + str(party2attacks[enemypokemon][attack]) + '! ' + str(party1names[currentpokemon]) + ' took ' + str(damage) + ' damage!') # Display the enemy's attack, and the damage it dealt
+                    printTextBox(str(enemypartynames[enemypokemon]) + ' used ' + str(enemypartyattacks[enemypokemon][attack]) + '! ' + str(userpartynames[currentpokemon]) + ' took ' + str(damage) + ' damage!') # Display the enemy's attack, and the damage it dealt
                 else:
-                    printTextBox(str(party2names[enemypokemon]) + ' fainted!') # If the enemy pokemon has 0 HP, then tell the user that the enemy pokemon fainted
+                    printTextBox(str(enemypartynames[enemypokemon]) + ' fainted!') # If the enemy pokemon has 0 HP, then tell the user that the enemy pokemon fainted
 
-                if party1hp[currentpokemon] == 0:
-                    printTextBox(str(party1names[currentpokemon]) + ' fainted!') # If the user's pokemon has 0 HP, then tell the user that the enemy pokemon fainted)
+                if userpartyhp[currentpokemon] == 0:
+                    printTextBox(str(userpartynames[currentpokemon]) + ' fainted!') # If the user's pokemon has 0 HP, then tell the user that the enemy pokemon fainted)
 
-                printPokemonStats(party2names[enemypokemon], party2maxhp[enemypokemon], party2hp[enemypokemon]) # Display the stats of the enemy pokemon
-                printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's current pokemon
+                printPokemonStats(enemypartynames[enemypokemon], enemypartymaxhp[enemypokemon], enemypartyhp[enemypokemon]) # Display the stats of the enemy pokemon
+                printPokemonStats(userpartynames[currentpokemon], userpartymaxhp[currentpokemon], userpartyhp[currentpokemon]) # Display the stats of the user's current pokemon
 
-        elif (battledecisions[decision] == 'Open Inventory') and (len(items) > 0):
-            item = chooseItem(items, party1maxhp[currentpokemon], party1hp[currentpokemon], party1maxpp[currentpokemon], party1pp[currentpokemon], trainerbattle) # Get the user's input for the item they want to use
+        elif (battledecisions[decision] == 'Open Inventory') and (len(inventory) > 0):
+            item = chooseItem(inventory, userpartymaxhp[currentpokemon], userpartyhp[currentpokemon], userpartymaxpp[currentpokemon], userpartypp[currentpokemon], trainerbattle) # Get the user's input for the item they want to use
 
             if item != 'Go Back': # If the user didn't choose to attack, then use the item they chose
-                item = items.pop(item) # Remove the item from the user's inventory, and store it
+                item = inventory.pop(item) # Remove the item from the user's inventory, and store it
 
                 if item == 'Elixir':
-                    for index in range(0, len(party1pp[currentpokemon])):
-                        party1pp[currentpokemon][index] = incrementValue(party1maxpp[currentpokemon][index], party1pp[currentpokemon][index], 10) # Increment the PP values of the current pokemon by 10
-                    printTextBox('You used Elixir! All of ' + party1names[currentpokemon] + 's attacks gained 10 PP!') # Tell the user that their pokemon's attacks gained 10 PP
+                    for index in range(0, len(userpartypp[currentpokemon])):
+                        userpartypp[currentpokemon][index] = incrementValue(userpartymaxpp[currentpokemon][index], userpartypp[currentpokemon][index], 10) # Increment the PP values of the current pokemon by 10
+                    printTextBox('You used Elixir! All of ' + userpartynames[currentpokemon] + 's attacks gained 10 PP!') # Tell the user that their pokemon's attacks gained 10 PP
 
                 elif item == 'Super Elixir':
-                    party1pp[currentpokemon] = party1maxpp[currentpokemon] # Set the current pokemon's PP values to their max values
-                    printTextBox('You used Super Elixir! All of ' + party1names[currentpokemon] + 's attacks gained full PP!') # Tell the user that their pokemon's attacks gained full PP
+                    userpartypp[currentpokemon] = userpartymaxpp[currentpokemon] # Set the current pokemon's PP values to their max values
+                    printTextBox('You used Super Elixir! All of ' + userpartynames[currentpokemon] + 's attacks gained full PP!') # Tell the user that their pokemon's attacks gained full PP
 
                 elif item == 'Potion':
-                    party1hp[currentpokemon] = incrementValue(party1maxhp[currentpokemon], party1hp[currentpokemon], 20) # Increment the HP value of the current pokemon by 20
-                    printTextBox('You used Potion! ' + party1names[currentpokemon] + ' gained 20 HP!') # Tell the user that their pokemon gained 20 HP
+                    userpartyhp[currentpokemon] = incrementValue(userpartymaxhp[currentpokemon], userpartyhp[currentpokemon], 20) # Increment the HP value of the current pokemon by 20
+                    printTextBox('You used Potion! ' + userpartynames[currentpokemon] + ' gained 20 HP!') # Tell the user that their pokemon gained 20 HP
 
                 elif item == 'Super Potion':
-                    party1hp[currentpokemon] = party1maxhp[currentpokemon] # Set the current pokemon's HP to their max value
-                    printTextBox('You used Super Potion! ' + party1names[currentpokemon] + ' gained full HP!') # Tell the user that their pokemon gained full HP
+                    userpartyhp[currentpokemon] = userpartymaxhp[currentpokemon] # Set the current pokemon's HP to their max value
+                    printTextBox('You used Super Potion! ' + userpartynames[currentpokemon] + ' gained full HP!') # Tell the user that their pokemon gained full HP
 
                 elif item == 'Pokeball':
                     catchchance = random.random() # Generate a random number between 0 and 1, and store it
                     if catchchance > 0.5:
-                        printTextBox('You caught ' + str(party2names[enemypokemon]) + '!') # Tell the user that their caught the pokemon
-                        party1names.append(party2names.pop(enemypokemon)) # Add the pokemon's name to the user's party
-                        party1types.append(party2types.pop(enemypokemon)) # Add the pokemon's type to the user's party
-                        party1attacks.append(party2attacks.pop(enemypokemon)) # Add the pokemon's attacks to the user's party
-                        party1dmg.append(party2dmg.pop(enemypokemon)) # Add the pokemon's damage values to the user's party
-                        party1hp.append(party2hp.pop(enemypokemon)) # Add the pokemon's HP values to the user's party
-                        party1maxhp.append(party2maxhp.pop(enemypokemon)) # Add the pokemon's max HP values to the user's party
+                        printTextBox('You caught ' + str(enemypartynames[enemypokemon]) + '!') # Tell the user that their caught the pokemon
+                        index = pokemonnames.index(enemypartynames[enemypokemon])
+                        userpartynames.append(enemypartynames.pop(enemypokemon)) # Add the pokemon's name to the user's party
+                        userpartytypes.append(enemypartytypes.pop(enemypokemon)) # Add the pokemon's type to the user's party
+                        userpartyattacks.append(enemypartyattacks.pop(enemypokemon)) # Add the pokemon's attacks to the user's party
+                        userpartydmg.append(enemypartydmg.pop(enemypokemon)) # Add the pokemon's damage values to the user's party
+                        userpartypp.append(pokemonpp[index].copy()) # Copy the pokemon's PP values from the pokemonlist, and add it to the user's party
+                        userpartymaxpp.append(pokemonpp[index].copy()) # Copy the pokemon's max PP values from the pokemonlist, and add it to the user's party
+                        userpartyhp.append(enemypartyhp.pop(enemypokemon)) # Add the pokemon's HP values to the user's party
+                        userpartymaxhp.append(enemypartymaxhp.pop(enemypokemon)) # Add the pokemon's max HP values to the user's party
                     else:
-                        printTextBox(str(party2names[enemypokemon]) + ' escaped the Pokeball!')
+                        printTextBox(str(enemypartynames[enemypokemon]) + ' escaped the Pokeball!')
 
-        elif (battledecisions[decision] == 'Open Inventory') and (len(items) == 0):
+        elif (battledecisions[decision] == 'Open Inventory') and (len(inventory) == 0):
             print('There is nothing in your inventory!') # If the user tries to access an empty inventory, then tell the user that there is nothing in their inventory
 
         elif battledecisions[decision] == 'Change Pokemon':
-            newpokemon = changePokemon(party1names, currentpokemon) # Get the user's input for the new pokemon they want to switch to
+            newpokemon = changePokemon(userpartynames, currentpokemon) # Get the user's input for the new pokemon they want to switch to
 
             if newpokemon != 'Go Back': # If the user didn't choose to go back, then change their current pokemon
                 currentpokemon = newpokemon # Set the chosen pokemon as the user's current pokemon
-                printPokemonStats(party2names[enemypokemon], party2maxhp[enemypokemon], party2hp[enemypokemon]) # Display the stats of the enemy pokemon
-                printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's current pokemon
+                printPokemonStats(enemypartynames[enemypokemon], enemypartymaxhp[enemypokemon], enemypartyhp[enemypokemon]) # Display the stats of the enemy pokemon
+                printPokemonStats(userpartynames[currentpokemon], userpartymaxhp[currentpokemon], userpartyhp[currentpokemon]) # Display the stats of the user's current pokemon
 
         elif (battledecisions[decision] == 'Flee') and (trainerbattle == False):
             battleflag = False # Exit the loop to end the battle
@@ -205,23 +208,19 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
         elif (battledecisions[decision] == 'Flee') and (trainerbattle == True):
             print('You can not run away from a trainer!') # If the user tries to flee a trainer battle, tell the user that they can't
 
-        if party1hp.count(0) == len(party1hp):
+        if userpartyhp.count(0) == len(userpartyhp):
             printTextBox('You have no more pokemon to summon! You lost the battle!')
             battleflag = False
-        elif (party1hp[currentpokemon] == 0) and (battledecisions.count('Attack') == 1):
+        elif (userpartyhp[currentpokemon] == 0) and (battledecisions.count('Attack') == 1):
             battledecisions.remove('Attack') # If the user's current pokemon has 0 HP, and they have the option to attack, then remove the option to attack
-        elif (party1hp[currentpokemon] > 0) and (battledecisions.count('Attack') == 0):
+        elif (userpartyhp[currentpokemon] > 0) and (battledecisions.count('Attack') == 0):
             battledecisions.insert(0, 'Attack') # If the user's current pokemon has more than 0 HP, and they don't have the option to attack, then add the option to attack
 
-        if party2hp.count(0) == len(party2hp):
+        if enemypartyhp.count(0) == len(enemypartyhp):
             printTextBox('You won the battle!') # If all of the enemy's pokemon has 0 HP, then tell the user they won the battle
             battleflag = False # Set the battle flag to False to end the battle sequence
-        elif (party2hp[enemypokemon] == 0):
+        elif (enemypartyhp[enemypokemon] == 0):
             enemypokemon += 1 # Summon a new enemy by changing the index of the enemy pokemon
-            printTextBox('The enemy summons ' + str(party2names[enemypokemon]) + '!') # Tell the user the enemy's new pokemon
-            printPokemonStats(party2names[enemypokemon], party2maxhp[enemypokemon], party2hp[enemypokemon]) # Display the stats of the enemy's pokemon
-            printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's pokemon
-
-    return [party1names, party1types, party1attacks, party1dmg, party1pp, party1maxpp, party1hp, party1maxhp, items] # Return the user's whole party, and their stats after the battle
-
-battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, False)
+            printTextBox('The enemy summons ' + str(enemypartynames[enemypokemon]) + '!') # Tell the user the enemy's new pokemon
+            printPokemonStats(enemypartynames[enemypokemon], enemypartymaxhp[enemypokemon], enemypartyhp[enemypokemon]) # Display the stats of the enemy's pokemon
+            printPokemonStats(userpartynames[currentpokemon], userpartymaxhp[currentpokemon], userpartyhp[currentpokemon]) # Display the stats of the user's pokemon
