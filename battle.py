@@ -176,7 +176,7 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
                     printTextBox('You used Elixir! All of ' + party1names[currentpokemon] + 's attacks gained 10 PP!') # Tell the user that their pokemon's attacks gained 10 PP
 
                 elif item == 'Super Elixir':
-                    party1pp[currentpokemon] = party1maxpp[currentpokemon] # Set the current pokemon's PP values to their max values
+                    party1pp[currentpokemon] = party1maxpp[currentpokemon].copy() # Set the current pokemon's PP values to their max values
                     printTextBox('You used Super Elixir! All of ' + party1names[currentpokemon] + 's attacks gained full PP!') # Tell the user that their pokemon's attacks gained full PP
 
                 elif item == 'Potion':
