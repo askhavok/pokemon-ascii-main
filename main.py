@@ -306,7 +306,9 @@ while Flag == True:     # Loop until the user defeats the pokemon gym
         enemypartymaxhp.append(pokemonhp[enemy])
 
         printTextBox('The enemy summons a Geodude!')
-        battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+        trainerbattle = True
+
+        battleSequence()
         
         printTextBox('Congratulations, ' + name + '! You have defeated Brock, the rock-type gym leader!')   # Print text
         input('Press Enter to continue:')    # Take input to continue
