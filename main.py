@@ -4,7 +4,6 @@
 # Description: Very small pokemon RPG
 
 import random # Import the random library
-from battle import * # Import the battle functions
 
 # User stats
 name = ''
@@ -32,12 +31,12 @@ enemypartymaxhp = [] # Create a list of the max HP values for each pokemon that 
 enemypokemon = 0 # Index of the enemy's current pokemon
 
 # Stats of all pokemon
-pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix'] # List of the names of every pokemon
-pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock'] # List of every pokemon's type
-pokemonattacks = [['g1', 'g2'], ['f1', 'f2'], ['water1', 'w2'], ['n1', 'n2'], ['f1', 'f2'], ['r1', 'r2'], ['r1', 'r2']] # List of the attacks of every pokemon
-pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
-pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
-pokemonhp = [50, 50, 50, 50, 50, 50, 50] # List of the default HP values of every pokemon
+pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix', 'Staryu', 'Starmie', 'Rhyhorn'] # List of the names of every pokemon
+pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock', 'Water', 'Water', 'Rock'] # List of every pokemon's type
+pokemonattacks = [['g1', 'g2'], ['f1', 'f2'], ['water1', 'w2'], ['n1', 'n2'], ['f1', 'f2'], ['r1', 'r2'], ['r1', 'r2'], ['w1', 'w2'], ['w1', 'w2'], ['r1', 'r2']] # List of the attacks of every pokemon
+pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
+pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
+pokemonhp = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50] # List of the default HP values of every pokemon
 
 # Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
@@ -286,6 +285,11 @@ while Flag == True:     # Loop until the user defeats the pokemon gym
     elif viridian_options[viridian_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
         printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
         input('Press enter to continue: ')   # Pause until user continues
+        printTextBox('Hi, Im Brock! Im the gym leader in this city, and I specialize with Rock types!')   # Print Brock's speech
+        input('Press enter to continue: ')   # Pause until user continues
+        printTextBox('If you have come to battle me, then good luck!')  # Print Brock's speech
+        input('Press enter to continue: ')   # Pause until user continues
+        printTextBox('You have been challenged to a battle by Viridian City Gym Leader Brock!')     # Print challenge
         enemy = pokemonnames.index('Geodude')
         enemypartynames = [pokemonnames[enemy]]
         enemypartytypes = [pokemontypes[enemy]]
@@ -350,3 +354,94 @@ pewter_options = ['Pokèmon Center', 'Pokèmart', 'Pokèmon Gym']    # Create li
 Flag = True     # Set the loop to run
 while Flag == True:     # Loop until user leaves Pewter
     print('Where would you like to go?')    # Ask player where he would like to go
+    print('')   # Print empty string
+    printOptionList(pewter_options)   # Print options list/Where to go
+    pewter_choice = getUserDecision('', 'The Pokemon Center allows you to restore your Pokemons stats, The Pokemart is a place for you to buy items, the Pokemon Gym has trainers that you can battle.', viridian_options)   # Take user's input
+    if pewter_choice == 0:  # Check if user chose to go to pokecenter
+        printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
+        input('Press enter to continue: ')   # Pause until user continues
+    elif pewter_choice == 1:    # Check if user chose to go to the pokemart
+        printTextBox('You have chosen to go to the Pokèmart.')  # tell user their choice
+        input('Press enter to continue: ')   # Pause until user continues
+    elif pewter_options[pewter_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
+        printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
+        input('Press enter to continue: ')   # Pause until user continues
+        printTextBox('Hey there, im Misty. I specialize with water types, and im your battle today!')   # Print Misty's speech
+        input('Press enter to continue: ')   # Pause until user continues
+        printTextBox('You have been challenged to a battle by Pewter City Gym Leader Misty!')   # Print challenge
+        
+        enemy = pokemonnames.index('Staryu')
+        enemypartynames = [pokemonnames[enemy]]
+        enemypartytypes = [pokemontypes[enemy]]
+        enemypartyattacks = [pokemonattacks[enemy].copy()]
+        enemypartydmg = [pokemondmg[enemy].copy()]
+        enemypartyhp = [pokemonhp[enemy]]
+        enemypartymaxhp = [pokemonhp[enemy]]
+
+        enemy = pokemonnames.index('Starmie')
+        enemypartynames.append(pokemonnames[enemy])
+        enemypartytypes.append(pokemontypes[enemy])
+        enemypartyattacks.append(pokemonattacks[enemy].copy())
+        enemypartydmg.append(pokemondmg[enemy].copy())
+        enemypartyhp.append(pokemonhp[enemy])
+        enemypartymaxhp.append(pokemonhp[enemy])
+
+        printTextBox('The enemy summons a Staryu!')
+        battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+        
+        printTextBox('Congratulations, ' + name + '! You have defeated Misty, the water-type gym leader!')   # Print text
+        input('Press Enter to continue:')    # Take input to continue
+        money += 900    # Add money to users balance
+        printTextBox('You have earned ¥900 from winning!')  # Tell user they gained money
+        input('Press Enter to continue:')    # Take input to continue
+        printTextBox('You have won the Cascade Badge! Congratulations!')     # Inform user of their new badge
+        input('Press Enter to continue:')    # Take input to continue
+        pewter_options[2] = 'Route 3'     # Set the third option to the next route rather than the gym
+        printTextBox('You should heal before heading onto the next route.')     # Print Misty's advice
+        input('Press Enter to continue:')    # Take input to continue
+    elif pewter_options[pewter_choice] == 'Route 3' :    # Check if user chose to move onto the next route
+        printTextBox('So you decide to head onto the next route, route 3.')     # Print user's decision
+        input('Press Enter to continue:')    # Take input to continue
+        Flag = False   # Set the flag to false to exit the loop
+    else:   # Check for errors
+        print('Error: Line 255: Unhandled exception')   # Print error code
+printTextBox('On the route, you come across your rival, Blue.')     # Print Blue's arrival
+input('Press Enter to continue:')    # Take input to continue
+printTextBox('Hello, ' + name + '! I heard youve beat your first two gym leaders already, and I wanted to congratulate you. Im around the same part, and wanted to challenge you to a battle.')     # Print Blue's speech and challenge
+input('Press Enter to continue:')    # Take input to continue
+printTextBox('You have been challenged to a battle by Pokèmon Rival Blue!')     # Print challenge
+input('Press Enter to continue:')    # Take input to continue
+
+if userpartynames[0] == 'Bulbasaur':     # Check user's starter to determine Blue's starter
+    enemy = pokemonnames.index('Squirtle')
+elif userpartynames[0] == 'Charmander':  # Check user's starter to determine Blue's starter
+    enemy = pokemonnames.index('Bulbasaur')
+elif userpartnames[0] == 'Squirtle':     # Check the user's starter to determine Blue's starter
+    enemy = pokemonnames.index('Charmander')
+else:   # Check for errors
+    print('Exception not handled - contact programmer')     # Print error
+enemypartynames = [pokemonnames[enemy]]
+enemypartytypes = [pokemontypes[enemy]]
+enemypartyattacks = [pokemonattacks[enemy].copy()]
+enemypartydmg = [pokemondmg[enemy].copy()]
+enemypartyhp = [pokemonhp[enemy]]
+enemypartymaxhp = [pokemonhp[enemy]]
+
+enemy = pokemonnames.index('Rhyhorn')
+enemypartynames.append(pokemonnames[enemy])
+enemypartytypes.append(pokemontypes[enemy])
+enemypartyattacks.append(pokemonattacks[enemy].copy())
+enemypartydmg.append(pokemondmg[enemy].copy())
+enemypartyhp.append(pokemonhp[enemy])
+enemypartymaxhp.append(pokemonhp[enemy])
+
+if userpartynames[0] == 'Bulbasaur':     # Check user's starter to determine Blue's starter
+    printTextBox('The enemy summons a Squirtle!')
+elif userpartynames[0] == 'Charmander':  # Check user's starter to determine Blue's starter
+    printTextBox('The enemy summons a Bulbasaur!')
+elif userpartnames[0] == 'Squirtle':     # Check the user's starter to determine Blue's starter
+    printTextBox('The enemy summons a Charmander!')
+else:   # Check for errors
+    print('Exception not handled - contact programmer')     # Print error
+battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+#NEXT UP END/BLUES TALKING AND STUFF
