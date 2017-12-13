@@ -33,10 +33,10 @@ enemypokemon = 0 # Index of the enemy's current pokemon
 # Stats of all pokemon
 pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix', 'Staryu', 'Starmie', 'Rhyhorn', 'Nidoran♂', 'Nidoran♀', 'Caterpie'] # List of the names of every pokemon
 pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock', 'Water', 'Water', 'Rock', 'Poison', 'Poison', 'Bug'] # List of every pokemon's type
-pokemonattacks = [['g1', 'g2'], ['f1', 'f2'], ['water1', 'w2'], ['n1', 'n2'], ['f1', 'f2'], ['r1', 'r2'], ['r1', 'r2'], ['w1', 'w2'], ['w1', 'w2'], ['r1', 'r2'], ['p1', 'p2'], ['p1', 'p2'], ['b1', 'b2']] # List of the attacks of every pokemon
-pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
-pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
-pokemonhp = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50] # List of the default HP values of every pokemon
+pokemonattacks = [['Vine Whip', 'Razor Leaf'], ['Ember', 'Flame Burst'], ['Bubble', 'Water Gun'], ['Tackle'], ['Gust'], ['Rock Smash', 'Rock Slide'], ['Rock Slide', 'Earthquake'], ['Bubble', 'Water Gun'], ['Bubble', 'Surf'], ['Rock Smash', 'Earthquake'], ['Poison Sting', 'Poison Jab'], ['Poison Sting', 'Poison Jab'], ['Tackle']] # List of the attacks of every pokemon
+pokemondmg = [[3, 5], [3, 5], [3, 5], [3], [3], [1, 3], [3, 4], [2, 4], [2, 5], [2, 5], [1, 4], [1, 4], [3]] # List of the default damage values for the attacks of every pokemon
+pokemonpp = [[30, 10], [30, 10], [30, 10], [30], [40], [20, 10], [20, 10], [20, 20], [20, 10], [30, 10], [40, 15], [40, 15], [40]] # List of the default PP values for the attacks of every pokemon
+pokemonhp = [65, 65, 65, 35, 35, 35, 55, 40, 60, 60, 30, 30, 15] # List of the default HP values of every pokemon
 
 # Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
@@ -624,3 +624,4 @@ input('Press Enter to continue:')    # Take input to continue
 printTextBox('Well, ' + name + ', it seems you have defeated me. Congratulations, you are the greater trainer!')    # Print Blue's text
 input('Press Enter to continue:')    # Take input to continue
 printTextBox('That brings you to the end of your adventure! To continue, please purchase non-existant DLC with non-existant currency!')    # Print ending message
+
