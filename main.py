@@ -31,12 +31,12 @@ enemypartymaxhp = [] # Create a list of the max HP values for each pokemon that 
 enemypokemon = 0 # Index of the enemy's current pokemon
 
 # Stats of all pokemon
-pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix', 'Staryu', 'Starmie', 'Rhyhorn', 'Nidoran♂', 'Nidoran♀'] # List of the names of every pokemon
-pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock', 'Water', 'Water', 'Rock', 'Poison', 'Poison'] # List of every pokemon's type
-pokemonattacks = [['g1', 'g2'], ['f1', 'f2'], ['water1', 'w2'], ['n1', 'n2'], ['f1', 'f2'], ['r1', 'r2'], ['r1', 'r2'], ['w1', 'w2'], ['w1', 'w2'], ['r1', 'r2'], ['p1', 'p2'], ['p1', 'p2']] # List of the attacks of every pokemon
-pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
-pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
-pokemonhp = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50] # List of the default HP values of every pokemon
+pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix', 'Staryu', 'Starmie', 'Rhyhorn', 'Nidoran♂', 'Nidoran♀', 'Caterpie'] # List of the names of every pokemon
+pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock', 'Water', 'Water', 'Rock', 'Poison', 'Poison', 'Bug'] # List of every pokemon's type
+pokemonattacks = [['g1', 'g2'], ['f1', 'f2'], ['water1', 'w2'], ['n1', 'n2'], ['f1', 'f2'], ['r1', 'r2'], ['r1', 'r2'], ['w1', 'w2'], ['w1', 'w2'], ['r1', 'r2'], ['p1', 'p2'], ['p1', 'p2'], ['b1', 'b2']] # List of the attacks of every pokemon
+pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
+pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
+pokemonhp = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50] # List of the default HP values of every pokemon
 
 # Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
@@ -467,14 +467,25 @@ if tallGrassChoice[tall_grass] == 'Go in grass':     # Check if user chose to go
     enemypartyhp = [pokemonhp[enemy]]
     enemypartymaxhp = [pokemonhp[enemy]]
 
-    battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+    battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, False)
 
 printTextBox('You continue walking. As you are walking, you spot another pokèmon trainer! You confront her and she challenges you to a pokèmon battle!')    # Print challenge
 input('Press enter to continue: ')   # Pause until user continues
 
 printTextBox('You have been challenged to a battle by Bug Catcher Amanda!')     # Print challenge
 input('Press enter to continue: ')   # Pause until user continues
-#BATTLE AMANDA
+
+enemy = pokemonnames.index('Caterpie')
+enemypartynames = [pokemonnames[enemy]]
+enemypartytypes = [pokemontypes[enemy]]
+enemypartyattacks = [pokemonattacks[enemy].copy()]
+enemypartydmg = [pokemondmg[enemy].copy()]
+enemypartyhp = [pokemonhp[enemy]]
+enemypartymaxhp = [pokemonhp[enemy]]
+printTextBox('The enemy summons a Caterpie!')
+
+battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+
 printTextBox('After defeating Amanda, you continue walking down the route, and find yourself at Pewter City.')  # Print arrival
 input('Press enter to continue: ')   # Pause until user continues
 

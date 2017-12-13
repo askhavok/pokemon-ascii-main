@@ -28,9 +28,12 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
 
     elif (attackertype == 'Grass') and (defendanttype == 'Rock'):
         damagevalue *= 2 # If the attacker's type is Grass, and the defendant's typs is Rock, then double the damage value of the attack
-    
+
     elif (attackertype == 'Grass') and (defendanttype == 'Poison'):
         damagevalue /= 2 # If the attacker's type is Grass, and the defendant's type is Poison, then cut the damage value of the attack in half
+
+    elif (attackertype == 'Grass') and (defendanttype == 'Bug'):
+        damagevalue /= 2 # If the attacker's type is Grass, then the defendant's type is Bug, then cut the damage value of the attack in half
 
     elif (attackertype == 'Grass') and (defendanttype == 'Grass'):
         damagevalue /= 2 # If the attacker and defendant's type is both Grass, then cut the damage value of the attack in half
@@ -43,6 +46,9 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
 
     elif (attackertype == 'Fire') and (defendanttype == 'Rock'):
         damagevalue /= 2 # If the attacker's type is Fire, and the defendant's type is Rock, then cut the damage value of the attack in half
+
+    elif (attackertype == 'Fire') and (defendanttype == 'Bug'):
+        damagevalue *= 2# If the attacker's type is Fire, and the defendant's type is Bug, then double the damage value of the attack
 
     elif (attackertype == 'Fire') and (defendanttype == 'Fire'):
         damagevalue /= 2 # If the attacker and defendant's type is both Fire, then cut the damage value of the attack in half
@@ -65,12 +71,18 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
     elif (attackertype == 'Flying') and (defendanttype == 'Rock'):
         damagevalue /= 2 # If the attacker's type is Flying, and the defendant's type is Rock, then cut the damage value of the attack in half
 
+    elif (attackertype == 'Flying') and (defendanttype == 'Bug'):
+        damagevalue *= 2 # If the attacker's type is Flying, and the defendant's type is Bug, then double the damage value of the attack
+
     elif (attackertype == 'Rock') and (defendanttype == 'Flying'):
         damagevalue *= 2 # If the attacker's type is Rock and the defendant's type is Flying, then double the damage value of the attack
 
     elif (attackertype == 'Rock') and (defendanttype == 'Fire'):
         damagevalue *= 2 # If the attacker's type is Rock and the defendant's type is Fire, then double the damage value of the attack
-    
+
+    elif (attackertype == 'Rock') and (defendanttype == 'Bug'):
+        damagevalue *= 2 # If the attacker's type is Rock, and the defendant's type is Bug, then double the damage value of the attack
+
     elif (attackertype == 'Poison') and (defendanttype == 'Poison'):
         damagevalue /= 2 # If the attacker's type is Poison, and the defendant's type is Poison, then cut the damage value of the attack in half
 
@@ -79,6 +91,18 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
 
     elif (attackertype == 'Poison') and (defendanttype == 'Grass'):
         damagevalue *= 2 # If the attacker's type is Poison, and the defendant's type is Grass, then double the damage value of the attack
+
+    elif (attackertype == 'Bug') and (defendanttype == 'Flying'):
+        damagevalue /= 2 # If the attacker's type is Bug, and the defendant's type is Flying, then cut the damage value of the attack in half
+
+    elif (attackertype == 'Bug') and (defendanttype == 'Poison'):
+        damagevalue /= 2 # If the attacker's type is Bug, and the defendant's type is Poison, then cut the damage value of the attack in half
+
+    elif (attackertype == 'Bug') and (defendanttype == 'Fire'):
+        damagevalue /= 2 # If the attacker's type is Bug, and the defendant's type is Fire, then cut the damage value of the attack in half
+
+    elif (attackertype == 'Bug') and (defendanttype == 'Grass'):
+        damagevalue *= 2 # If the attacker's type is Bug, and the defendant's type is Grass, the double the damage value of the attack
 
     if criticalchance < 0.1:
         damagevalue += 0.5 * damagevalue # Increase the damage value of the current attack by 50% if the random number is below 0.1 (10% chance)
