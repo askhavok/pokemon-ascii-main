@@ -419,7 +419,11 @@ while flag == True:     # Loop until the user defeats the pokemon gym
 
         printTextBox('You have won the Boulder Badge! Congratulations!')     # Inform user of their new badge
         input('Press Enter to continue:')    # Take input to continue
-
+        
+        shop = ['Pokèball', 'Potion', 'Elixir', 'Super Potion', 'Super Elixir' ]   # List of items that the user can buy in the PokeMart by default
+        printTextBox('New items have been added to the shop!')  # Tell user of shop updates
+        input('Press Enter to continue:')    # Take input to continue
+        
         viridian_options[2] = 'Route 2'     # Set the third option to the next route rather than the gym
 
         printTextBox('You should heal before heading onto the next route.')     # Print Brock's advice
@@ -518,7 +522,7 @@ while flag == True:     # Loop until user leaves Pewter
 
         userpartyhp = userpartymaxhp.copy()
         for index in range(0, len(userpartypp)):
-            userpartypp[index] = userpartymaxpp[index].copy()
+            userpartypp[index] = userpartymaxpp[index].copy
         printTextBox('HP and PP has been restored for all of your pokemon!')
 
     elif pewter_options[pewter_choice] == 'Pokèmart':    # Check if user chose to go to the pokemart
