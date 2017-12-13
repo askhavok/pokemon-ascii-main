@@ -28,6 +28,9 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
 
     elif (attackertype == 'Grass') and (defendanttype == 'Rock'):
         damagevalue *= 2 # If the attacker's type is Grass, and the defendant's typs is Rock, then double the damage value of the attack
+    
+    elif (attackertype == 'Grass') and (defendanttype == 'Poison'):
+        damagevalue /= 2 # If the attacker's type is Grass, and the defendant's type is Poison, then cut the damage value of the attack in half
 
     elif (attackertype == 'Grass') and (defendanttype == 'Grass'):
         damagevalue /= 2 # If the attacker and defendant's type is both Grass, then cut the damage value of the attack in half
@@ -67,6 +70,15 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
 
     elif (attackertype == 'Rock') and (defendanttype == 'Fire'):
         damagevalue *= 2 # If the attacker's type is Rock and the defendant's type is Fire, then double the damage value of the attack
+    
+    elif (attackertype == 'Poison') and (defendanttype == 'Poison'):
+        damagevalue /= 2 # If the attacker's type is Poison, and the defendant's type is Poison, then cut the damage value of the attack in half
+
+    elif (attackertype == 'Poison') and (defendanttype == 'Rock'):
+        damagevalue /= 2 # If the attacker's type is Poison, and the defendant's type is Rock, then cut the damage value of the attack in half
+
+    elif (attackertype == 'Poison') and (defendanttype == 'Grass'):
+        damagevalue *= 2 # If the attacker's type is Poison, and the defendant's type is Grass, then double the damage value of the attack
 
     if criticalchance < 0.1:
         damagevalue += 0.5 * damagevalue # Increase the damage value of the current attack by 50% if the random number is below 0.1 (10% chance)

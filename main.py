@@ -31,12 +31,12 @@ enemypartymaxhp = [] # Create a list of the max HP values for each pokemon that 
 enemypokemon = 0 # Index of the enemy's current pokemon
 
 # Stats of all pokemon
-pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix', 'Staryu', 'Starmie', 'Rhyhorn'] # List of the names of every pokemon
-pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock', 'Water', 'Water', 'Rock'] # List of every pokemon's type
-pokemonattacks = [['g1', 'g2'], ['f1', 'f2'], ['water1', 'w2'], ['n1', 'n2'], ['f1', 'f2'], ['r1', 'r2'], ['r1', 'r2'], ['w1', 'w2'], ['w1', 'w2'], ['r1', 'r2']] # List of the attacks of every pokemon
-pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
-pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
-pokemonhp = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50] # List of the default HP values of every pokemon
+pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix', 'Staryu', 'Starmie', 'Rhyhorn', 'Nidoran♂', 'Nidoran♀'] # List of the names of every pokemon
+pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock', 'Water', 'Water', 'Rock', 'Poison', 'Poison'] # List of every pokemon's type
+pokemonattacks = [['g1', 'g2'], ['f1', 'f2'], ['water1', 'w2'], ['n1', 'n2'], ['f1', 'f2'], ['r1', 'r2'], ['r1', 'r2'], ['w1', 'w2'], ['w1', 'w2'], ['r1', 'r2'], ['p1', 'p2'], ['p1', 'p2']] # List of the attacks of every pokemon
+pokemondmg = [[2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4], [2, 4]] # List of the default damage values for the attacks of every pokemon
+pokemonpp = [[20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10], [20, 10]] # List of the default PP values for the attacks of every pokemon
+pokemonhp = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50] # List of the default HP values of every pokemon
 
 # Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
@@ -297,6 +297,7 @@ if tallGrassChoice[tall_grass] == 'Go in the grass':     # Check if user chose t
     if encounter_chance > 0.5:
         enemy = pokemonnames.index('Pidgey')
         printTextBox('You encountered a Pidgey!')
+
     else:
         enemy = pokemonnames.index('Rattata')
         printTextBox('You encountered a Rattata!')
@@ -447,10 +448,27 @@ input('Press enter to continue: ')   # Pause until user continues
 
 printOptionList(tallGrassChoice)    # Print the choices that the user can choose
 tall_grass = getUserDecision('', 'Go in the grass to encounter a pokemon, or Continue walking on the current route', tallGrassChoice)    # Take user input on their choice
-#if tall_grass == 1:     # Check if user chose to go into the grass
-    #BATTLE WITH EITHER NIDORAN♀ OR NIDORAN♂. USER CAN CHOOSE TO CATCH IT. AFTER DEFEATING IT, USER MAY OR MAY NOT LEVEL UP
-#elif tall_grass == 2:  # Check if user chose to skip the grass
-    #CONITNUE TO NEXT BATTLE/TRAINER ON ROUTE
+
+if tallGrassChoice[tall_grass] == 'Go in grass':     # Check if user chose to go into the grass
+    encounter_chance = random.random()
+
+    if encounter_chance > 0.5:
+        enemy = pokemonnames.index('Nidoran♂')
+        printTextBox('You encountered a Nidoran♂')
+
+    else:
+        enemy = pokemonnames.index('Nidoran♀')
+        printTextBox('You encountered a Nidoran♀!')
+
+    enemypartynames = [pokemonnames[enemy]]
+    enemypartytypes = [pokemontypes[enemy]]
+    enemypartyattacks = [pokemonattacks[enemy].copy()]
+    enemypartydmg = [pokemondmg[enemy].copy()]
+    enemypartyhp = [pokemonhp[enemy]]
+    enemypartymaxhp = [pokemonhp[enemy]]
+
+    battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+
 printTextBox('You continue walking. As you are walking, you spot another pokèmon trainer! You confront her and she challenges you to a pokèmon battle!')    # Print challenge
 input('Press enter to continue: ')   # Pause until user continues
 
