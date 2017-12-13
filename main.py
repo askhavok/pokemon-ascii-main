@@ -612,7 +612,7 @@ else:   # Check for errors
 enemypartynames = [pokemonnames[enemy]]
 enemypartytypes = [pokemontypes[enemy]]
 enemypartyattacks = [pokemonattacks[enemy].copy()]
-enemypartydmg = [pokemondmg[enemy].c]
+enemypartydmg = [pokemondmg[enemy].copy()]
 enemypartyhp = [pokemonhp[enemy]]
 enemypartymaxhp = [pokemonhp[enemy]]
 
@@ -633,3 +633,4 @@ printTextBox('Well, ' + name + ', it seems you have defeated me. Congratulations
 input('Press Enter to continue:')    # Take input to continue
 
 printTextBox('That brings you to the end of your adventure! To continue, please purchase non-existant DLC with non-existant currency!')    # Print ending message
+
