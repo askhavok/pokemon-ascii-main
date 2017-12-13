@@ -8,7 +8,7 @@ import random # Import the random library
 # User stats
 name = ''
 money = 500   # Set the players money (They will start with 500)
-inventory = []  # Set user's inventory
+inventory = ['Pokèball', 'Pokèball']  # Set user's inventory
 currentpokemon = 0 # Index of the user's current pokemon
 
 # Stats of user's pokemon
@@ -36,12 +36,12 @@ pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock', 'W
 pokemonattacks = [['Vine Whip', 'Razor Leaf'], ['Ember', 'Flame Burst'], ['Bubble', 'Water Gun'], ['Tackle'], ['Gust'], ['Rock Smash', 'Rock Slide'], ['Rock Slide', 'Earthquake'], ['Bubble', 'Water Gun'], ['Bubble', 'Surf'], ['Rock Smash', 'Earthquake'], ['Poison Sting', 'Poison Jab'], ['Poison Sting', 'Poison Jab'], ['Tackle']] # List of the attacks of every pokemon
 pokemondmg = [[3, 5], [3, 5], [3, 5], [3], [3], [1, 3], [3, 4], [2, 4], [2, 5], [2, 5], [1, 4], [1, 4], [3]] # List of the default damage values for the attacks of every pokemon
 pokemonpp = [[30, 10], [30, 10], [30, 10], [30], [40], [20, 10], [20, 10], [20, 20], [20, 10], [30, 10], [40, 15], [40, 15], [40]] # List of the default PP values for the attacks of every pokemon
-pokemonhp = [65, 65, 65, 35, 35, 35, 55, 40, 60, 60, 30, 30, 15] # List of the default HP values of every pokemon
+pokemonhp = [65, 65, 65, 20, 20, 35, 55, 40, 60, 60, 20, 20, 15] # List of the default HP values of every pokemon
 
 # Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
 verification = ['Yes', 'No'] # List of options when asking for the user to verify their decisions
-shop = ['Pokeball', 'Potion', 'Elixir']   # List of items that the user can buy in the PokeMart by default
+shop = ['Pokèball', 'Potion', 'Elixir']   # List of items that the user can buy in the PokeMart by default
 
 def setGender():   # Define setGender as a function
     genders = ['Boy', 'Girl'] # Create a list of available genders that the user can choose
@@ -73,8 +73,8 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
     for index in range(0, len(options)):
         print(str(index + 1) + '. ' + str(options[index]), end='') # Print a list of the available items that the user can buy
 
-        if options[index] == 'Pokeball':
-            print(' - ¥200') # Print the price of a Pokeball beside the "Pokeball" listing
+        if options[index] == 'Pokèball':
+            print(' - ¥200') # Print the price of a Pokèball beside the "Pokèball" listing
 
         elif options[index] == 'Potion':
             print(' - ¥150') # Print the price of a Potion beside the "Potion" listing
@@ -90,17 +90,17 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
     flag = True
     while flag == True:
         print('Your Money: ' + str(current_pokedollars)) # Print the user's current pokedollar count
-        buy = getUserDecision('What do you want to buy?', 'Pokeballs allow you to catch pokemon, Potions heal your current pokemon by 10 HP, Elixirs restore the PP values of all your pokemons attacks.', options)   # Take user's input on what to buy
+        buy = getUserDecision('What do you want to buy?', 'Pokèballs allow you to catch pokemon, Potions heal your current pokemon by 10 HP, Elixirs restore the PP values of all your pokemons attacks.', options)   # Take user's input on what to buy
 
-        if (options[buy] == 'Pokeball') and (current_pokedollars < 200):  # Check if user bought a pokeball
-            print('You do not have enough money for a Pokeball!') # If the user tries to buy a pokeball, but has less than ¥200, then tell the user that they can't buy it
+        if (options[buy] == 'Pokèball') and (current_pokedollars < 200):  # Check if user bought a Pokèball
+            print('You do not have enough money for a Pokèball!') # If the user tries to buy a Pokèball, but has less than ¥200, then tell the user that they can't buy it
 
-        elif (options[buy] == 'Pokeball') and (current_pokedollars >= 200):
+        elif (options[buy] == 'Pokèball') and (current_pokedollars >= 200):
             current_pokedollars = decrementValue(current_pokedollars, 200)    # Subtract the cost from the user's balance
             items.append(options[buy]) # Add the item that the user chose to the list of bought shopping items
-            print('You bought a Pokeball!')     # Tell user what they bought
+            print('You bought a Pokèball!')     # Tell user what they bought
 
-        elif (options[buy] == 'Potion') and (current_pokedollars < 150):  # Check if user bought a pokeball
+        elif (options[buy] == 'Potion') and (current_pokedollars < 150):  # Check if user bought a potion
             print('You do not have enough money for a Potion!') # If the user tries to buy a Potion, but has less than ¥150, then tell the user that they can't buy it
 
         elif (options[buy] == 'Potion') and (current_pokedollars >= 150):  # Check if user bought a potion
@@ -108,7 +108,7 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
             items.append(options[buy]) # Add the item that the user chose to the list of bought shopping items
             print('You bought a Potion!')   # Tell user what they bought
 
-        elif (options[buy] == 'Super Potion') and (current_pokedollars < 300):  # Check if user bought a pokeball
+        elif (options[buy] == 'Super Potion') and (current_pokedollars < 300):  # Check if user bought a Super Potion
             print('You do not have enough money for a Super Potion!') # If the user tries to buy a Super Potion, but has less than ¥300, then tell the user that they can't buy it
 
         elif (options[buy] == 'Super Potion') and (current_pokedollars >= 300):  # Check if user bought a potion
@@ -116,7 +116,7 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
             items.append(options[buy]) # Add the item that the user chose to the list of bought shopping items
             print('You bought a Super Potion!')   # Tell user what they bought
 
-        elif (options[buy] == 'Elixir') and (current_pokedollars < 300):  # Check if user bought a pokeball
+        elif (options[buy] == 'Elixir') and (current_pokedollars < 300):  # Check if user bought an elixir
             print('You do not have enough money for an Elixir!') # If the user tries to buy an Elixir, but has less than ¥300, then tell the user that they can't buy it
 
         elif (options[buy] == 'Elixir') and (current_pokedollars >= 300):  # Check if the user bought an elixir
@@ -124,7 +124,7 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
             items.append(options[buy]) # Add the item that the user chose to the list of bought shopping items
             print('You bought an Elixir!')   # Tell the user what they bought
 
-        elif (options[buy] == 'Super Elixir') and (current_pokedollars < 600):  # Check if user bought a pokeball
+        elif (options[buy] == 'Super Elixir') and (current_pokedollars < 600):  # Check if user bought a super elixir
             print('You do not have enough money for a Super Elixir!') # If the user tries to buy a Super Elixir, but has less than ¥600, then tell the user that they can't buy it
 
         elif (options[buy] == 'Super Elixir') and (current_pokedollars >= 600):  # Check if the user bought an elixir
@@ -463,7 +463,7 @@ input('Press enter to continue: ')   # Pause until user continues
 printOptionList(tallGrassChoice)    # Print the choices that the user can choose
 tall_grass = getUserDecision('', 'Go in the grass to encounter a pokemon, or Continue walking on the current route', tallGrassChoice)    # Take user input on their choice
 
-if tallGrassChoice[tall_grass] == 'Go in the grass':     # Check if user chose to go into the grass
+if tallGrassChoice[tall_grass] == 'Go in the grass':     # Check if user chose to go into the grass 
     encounter_chance = random.random()
 
     if encounter_chance > 0.5:
