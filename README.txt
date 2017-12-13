@@ -28,12 +28,15 @@ Description: blank
 
 ---
 
-In order to run the program, you must need Python 3.X, any OS that can run
+Requirements: In order to run the program, you must need Python 3.X, any OS that can run
 Python 3.X, and any computer with an AMD64/64-bit processor. 
 There are no external libraries required to run the program.
 
 ---
 
-No known restrictions, if an error occurs, an error code will be displayed.
+Restrictions/Errors:
+- After catching a pokemon, the program will also say you won the battle. 
+- If you run out of PP during a trainer battle, you can't do anything, and the
+  game will not progress. Unless you have an elixir to accomodate the PP.
 
 -------------------------------------------------------------------------------
