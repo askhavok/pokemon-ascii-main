@@ -250,7 +250,7 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
                     party1hp[currentpokemon] = party1maxhp[currentpokemon] # Set the current pokemon's HP to their max value
                     printTextBox('You used Super Potion! ' + party1names[currentpokemon] + ' gained full HP!') # Tell the user that their pokemon gained full HP
 
-                elif item == 'Pokeball':
+                elif item == 'Pokèball':
                     catchchance = random.random() # Generate a random number between 0 and 1, and store it
 
                     if catchchance > 0.5:
@@ -261,7 +261,10 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
                         party1dmg.append(party2dmg.pop(enemypokemon)) # Add the pokemon's damage values to the user's party
                         party1hp.append(party2hp.pop(enemypokemon)) # Add the pokemon's HP values to the user's party
                         party1maxhp.append(party2maxhp.pop(enemypokemon)) # Add the pokemon's max HP values to the user's party
-
+                        
+                        enemy = pokemonnames.index(party2names[enemypokemon]) # Find the index of the enemy's pokemon in the universal list
+                        party1pp.append(pokemonpp[enemy].copy()) # Add the pokemon's PP values from the universal pokemon list into the user's party
+                        party1maxpp.append(pokemonpp[enemy[.copy()) # Add the pokemon's max PP values from the universal pokemon list into the user's party
                     else:
                         printTextBox(str(party2names[enemypokemon]) + ' escaped the Pokeball!')
 
