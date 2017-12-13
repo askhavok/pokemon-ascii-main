@@ -89,6 +89,7 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
 
     flag = True
     while flag == True:
+        print('Your Money: ' + str(current_pokedollars)) # Print the user's current pokedollar count
         buy = getUserDecision('What do you want to buy?', 'Pokeballs allow you to catch pokemon, Potions heal your current pokemon by 10 HP, Elixirs restore the PP values of all your pokemons attacks.', options)   # Take user's input on what to buy
 
         if (options[buy] == 'Pokeball') and (current_pokedollars < 200):  # Check if user bought a pokeball
