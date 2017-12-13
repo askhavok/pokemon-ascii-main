@@ -369,11 +369,11 @@ while flag == True:     # Loop until the user defeats the pokemon gym
 
     elif viridian_choice == 1:  # Check if user chose to go to the pokemart
         printTextBox('You have chosen to go to the Pokèmart.')  # tell user their choice
-        input('Press enter to continue: ')   # Pause until user continues\
+        input('Press enter to continue: ')   # Pause until user continues
+
         shopping_results = buyItem(shop, money)
         money = shopping_results[0]
         inventory.extend(shopping_results[1:])
-        input('Press enter to continue: ')   # Pause until user continues
 
     elif viridian_options[viridian_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
         printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
@@ -484,7 +484,6 @@ while flag == True:     # Loop until user leaves Pewter
         shopping_results = buyItem(shop, money)
         money = shopping_results[0]
         inventory.extend(shopping_results[1:])
-        input('Press enter to continue: ')   # Pause until user continues
 
     elif pewter_options[pewter_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
         printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
