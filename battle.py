@@ -145,7 +145,7 @@ def chooseItem(options, maximumhp, currenthp, maximumpp, currentpp, trainerbattl
 
     flag = True
     while flag == True:
-        item = getUserDecision('Choose an item', 'Choose an item to use. Elixirs restore PP, Potions restore HP, and Pokeballs allow you to capture a pokemon', options)
+        item = getUserDecision('Choose an item', 'Choose an item to use. Elixirs restore PP, Potions restore HP, and Pokèballs allow you to capture a pokemon', options)
 
         if options[item] == 'Go Back':
             item = 'Go Back'
@@ -157,8 +157,8 @@ def chooseItem(options, maximumhp, currenthp, maximumpp, currentpp, trainerbattl
         elif ((options[item] == 'Potion') or (options[item] == 'Super Potion')) and (currenthp == maximumhp):
             print('Your pokemon already has max HP!') # If the user tries to use a healing item, but their pokemon has max HP, then tell the user
 
-        elif (options[item] == 'Pokeball') and (trainerbattle == True):
-            print('You can not capture a pokemon owned by a trainer!') # If the user tries to capture a pokemon in a trainer battle, then tell the user that they can't use the Pokeball
+        elif (options[item] == 'Pokèball') and (trainerbattle == True):
+            print('You can not capture a pokemon owned by a trainer!') # If the user tries to capture a pokemon in a trainer battle, then tell the user that they can't use the Pokèball
 
         else:
             flag = False # Exit the loop if they choose a valid item
@@ -266,7 +266,7 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
                         party1pp.append(pokemonpp[enemy].copy()) # Add the pokemon's PP values from the universal pokemon list into the user's party
                         party1maxpp.append(pokemonpp[enemy[.copy()) # Add the pokemon's max PP values from the universal pokemon list into the user's party
                     else:
-                        printTextBox(str(party2names[enemypokemon]) + ' escaped the Pokeball!')
+                        printTextBox(str(party2names[enemypokemon]) + ' escaped the Pokèball!')
 
         elif (battledecisions[decision] == 'Open Inventory') and (len(items) == 0):
             print('There is nothing in your inventory!') # If the user tries to access an empty inventory, then tell the user that there is nothing in their inventory
@@ -306,3 +306,4 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
             printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's pokemon
 
     return [party1names, party1types, party1attacks, party1dmg, party1pp, party1maxpp, party1hp, party1maxhp, items] # Return the user's whole party, and their stats after the battle
+
