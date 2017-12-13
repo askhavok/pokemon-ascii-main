@@ -64,22 +64,69 @@ def starterPick():  # Define starterPick as a function
     choice = getUserDecision('Choose a starter', 'Type 1, 2, or 3 to choose the pokemon that you will start the game with', starters) # Ask for the index of the user's choice, then store it
     return starters[choice] # Return the starter pokemon that the user chose
 
-def pokeMartGive(current_pokedollars, shopping_stuff):   # Define pokeMartGive as a function
-    shopping_stuff.append('Quit the shop')  # Add quit the shop to the list to show
-    printOptionList(shopping_stuff) # Print a list of items that the user can buy
-    buy = getUserDecision('What do you want to buy?', 'Pokeballs allow you to catch pokemon, Potions heal your current pokemon by 10 HP, Elixirs restore the PP values of all your pokemons attacks.', shopping_stuff)   # Take user's input on what to buy
-    if shopping_stuff[buy] != 'Quit the shop':
-        if shopping_stuff[buy] == 'Pokeball - ¥200':  # Check if user bought a pokeball
+def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
+    options.append('Quit the shop')  # Add quit the shop to the list to show
+    items = [] # Create a list of items that the user will buy
+    for index in range(0, len(options)):
+        print(str(index + 1) + '. ' + str(options[index]) + ' ', end ='') # Print a list of the available items that the user can buy
+        if options[index] == 'Pokeball':
+            print(' - ¥200') # Print the price of a Pokeball beside the "Pokeball" listing
+        elif options[index] == 'Potion':
+            print(' - ¥150') # Print the price of a Potion beside the "Potion" listing
+        elif (options[index] == 'Super Potion') or (options[index] == 'Elixir'):
+            print(' - ¥300') # Print the price of a Super Potion / Elixir beside their listings
+        elif options[index] == 'Super Elixir':
+            print(' - ¥600') # Print the price of a Super Elixir beside the "Super Elixir" listing
+
+    flag = True
+    while flag == True:
+        buy = getUserDecision('What do you want to buy?', 'Pokeballs allow you to catch pokemon, Potions heal your current pokemon by 10 HP, Elixirs restore the PP values of all your pokemons attacks.', options)   # Take user's input on what to buy
+        
+        if (options[buy] == 'Pokeball') and (current_pokedollars < 200):  # Check if user bought a pokeball
+            print('You do not have enough money for a Pokeball!') # If the user tries to buy a pokeball, but has less than ¥200, then tell the user that they can't buy it
+            
+        elif (options[buy] == 'Pokeball') and (current_pokedollars >= 200):
             current_pokedollars = decrementValue(current_pokedollars, 200)    # Subtract the cost from the user's balance
+            items.append(options[buy]) # Add the item that the user chose to the list of bought shopping items
             print('You bought a Pokeball!')     # Tell user what they bought
-        elif shopping_stuff[buy] == 'Potion - ¥150':  # Check if user bought a potion
+            
+        elif (options[buy] == 'Potion') and (current_pokedollars < 150):  # Check if user bought a pokeball
+            print('You do not have enough money for a Potion!') # If the user tries to buy a Potion, but has less than ¥150, then tell the user that they can't buy it
+            
+        elif (options[buy] == 'Potion') and (current_pokedollars >= 150):  # Check if user bought a potion
             current_pokedollars = decrementValue(current_pokedollars, 150)    # Subtract the cost from the user's balance
-            print('You bought a potion!')   # Tell user what they bought
-        elif shopping_stuff[buy] == 'Elixir - ¥300':  # Check if the user bought an elixir
-            current_pokedollars = decrementValue(current_pokedollars, 300)      # Subtract the cost from user's balance
-            print('You bought an elixir!')  # Print to user what they bought
-    shopping_stuff.remove('Quit the shop')
-    return current_pokedollars  # Return the user's money to the main code
+            items.append(options[buy]) # Add the item that the user chose to the list of bought shopping items
+            print('You bought a Potion!')   # Tell user what they bought
+            
+        elif (options[buy] == 'Super Potion') and (current_pokedollars < 300):  # Check if user bought a pokeball
+            print('You do not have enough money for a Super Potion!') # If the user tries to buy a Super Potion, but has less than ¥300, then tell the user that they can't buy it
+            
+        elif (options[buy] == 'Super Potion') and (current_pokedollars >= 300):  # Check if user bought a potion
+            current_pokedollars = decrementValue(current_pokedollars, 300)    # Subtract the cost from the user's balance
+            items.append(options[buy]) # Add the item that the user chose to the list of bought shopping items
+            print('You bought a Super Potion!')   # Tell user what they bought
+            
+        elif (options[buy] == 'Elixir') and (current_pokedollars < 300):  # Check if user bought a pokeball
+            print('You do not have enough money for an Elixir!') # If the user tries to buy an Elixir, but has less than ¥300, then tell the user that they can't buy it
+            
+        elif (options[buy] == 'Elixir') and (current_pokedollars >= 300):  # Check if the user bought an elixir
+            current_pokedollars = decrementValue(current_pokedollars, 300) # Subtract the cost from user's balance
+            items.append(options[buy]) # Add the item that the user chose to the list of bought shopping items
+            print('You bought an Elixir!')   # Tell the user what they bought
+            
+        elif (options[buy] == 'Super Elixir') and (current_pokedollars < 600):  # Check if user bought a pokeball
+            print('You do not have enough money for a Super Elixir!') # If the user tries to buy a Super Elixir, but has less than ¥600, then tell the user that they can't buy it
+            
+        elif (options[buy] == 'Super Elixir') and (current_pokedollars >= 600):  # Check if the user bought an elixir
+            current_pokedollars = decrementValue(current_pokedollars, 600)      # Subtract the cost from user's balance
+            items.append(options[buy]) # Add the item that the user chose to the list of bought shopping items
+            print('You bought a Super Elixir!')  # Print to user what they bought
+        
+        else:
+            flag = False
+            
+    options.remove('Quit the shop') # Remove "Quit the shop" as an option when they leave the Pokemart
+    return [current_pokedollars, items[:]]  # Return the user's money, and the items they bought to the main code
 
 def printTextBox(message):
     print('') # Print an empty line
@@ -279,8 +326,15 @@ while Flag == True:     # Loop until the user defeats the pokemon gym
     if viridian_choice == 0:    # Check if the user chose to go to the pokecenter
         printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
         input('Press enter to continue: ')   # Pause until user continues
+        userpartyhp = userpartymaxhp.copy()
+        userpartypp = userpartymaxpp.copy()
+        printTextBox('HP and PP has been restored for all of your pokemon!')
     elif viridian_choice == 1:  # Check if user chose to go to the pokemart
         printTextBox('You have chosen to go to the Pokèmart.')  # tell user their choice
+        input('Press enter to continue: ')   # Pause until user continues\
+        shopping_results = buyItem(shop, money)
+        money = shopping_results[0]
+        inventory.extend(shopping_results[1:])
         input('Press enter to continue: ')   # Pause until user continues
     elif viridian_options[viridian_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
         printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
