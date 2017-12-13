@@ -518,7 +518,7 @@ while flag == True:     # Loop until user leaves Pewter
 
         userpartyhp = userpartymaxhp.copy()
         for index in range(0, len(userpartypp)):
-            userpartypp[index] = userpartymaxpp[index].copy
+            userpartypp[index] = userpartymaxpp[index].copy()
         printTextBox('HP and PP has been restored for all of your pokemon!')
 
     elif pewter_options[pewter_choice] == 'Pokèmart':    # Check if user chose to go to the pokemart
