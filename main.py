@@ -463,7 +463,7 @@ input('Press enter to continue: ')   # Pause until user continues
 printOptionList(tallGrassChoice)    # Print the choices that the user can choose
 tall_grass = getUserDecision('', 'Go in the grass to encounter a pokemon, or Continue walking on the current route', tallGrassChoice)    # Take user input on their choice
 
-if tallGrassChoice[tall_grass] == 'Go in grass':     # Check if user chose to go into the grass
+if tallGrassChoice[tall_grass] == 'Go in the grass':     # Check if user chose to go into the grass
     encounter_chance = random.random()
 
     if encounter_chance > 0.5:
