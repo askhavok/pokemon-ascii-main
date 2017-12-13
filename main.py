@@ -359,7 +359,7 @@ while flag == True:     # Loop until the user defeats the pokemon gym
     printOptionList(viridian_options)   # Print options list/Where to go
     viridian_choice = getUserDecision('', 'The Pokemon Center allows you to restore your Pokemons stats, The Pokemart is a place for you to buy items, the Pokemon Gym has trainers that you can battle.', viridian_options)   # Take user's input
 
-    if viridian_choice == 0:    # Check if the user chose to go to the pokecenter
+    if viridian_options[viridian_choice] == 'Pokèmon Center':    # Check if the user chose to go to the pokecenter
         printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
         input('Press enter to continue: ')   # Pause until user continues
 
@@ -367,7 +367,7 @@ while flag == True:     # Loop until the user defeats the pokemon gym
         userpartypp = userpartymaxpp.copy()
         printTextBox('HP and PP has been restored for all of your pokemon!')
 
-    elif viridian_choice == 1:  # Check if user chose to go to the pokemart
+    elif viridian_options[viridian_choice] == 'Pokèmart':  # Check if user chose to go to the pokemart
         printTextBox('You have chosen to go to the Pokèmart.')  # tell user their choice
         input('Press enter to continue: ')   # Pause until user continues
 
@@ -469,7 +469,7 @@ while flag == True:     # Loop until user leaves Pewter
     printOptionList(pewter_options)   # Print options list/Where to go
     pewter_choice = getUserDecision('', 'The Pokemon Center allows you to restore your Pokemons stats, The Pokemart is a place for you to buy items, the Pokemon Gym has trainers that you can battle.', viridian_options)   # Take user's input
 
-    if pewter_choice == 0:  # Check if user chose to go to pokecenter
+    if pewter_options[pewter_choice] == 'Pokèmon Center':  # Check if user chose to go to pokecenter
         printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
         input('Press enter to continue: ')   # Pause until user continues
 
@@ -477,7 +477,7 @@ while flag == True:     # Loop until user leaves Pewter
         userpartypp = userpartymaxpp.copy()
         printTextBox('HP and PP has been restored for all of your pokemon!')
 
-    elif pewter_choice == 1:    # Check if user chose to go to the pokemart
+    elif pewter_options[pewter_choice] == 'Pokèmart':    # Check if user chose to go to the pokemart
         printTextBox('You have chosen to go to the Pokèmart.')  # tell user their choice
         input('Press enter to continue: ')   # Pause until user continues
 
@@ -534,6 +534,7 @@ while flag == True:     # Loop until user leaves Pewter
 
     else:   # Check for errors
         print('Error: Line 255: Unhandled exception')   # Print error code
+
 printTextBox('On the route, you come across your rival, Blue.')     # Print Blue's arrival
 input('Press Enter to continue:')    # Take input to continue
 
@@ -543,14 +544,17 @@ input('Press Enter to continue:')    # Take input to continue
 printTextBox('You have been challenged to a battle by Pokèmon Rival Blue!')     # Print challenge
 input('Press Enter to continue:')    # Take input to continue
 
-if userpartynames[0] == 'Bulbasaur':     # Check user's starter to determine Blue's starter
+if userpartynames.count('Bulbasaur') == 1:     # Check user's starter to determine Blue's starter
     enemy = pokemonnames.index('Squirtle')
+    printTextBox('The enemy summons a Squirtle!')
 
-elif userpartynames[0] == 'Charmander':  # Check user's starter to determine Blue's starter
+elif userpartynames.count('Charmander') == 1:  # Check user's starter to determine Blue's starter
     enemy = pokemonnames.index('Bulbasaur')
+    printTextBox('The enemy summons a Bulbasaur!')
 
-elif userpartynames[0] == 'Squirtle':     # Check the user's starter to determine Blue's starter
+elif userpartynames.count('Squirtle') == 1:     # Check the user's starter to determine Blue's starter
     enemy = pokemonnames.index('Charmander')
+    printTextBox('The enemy summons a Charmander!')
 
 else:   # Check for errors
     print('Exception not handled - contact programmer')     # Print error
@@ -569,18 +573,6 @@ enemypartyattacks.append(pokemonattacks[enemy].copy())
 enemypartydmg.append(pokemondmg[enemy].copy())
 enemypartyhp.append(pokemonhp[enemy])
 enemypartymaxhp.append(pokemonhp[enemy])
-
-if userpartynames[0] == 'Bulbasaur':     # Check user's starter to determine Blue's starter
-    printTextBox('The enemy summons a Squirtle!')
-
-elif userpartynames[0] == 'Charmander':  # Check user's starter to determine Blue's starter
-    printTextBox('The enemy summons a Bulbasaur!')
-
-elif userpartynames[0] == 'Squirtle':     # Check the user's starter to determine Blue's starter
-    printTextBox('The enemy summons a Charmander!')
-
-else:   # Check for errors
-    print('Exception not handled - contact programmer')     # Print error
 
 battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 #NEXT UP END/BLUES TALKING AND STUFF
