@@ -414,8 +414,15 @@ while Flag == True:     # Loop until user leaves Pewter
     if pewter_choice == 0:  # Check if user chose to go to pokecenter
         printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
         input('Press enter to continue: ')   # Pause until user continues
+        userpartyhp = userpartymaxhp.copy()
+        userpartypp = userpartymaxpp.copy()
+        printTextBox('HP and PP has been restored for all of your pokemon!')
     elif pewter_choice == 1:    # Check if user chose to go to the pokemart
         printTextBox('You have chosen to go to the Pokèmart.')  # tell user their choice
+        input('Press enter to continue: ')   # Pause until user continues
+        shopping_results = buyItem(shop, money)
+        money = shopping_results[0]
+        inventory.extend(shopping_results[1:])
         input('Press enter to continue: ')   # Pause until user continues
     elif pewter_options[pewter_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
         printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
@@ -470,7 +477,7 @@ if userpartynames[0] == 'Bulbasaur':     # Check user's starter to determine Blu
     enemy = pokemonnames.index('Squirtle')
 elif userpartynames[0] == 'Charmander':  # Check user's starter to determine Blue's starter
     enemy = pokemonnames.index('Bulbasaur')
-elif userpartnames[0] == 'Squirtle':     # Check the user's starter to determine Blue's starter
+elif userpartynames[0] == 'Squirtle':     # Check the user's starter to determine Blue's starter
     enemy = pokemonnames.index('Charmander')
 else:   # Check for errors
     print('Exception not handled - contact programmer')     # Print error
@@ -493,7 +500,7 @@ if userpartynames[0] == 'Bulbasaur':     # Check user's starter to determine Blu
     printTextBox('The enemy summons a Squirtle!')
 elif userpartynames[0] == 'Charmander':  # Check user's starter to determine Blue's starter
     printTextBox('The enemy summons a Bulbasaur!')
-elif userpartnames[0] == 'Squirtle':     # Check the user's starter to determine Blue's starter
+elif userpartynames[0] == 'Squirtle':     # Check the user's starter to determine Blue's starter
     printTextBox('The enemy summons a Charmander!')
 else:   # Check for errors
     print('Exception not handled - contact programmer')     # Print error
