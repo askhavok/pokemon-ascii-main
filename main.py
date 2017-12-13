@@ -265,8 +265,10 @@ input('Press Enter to continue:')    # Take input to continue
 
 if userpartynames.count('Charmander') == 1:
     enemy = pokemonnames.index('Bulbasaur')
+
 elif userpartynames.count('Bulbasaur') == 1:
     enemy = pokemonnames.index('Squirtle')
+
 else:
     enemy = pokemonnames.index('Charmander')
 
@@ -623,9 +625,12 @@ enemypartyhp.append(pokemonhp[enemy])
 enemypartymaxhp.append(pokemonhp[enemy])
 
 battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+
 printTextBox('Congratulations on defeating Pokèmon Trainer Blue!')  # Print Blue's text
 input('Press Enter to continue:')    # Take input to continue
+
 printTextBox('Well, ' + name + ', it seems you have defeated me. Congratulations, you are the greater trainer!')    # Print Blue's text
 input('Press Enter to continue:')    # Take input to continue
+
 printTextBox('That brings you to the end of your adventure! To continue, please purchase non-existant DLC with non-existant currency!')    # Print ending message
 
