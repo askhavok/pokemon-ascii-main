@@ -36,7 +36,7 @@ There are no external libraries required to run the program.
 
 Restrictions/Errors:
 - After catching a pokemon, the program will also say you won the battle. 
-- If you run out of PP during a trainer battle, you can't do anything, and the
+- If you run out of PP during a trainer battle, you can't do anything, then the
   game will not progress. Unless you have an elixir to accomodate the PP.
 
 -------------------------------------------------------------------------------
