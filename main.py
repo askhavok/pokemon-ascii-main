@@ -438,7 +438,18 @@ input('Press Enter to continue:')    # Take input to continue
 
 printTextBox('Pokèmon Trainer Paul has challenged you to a battle!')    # Tell user of challenge
 input('Press Enter to continue:')    # Take input to continue
-#BATTLE PAUL
+
+enemy = pokemonnames.index('Nidoran♂')
+enemypartynames = [pokemonnames[enemy]]
+enemypartytypes = [pokemontypes[enemy]]
+enemypartyattacks = [pokemonattacks[enemy].copy()]
+enemypartydmg = [pokemondmg[enemy].copy()]
+enemypartyhp = [pokemonhp[enemy]]
+enemypartymaxhp = [pokemonhp[enemy]]
+printTextBox('The enemy summons a Nidoran♂!')
+
+battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
+
 money += 200    # Add money to user's balance
 printTextBox('¥200 has been added to your inventory.')  # Tell user they won money
 input('Press Enter to continue:')    # Take input to continue
