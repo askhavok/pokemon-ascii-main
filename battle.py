@@ -257,7 +257,7 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
                         printTextBox('You caught ' + str(party2names[enemypokemon]) + '!') # Tell the user that their caught the pokemon
                         enemy = pokemonnames.index(party2names[enemypokemon]) # Find the index of the enemy's pokemon in the universal list
                         party1pp.append(pokemonpp[enemy].copy()) # Add the pokemon's PP values from the universal pokemon list into the user's party
-                        party1maxpp.append(pokemonpp[enemy[.copy()) # Add the pokemon's max PP values from the universal pokemon list into the user's party
+                        party1maxpp.append(pokemonpp[enemy].copy()) # Add the pokemon's max PP values from the universal pokemon list into the user's party
 
                         party1names.append(party2names.pop(enemypokemon)) # Add the pokemon's name to the user's party
                         party1types.append(party2types.pop(enemypokemon)) # Add the pokemon's type to the user's party
