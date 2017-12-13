@@ -212,7 +212,7 @@ input('Press Enter to continue:')    # Take input to continue
 printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
 input('Press Enter to continue:')    # Take input to continue
 
-printTextBox('You may type the letter H (not case sensitive) at any time throughout your journey for help.')
+printTextBox('You may type the letter H (not case sensitive) at any choice throughout your journey for help.')
 input('Press Enter to continue:')
 
 flag = True # Set flag to true
