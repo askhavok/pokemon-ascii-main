@@ -68,7 +68,7 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
     options.append('Quit the shop')  # Add quit the shop to the list to show
     items = [] # Create a list of items that the user will buy
     for index in range(0, len(options)):
-        print(str(index + 1) + '. ' + str(options[index]) + ' ', end ='') # Print a list of the available items that the user can buy
+        print(str(index + 1) + '. ' + str(options[index]), end ='') # Print a list of the available items that the user can buy
         if options[index] == 'Pokeball':
             print(' - ¥200') # Print the price of a Pokeball beside the "Pokeball" listing
         elif options[index] == 'Potion':
@@ -77,6 +77,8 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
             print(' - ¥300') # Print the price of a Super Potion / Elixir beside their listings
         elif options[index] == 'Super Elixir':
             print(' - ¥600') # Print the price of a Super Elixir beside the "Super Elixir" listing
+
+    print('') # Print an empty line after all the listings
 
     flag = True
     while flag == True:
@@ -126,7 +128,9 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
             flag = False
             
     options.remove('Quit the shop') # Remove "Quit the shop" as an option when they leave the Pokemart
-    return [current_pokedollars, items[:]]  # Return the user's money, and the items they bought to the main code
+    results = [current_pokedollars] # Put the user's remianing currency into a list
+    results.extend(items) # Add the items they bought into the list
+    return results  # Return the user's money, and the items they bought to the main code
 
 def printTextBox(message):
     print('') # Print an empty line
