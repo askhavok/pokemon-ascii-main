@@ -19,36 +19,52 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
 
     if (attackertype == 'Grass') and (defendanttype == 'Fire'):
         damagevalue /= 2 # If the attacker's type is Grass, and the defendant's type is Fire, then cut the damage value of the attack in half
+
     elif (attackertype == 'Grass') and (defendanttype == 'Water'):
         damagevalue *= 2 # If the attacker's type is Grass, and the defendant's type is Water, then double the damage value of the attack
+
     elif (attackertype == 'Grass') and (defendanttype == 'Flying'):
         damagevalue /= 2 # If the attacker's type is Grass and the defendant's type is Flying, then cut the damage value of the attack in half
+
     elif (attackertype == 'Grass') and (defendanttype == 'Rock'):
         damagevalue *= 2 # If the attacker's type is Grass, and the defendant's typs is Rock, then double the damage value of the attack
+
     elif (attackertype == 'Grass') and (defendanttype == 'Grass'):
         damagevalue /= 2 # If the attacker and defendant's type is both Grass, then cut the damage value of the attack in half
+
     elif (attackertype == 'Fire') and (defendanttype == 'Grass'):
         damagevalue *= 2 # If the attacker's type is Fire and the defendant's type is Grass, then double the damage value of the attack
+
     elif (attackertype == 'Fire') and (defendanttype == 'Water'):
         damagevalue /= 2 # If the attacker's type is Fire, and the defendant's type is Water, then cut the damage value of the attack in half
+
     elif (attackertype == 'Fire') and (defendanttype == 'Rock'):
         damagevalue /= 2 # If the attacker's type is Fire, and the defendant's type is Rock, then cut the damage value of the attack in half
+
     elif (attackertype == 'Fire') and (defendanttype == 'Fire'):
         damagevalue /= 2 # If the attacker and defendant's type is both Fire, then cut the damage value of the attack in half
+
     elif (attackertype == 'Water') and (defendanttype == 'Grass'):
         damagevalue /= 2 # If the attacker's type is Water, and the defendant's type is Grass, then cut the damage value of the attack in half
+
     elif (attackertype == 'Water') and (defendanttype == 'Fire'):
         damagevalue *= 2 # If the attacker's type is Water, and the defendant's type is Fire, then double the damage value of the attack
+
     elif (attackertype == 'Water') and (defendanttype == 'Rock'):
         damagevalue *= 2 # If the attacker's type is Water, and the defendant's type is Rock, then double the damage value of the attack
+
     elif (attackertype == 'Water') and (defendanttype == 'Water'):
         damagevalue /= 2 # If the attacker and the defendant's type is both Water, then cut the damage value of the attack in half
+
     elif (attackertype == 'Flying') and (defendanttype == 'Grass'):
         damagevalue *= 2 # If the attacker's type is Flying and the defendant's type is Grass, then double the damage value of the attack
+
     elif (attackertype == 'Flying') and (defendanttype == 'Rock'):
         damagevalue /= 2 # If the attacker's type is Flying, and the defendant's type is Rock, then cut the damage value of the attack in half
+
     elif (attackertype == 'Rock') and (defendanttype == 'Flying'):
         damagevalue *= 2 # If the attacker's type is Rock and the defendant's type is Flying, then double the damage value of the attack
+
     elif (attackertype == 'Rock') and (defendanttype == 'Fire'):
         damagevalue *= 2 # If the attacker's type is Rock and the defendant's type is Fire, then double the damage value of the attack
 
@@ -61,9 +77,11 @@ def calculateBonusDamage(damagevalue, attackertype, defendanttype):
 
 def chooseAttack(options, maximumpp, currentpp):
     options.append('Go Back')
+
     for index in range(0, len(options)):
         try:
             print(str(index + 1) + '. ' + options[index] + ' ' + str(currentpp[index]) + ' / ' + str(maximumpp[index]) + ' PP')
+
         except IndexError:
             print(str(index + 1) + '. ' + options[index])
 
@@ -74,8 +92,10 @@ def chooseAttack(options, maximumpp, currentpp):
         if options[attack] == 'Go Back':
             attack = 'Go Back'
             flag = False
+
         elif currentpp[attack] == 0:
             print('You do not have enough PP for that move!')
+
         else:
             flag = False
 
@@ -94,12 +114,16 @@ def chooseItem(options, maximumhp, currenthp, maximumpp, currentpp, trainerbattl
         if options[item] == 'Go Back':
             item = 'Go Back'
             flag = False # Exit the loop if they choose to go back
+
         elif ((options[item] == 'Elixir') or (options[item] == 'Super Elixir')) and (currentpp == maximumpp):
             print('All attacks already have maximum PP!') # If the user tries to use a restoring item, but the attacks of the current pokemon already have max PP, then tell the user
+
         elif ((options[item] == 'Potion') or (options[item] == 'Super Potion')) and (currenthp == maximumhp):
             print('Your pokemon already has max HP!') # If the user tries to use a healing item, but their pokemon has max HP, then tell the user
+
         elif (options[item] == 'Pokeball') and (trainerbattle == True):
             print('You can not capture a pokemon owned by a trainer!') # If the user tries to capture a pokemon in a trainer battle, then tell the user that they can't use the Pokeball
+
         else:
             flag = False # Exit the loop if they choose a valid item
 
@@ -118,8 +142,10 @@ def changePokemon(options, current):
         if options[new] == 'Go Back':
             new = 'Go Back'
             flag = False # Exit the loop if they choose to go back
+
         elif new == current:
             print(str(options[new]) + ' is already summoned!') # If the pokemon they chose is already summoned, then tell the user
+
         else:
             printTextBox('You summoned '+ str(options[new]) + '!')
             flag = False # Exit the loop once they choose a pokemon to summon
@@ -153,8 +179,8 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
                     attack = getBotDecision(party2attacks[enemypokemon]) # Get the enemy's input for the attack they want to use
                     damage = calculateBonusDamage(party2dmg[enemypokemon][attack], party2types[enemypokemon], party1types[currentpokemon]) # Calculate the amount of bonus damage that the attack will deal
                     party1hp[currentpokemon] = decrementValue(party1hp[currentpokemon], damage) # Decrement the current pokemon's HP by the damage value of the enemy's attack
-
                     printTextBox(str(party2names[enemypokemon]) + ' used ' + str(party2attacks[enemypokemon][attack]) + '! ' + str(party1names[currentpokemon]) + ' took ' + str(damage) + ' damage!') # Display the enemy's attack, and the damage it dealt
+
                 else:
                     printTextBox(str(party2names[enemypokemon]) + ' fainted!') # If the enemy pokemon has 0 HP, then tell the user that the enemy pokemon fainted
 
@@ -173,6 +199,7 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
                 if item == 'Elixir':
                     for index in range(0, len(party1pp[currentpokemon])):
                         party1pp[currentpokemon][index] = incrementValue(party1maxpp[currentpokemon][index], party1pp[currentpokemon][index], 10) # Increment the PP values of the current pokemon by 10
+
                     printTextBox('You used Elixir! All of ' + party1names[currentpokemon] + 's attacks gained 10 PP!') # Tell the user that their pokemon's attacks gained 10 PP
 
                 elif item == 'Super Elixir':
@@ -189,6 +216,7 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
 
                 elif item == 'Pokeball':
                     catchchance = random.random() # Generate a random number between 0 and 1, and store it
+
                     if catchchance > 0.5:
                         printTextBox('You caught ' + str(party2names[enemypokemon]) + '!') # Tell the user that their caught the pokemon
                         party1names.append(party2names.pop(enemypokemon)) # Add the pokemon's name to the user's party
@@ -197,6 +225,7 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
                         party1dmg.append(party2dmg.pop(enemypokemon)) # Add the pokemon's damage values to the user's party
                         party1hp.append(party2hp.pop(enemypokemon)) # Add the pokemon's HP values to the user's party
                         party1maxhp.append(party2maxhp.pop(enemypokemon)) # Add the pokemon's max HP values to the user's party
+
                     else:
                         printTextBox(str(party2names[enemypokemon]) + ' escaped the Pokeball!')
 
@@ -220,14 +249,17 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
         if party1hp.count(0) == len(party1hp):
             printTextBox('You have no more pokemon to summon! You lost the battle!')
             battleflag = False
+
         elif (party1hp[currentpokemon] == 0) and (battledecisions.count('Attack') == 1):
             battledecisions.remove('Attack') # If the user's current pokemon has 0 HP, and they have the option to attack, then remove the option to attack
+
         elif (party1hp[currentpokemon] > 0) and (battledecisions.count('Attack') == 0):
             battledecisions.insert(0, 'Attack') # If the user's current pokemon has more than 0 HP, and they don't have the option to attack, then add the option to attack
 
         if party2hp.count(0) == len(party2hp):
             printTextBox('You won the battle!') # If all of the enemy's pokemon has 0 HP, then tell the user they won the battle
             battleflag = False # Set the battle flag to False to end the battle sequence
+
         elif (party2hp[enemypokemon] == 0):
             enemypokemon += 1 # Summon a new enemy by changing the index of the enemy pokemon
             printTextBox('The enemy summons ' + str(party2names[enemypokemon]) + '!') # Tell the user the enemy's new pokemon
