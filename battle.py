@@ -255,16 +255,16 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
 
                     if catchchance > 0.5:
                         printTextBox('You caught ' + str(party2names[enemypokemon]) + '!') # Tell the user that their caught the pokemon
+                        enemy = pokemonnames.index(party2names[enemypokemon]) # Find the index of the enemy's pokemon in the universal list
+                        party1pp.append(pokemonpp[enemy].copy()) # Add the pokemon's PP values from the universal pokemon list into the user's party
+                        party1maxpp.append(pokemonpp[enemy[.copy()) # Add the pokemon's max PP values from the universal pokemon list into the user's party
+
                         party1names.append(party2names.pop(enemypokemon)) # Add the pokemon's name to the user's party
                         party1types.append(party2types.pop(enemypokemon)) # Add the pokemon's type to the user's party
                         party1attacks.append(party2attacks.pop(enemypokemon)) # Add the pokemon's attacks to the user's party
                         party1dmg.append(party2dmg.pop(enemypokemon)) # Add the pokemon's damage values to the user's party
                         party1hp.append(party2hp.pop(enemypokemon)) # Add the pokemon's HP values to the user's party
                         party1maxhp.append(party2maxhp.pop(enemypokemon)) # Add the pokemon's max HP values to the user's party
-                        
-                        enemy = pokemonnames.index(party2names[enemypokemon]) # Find the index of the enemy's pokemon in the universal list
-                        party1pp.append(pokemonpp[enemy].copy()) # Add the pokemon's PP values from the universal pokemon list into the user's party
-                        party1maxpp.append(pokemonpp[enemy[.copy()) # Add the pokemon's max PP values from the universal pokemon list into the user's party
                     else:
                         printTextBox(str(party2names[enemypokemon]) + ' escaped the Pokèball!')
 
