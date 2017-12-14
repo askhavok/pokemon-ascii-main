@@ -36,7 +36,7 @@ pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock', 'W
 pokemonattacks = [['Vine Whip', 'Razor Leaf'], ['Ember', 'Flame Burst'], ['Bubble', 'Water Gun'], ['Tackle'], ['Gust'], ['Rock Smash', 'Rock Slide'], ['Rock Slide', 'Earthquake'], ['Bubble', 'Water Gun'], ['Bubble', 'Surf'], ['Rock Smash', 'Earthquake'], ['Poison Sting', 'Poison Jab'], ['Poison Sting', 'Poison Jab'], ['Tackle']] # List of the attacks of every pokemon
 pokemondmg = [[3, 5], [5, 7], [3, 5], [3], [3], [1, 3], [3, 4], [2, 4], [2, 5], [2, 5], [1, 4], [1, 4], [3]] # List of the default damage values for the attacks of every pokemon
 pokemonpp = [[30, 10], [35, 20], [30, 10], [30], [40], [20, 10], [20, 10], [20, 20], [20, 10], [30, 10], [40, 15], [40, 15], [40]] # List of the default PP values for the attacks of every pokemon
-pokemonhp = [65, 65, 65, 20, 20, 35, 55, 40, 60, 60, 20, 20, 15] # List of the default HP values of every pokemon
+pokemonhp = [65, 65, 65, 20, 20, 35, 45, 40, 50, 50, 20, 20, 15] # List of the default HP values of every pokemon
 
 # Menu Options
 battledecisions = ['Attack', 'Open Inventory', 'Change Pokemon', 'Flee'] # Create a list of decisions that the user can make during battle
