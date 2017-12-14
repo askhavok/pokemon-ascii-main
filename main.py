@@ -9,7 +9,6 @@ import random # Import the random library
 name = ''
 money = 500   # Set the players money (They will start with 500)
 inventory = ['Pokèball', 'Pokèball']  # Set user's inventory
-currentpokemon = 0 # Index of the user's current pokemon
 
 # Stats of user's pokemon
 userpartynames = [] # Create a list of the names of the pokemon that the user has
@@ -28,7 +27,6 @@ enemypartyattacks = [] # Create a list of attacks for each pokemon that the enem
 enemypartydmg = [] # Create a list of the damage values for each move of every pokemon that the enemy has
 enemypartyhp = [] # Create a list of the current HP values fot each pokemon that the enemy has
 enemypartymaxhp = [] # Create a list of the max HP values for each pokemon that the enemy has
-enemypokemon = 0 # Index of the enemy's current pokemon
 
 # Stats of all pokemon
 pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix', 'Staryu', 'Starmie', 'Rhyhorn', 'Nidoran♂', 'Nidoran♀', 'Caterpie'] # List of the names of every pokemon
