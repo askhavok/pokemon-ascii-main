@@ -197,6 +197,12 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
     printPokemonStats(party2names[enemypokemon], party2maxhp[enemypokemon], party2hp[enemypokemon]) # Display the stats of the enemy pokemon
     printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's current pokemon
 
+    itemsreserve = items.copy() # Store a copy of the user's inventory
+    party1hpreserve = party1hp.copy() # Store a copy of the HP values for each pokemon in the user's party
+    party1ppreserve = [] # Create a list that will hold a copy of the user's PP values going into the battle
+    for index in range(0, len(party1pp)):
+        party1ppreserve.append(party1pp[index].copy()) # Store a copy of the PP values for each pokemon in the user's party
+
     battleflag = True # Set the flag to true to start the battle sequence
     while battleflag == True:
         printOptionList(battledecisions) # Display the battle decisions that the user can make
@@ -287,9 +293,24 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
             print('You can not run away from a trainer!') # If the user tries to flee a trainer battle, tell the user that they can't
 
         if party1hp.count(0) == len(party1hp):
-            printTextBox('All of your pokemon fainted!') # If all of the pokemon in the user's party have 0 HP, tell the user that all their pokemon fainted
+            printTextBox('All of your pokemon fainted! You blacked out!') # If all of the pokemon in the user's party have 0 HP, tell the user that all their pokemon fainted
             input('Press enter to continue:') # Pause until the user presses enter
-            battleflag = False # Set the battle flag to False to end the battle sequence
+            
+            printTextBox('Restarting battle from the beginning...') # Tell the user that the battle will restart
+            input('Press enter to continue:') # Pause until the user presses enter
+
+            currentpokemon = 0 # Reset the index of the user's current pokemon
+            enemypokemon = 0 # Reset the index of the enemy's current pokemon
+
+            items = itemsreserve.copy() # Reset the user's inventory to what it was at the beginning of the battle
+            party1hp = party1hpreserve.copy() # Reset the user's HP values to what they were at the beginning of the battle
+            for index in range(0, len(party1pp)):
+                party1pp[index] = party1ppreserve[index].copy() # Reset the user's PP values to what they were at the beginning of the battle
+
+            party2hp = party2maxhp.copy() # Reset the HP values of the enemy's party to their max values
+
+            printPokemonStats(party2names[enemypokemon], party2maxhp[enemypokemon], party2hp[enemypokemon]) # Display the stats of the enemy pokemon
+            printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's current pokemon
 
         elif (party1hp[currentpokemon] == 0) and (battledecisions.count('Attack') == 1):
             battledecisions.remove('Attack') # If the user's current pokemon has 0 HP, and they have the option to attack, then remove the option to attack
