@@ -116,24 +116,24 @@ def chooseAttack(options, maximumpp, currentpp):
 
     for index in range(0, len(options)):
         try:
-            print(str(index + 1) + '. ' + options[index] + ' ' + str(currentpp[index]) + ' / ' + str(maximumpp[index]) + ' PP')
+            print(str(index + 1) + '. ' + options[index] + ' ' + str(currentpp[index]) + ' / ' + str(maximumpp[index]) + ' PP') # Print a list of attacks along with their PP values
 
         except IndexError:
-            print(str(index + 1) + '. ' + options[index])
+            print(str(index + 1) + '. ' + options[index]) # If there are no more options with a PP value to display, then just display the option by itself
 
     flag = True
     while flag == True:
         attack = getUserDecision('Choose an attack', 'Choose which move you want to attack the enemy with. PP stands for Power Points, and represents how many times you can use it. Lower PP moves are usually stronger.', options)
 
         if options[attack] == 'Go Back':
-            attack = 'Go Back'
-            flag = False
+            attack = 'Go Back' # If the user chooses to go back, store their decision
+            flag = False # Exit the loop if they choose to go back
 
         elif currentpp[attack] == 0:
-            print('You do not have enough PP for that move!')
+            print('You do not have enough PP for that move!') # If the PP value of the chosen attack is 0, then tell the user that they can't use it
 
         else:
-            flag = False
+            flag = False # Exit the loop if they choose a valid attack
 
     options.remove('Go Back')
 
@@ -148,7 +148,7 @@ def chooseItem(options, maximumhp, currenthp, maximumpp, currentpp, trainerbattl
         item = getUserDecision('Choose an item', 'Choose an item to use. Elixirs restore PP, Potions restore HP, and Pokèballs allow you to capture a pokemon', options)
 
         if options[item] == 'Go Back':
-            item = 'Go Back'
+            item = 'Go Back' # If the user chooses to go back, store their decision
             flag = False # Exit the loop if they choose to go back
 
         elif ((options[item] == 'Elixir') or (options[item] == 'Super Elixir')) and (currentpp == maximumpp):
@@ -176,14 +176,14 @@ def changePokemon(options, current):
         new = getUserDecision('Which pokemon do you want to summon?', 'Summon another pokemon thats in your party. Choose one that is effective against your opponent.', options) # Get the user's input for the new pokemon they want to switch to
 
         if options[new] == 'Go Back':
-            new = 'Go Back'
+            new = 'Go Back' # If the user chooses to go back, store their decision
             flag = False # Exit the loop if they choose to go back
 
         elif new == current:
             print(str(options[new]) + ' is already summoned!') # If the pokemon they chose is already summoned, then tell the user
 
         else:
-            printTextBox('You summoned '+ str(options[new]) + '!')
+            printTextBox('You summoned '+ str(options[new]) + '!') # Tell the user which pokemon they summmoned
             flag = False # Exit the loop once they choose a pokemon to summon
 
     options.remove('Go Back') # Remove 'Go Back' as an option once they leave the "Change Pokemon" Menu
@@ -191,8 +191,9 @@ def changePokemon(options, current):
     return new # Return the index of the user's new pokemon (or return 'Go Back' if they chose to go back)
 
 def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp, party1maxpp, party1hp, party1maxhp, items, party2names, party2types, party2attacks, party2dmg, party2hp, party2maxhp, trainerbattle):
-    currentpokemon = 0
-    enemypokemon = 0
+    currentpokemon = 0 # Set the index of the user's current pokemon
+    enemypokemon = 0 # Set the index of the enemy's current pokemon
+
     printPokemonStats(party2names[enemypokemon], party2maxhp[enemypokemon], party2hp[enemypokemon]) # Display the stats of the enemy pokemon
     printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's current pokemon
 
@@ -286,8 +287,9 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
             print('You can not run away from a trainer!') # If the user tries to flee a trainer battle, tell the user that they can't
 
         if party1hp.count(0) == len(party1hp):
-            printTextBox('You have no more pokemon to summon! You lost the battle!')
-            battleflag = False
+            printTextBox('All of your pokemon fainted!') # If all of the pokemon in the user's party have 0 HP, tell the user that all their pokemon fainted
+            input('Press enter to continue:') # Pause until the user presses enter
+            battleflag = False # Set the battle flag to False to end the battle sequence
 
         elif (party1hp[currentpokemon] == 0) and (battledecisions.count('Attack') == 1):
             battledecisions.remove('Attack') # If the user's current pokemon has 0 HP, and they have the option to attack, then remove the option to attack

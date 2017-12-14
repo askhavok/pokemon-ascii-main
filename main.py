@@ -87,8 +87,8 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
 
     print('') # Print an empty line after all the listings
 
-    flag = True
-    while flag == True:
+    shopflag = True
+    while shopflag == True:
         print('Your Money: ' + str(current_pokedollars)) # Print the user's current pokedollar count
         buy = getUserDecision('What do you want to buy?', 'Pokèballs allow you to catch pokemon, Potions heal your current pokemon by 10 HP, Elixirs restore the PP values of all your pokemons attacks.', options)   # Take user's input on what to buy
 
@@ -133,7 +133,7 @@ def buyItem(options, current_pokedollars):   # Define pokeMartGive as a function
             print('You bought a Super Elixir!')  # Print to user what they bought
 
         else:
-            flag = False
+            shopflag = False # Set the flag to False to exit the shop
 
     options.remove('Quit the shop') # Remove "Quit the shop" as an option when they leave the Pokemart
     results = [current_pokedollars] # Put the user's remianing currency into a list
@@ -206,14 +206,14 @@ def incrementValue(maximumvalue, currentvalue, incrementamount):
 
     return currentvalue # Return the new value
 
-printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!')
+printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!') # Print Oak's speech
 input('Press Enter to continue:')    # Take input to continue
 
-printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.')
+printTextBox('This world is inhabited by creatures called pokémon! For some people, pokémon are pets. Others use them for fights. Myself... I study pokémon as a profession.') # Print Oak's speech
 input('Press Enter to continue:')    # Take input to continue
 
-printTextBox('You may type the letter H (not case sensitive) at any choice throughout your journey for help.')
-input('Press Enter to continue:')
+printTextBox('You may type the letter H (not case sensitive) at any choice throughout your journey for help.') # Print Oak's speech
+input('Press Enter to continue:')    # Take input to continue
 
 flag = True # Set flag to true
 while flag == True:     # Loop until the user chooses name and gender and confirms
@@ -264,20 +264,20 @@ printTextBox('Whats up ' + name + ', I am your rival, Blue, and I want to fight 
 input('Press Enter to continue:')    # Take input to continue
 
 if userpartynames.count('Charmander') == 1:
-    enemy = pokemonnames.index('Bulbasaur')
+    enemy = pokemonnames.index('Bulbasaur') # Find the index of 'Bulbasaur' in the universal pokemon list, and store it
 
 elif userpartynames.count('Bulbasaur') == 1:
-    enemy = pokemonnames.index('Squirtle')
+    enemy = pokemonnames.index('Squirtle') # Find the index of 'Squirtle' in the universal pokemon list, and store it
 
 else:
-    enemy = pokemonnames.index('Charmander')
+    enemy = pokemonnames.index('Charmander') # Find the index of 'Charmander' in the universal pokemon list, and store it
 
-enemypartynames.append(pokemonnames[enemy])
-enemypartytypes.append(pokemontypes[enemy])
-enemypartyattacks.append(pokemonattacks[enemy].copy())
-enemypartydmg.append(pokemondmg[enemy].copy())
-enemypartyhp.append(pokemonhp[enemy])
-enemypartymaxhp.append(pokemonhp[enemy])
+enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+enemypartymaxhp = [pokemonhp[enemy]] # Set the max hp values of the indexed pokemon to the enemy's party
 
 battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 
@@ -295,22 +295,22 @@ printOptionList(tallGrassChoice)    # Print the choices that the user can choose
 tall_grass = getUserDecision('', 'Go in the grass to encounter a pokemon, or Continue walking on the current route', tallGrassChoice)    # Take user input on their choice
 
 if tallGrassChoice[tall_grass] == 'Go in the grass':     # Check if user chose to go into the grass
-    encounter_chance = random.random()
+    encounter_chance = random.random() # Generate a random number between 0 and 1
 
     if encounter_chance > 0.5:
-        enemy = pokemonnames.index('Pidgey')
-        printTextBox('You encountered a Pidgey!')
+        enemy = pokemonnames.index('Pidgey') # Find the index of 'Pidgey' in the universal pokemon list
+        printTextBox('You encountered a Pidgey!') # Tell the user what pokemon they encountered
 
     else:
-        enemy = pokemonnames.index('Rattata')
-        printTextBox('You encountered a Rattata!')
+        enemy = pokemonnames.index('Rattata') # Find the index of 'Rattata' in the universal pokemon list
+        printTextBox('You encountered a Rattata!') # Tell the user what pokemon they encountered
 
-    enemypartynames = [pokemonnames[enemy]]
-    enemypartytypes = [pokemontypes[enemy]]
-    enemypartyattacks = [pokemonattacks[enemy].copy()]
-    enemypartydmg = [pokemondmg[enemy].copy()]
-    enemypartyhp = [pokemonhp[enemy]]
-    enemypartymaxhp = [pokemonhp[enemy]]
+    enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+    enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+    enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+    enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+    enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+    enemypartymaxhp = [pokemonhp[enemy]] # Set the max HP values of the indexed pokemon to the enemy's party
 
     battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, False)
 
@@ -320,14 +320,14 @@ input('Press Enter to continue:')    # Take input to continue
 printTextBox('You have been challenged to a battle by Ace Trainer Ganti!')  # Tell user of challenge
 input('Press Enter to continue:')    # Take input to continue
 
-enemy = pokemonnames.index('Rattata')
-enemypartynames = [pokemonnames[enemy]]
-enemypartytypes = [pokemontypes[enemy]]
-enemypartyattacks = [pokemonattacks[enemy].copy()]
-enemypartydmg = [pokemondmg[enemy].copy()]
-enemypartyhp = [pokemonhp[enemy]]
-enemypartymaxhp = [pokemonhp[enemy]]
-printTextBox('The enemy summons a Rattata!')
+enemy = pokemonnames.index('Rattata') # Find the index of 'Rattata' in the universal pokemon list
+enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+enemypartymaxhp = [pokemonhp[enemy]] # Set the max HP values of the indexed pokemon to the enemy's party
+printTextBox('The enemy summons a Rattata!') # Print what pokemon the enemy summoned
 
 battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 
@@ -340,14 +340,14 @@ input('Press Enter to continue:')    # Take input to continue
 printTextBox('You have been challenged by Pokèmon Lass Ariel!')     # Tell user of challenge
 input('Press Enter to continue:')    # Take input to continue
 
-enemy = pokemonnames.index('Pidgey')
-enemypartynames = [pokemonnames[enemy]]
-enemypartytypes = [pokemontypes[enemy]]
-enemypartyattacks = [pokemonattacks[enemy].copy()]
-enemypartydmg = [pokemondmg[enemy].copy()]
-enemypartyhp = [pokemonhp[enemy]]
-enemypartymaxhp = [pokemonhp[enemy]]
-printTextBox('The enemy summons a Pidgey!')
+enemy = pokemonnames.index('Pidgey') # Find the index of 'Pidgey' in the universal pokemon list
+enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+enemypartymaxhp = [pokemonhp[enemy]] # Set the max HP values of the indexed pokemon to the enemy's party
+printTextBox('The enemy summons a Pidgey!') # Print what pokemon the enemy summoned
 
 battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 
@@ -367,19 +367,19 @@ while flag == True:     # Loop until the user defeats the pokemon gym
         printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
         input('Press enter to continue: ')   # Pause until user continues
 
-        userpartyhp = userpartymaxhp.copy()
-        for index in range(0, len(userpartypp)):
-            userpartypp[index] = userpartymaxpp[index].copy()
-            
+        userpartyhp = userpartymaxhp.copy() # Set the HP values of the pokemon in the user's party to their max values
+        for i in range(0, len(userpartypp)):
+            userpartypp[i] = userpartymaxpp[i].copy() # Set the PP values of the pokemon in the user's party to their max values
+
         printTextBox('HP and PP has been restored for all of your pokemon!')
 
     elif viridian_options[viridian_choice] == 'Pokèmart':  # Check if user chose to go to the pokemart
         printTextBox('You have chosen to go to the Pokèmart.')  # tell user their choice
         input('Press enter to continue: ')   # Pause until user continues
 
-        shopping_results = buyItem(shop, money)
-        money = shopping_results[0]
-        inventory.extend(shopping_results[1:])
+        shopping_results = buyItem(shop, money) # Start the shopping sequence
+        money = shopping_results[0] # Extract index 0 of the shopping results, and store it as the user's new money count
+        inventory.extend(shopping_results[1:]) # Extract the rest of the shopping results, and add it to the user's inventory
 
     elif viridian_options[viridian_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
         printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
@@ -393,23 +393,23 @@ while flag == True:     # Loop until the user defeats the pokemon gym
 
         printTextBox('You have been challenged to a battle by Viridian City Gym Leader Brock!')     # Print challenge
 
-        enemy = pokemonnames.index('Geodude')
-        enemypartynames = [pokemonnames[enemy]]
-        enemypartytypes = [pokemontypes[enemy]]
-        enemypartyattacks = [pokemonattacks[enemy].copy()]
-        enemypartydmg = [pokemondmg[enemy].copy()]
-        enemypartyhp = [pokemonhp[enemy]]
-        enemypartymaxhp = [pokemonhp[enemy]]
+        enemy = pokemonnames.index('Geodude') # Find the index of 'Geodude' in the universal pokemon list
+        enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+        enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+        enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+        enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+        enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+        enemypartymaxhp = [pokemonhp[enemy]] # Set the max HP values of the indexed pokemon to the enemy's party
 
-        enemy = pokemonnames.index('Onix')
-        enemypartynames.append(pokemonnames[enemy])
-        enemypartytypes.append(pokemontypes[enemy])
-        enemypartyattacks.append(pokemonattacks[enemy].copy())
-        enemypartydmg.append(pokemondmg[enemy].copy())
-        enemypartyhp.append(pokemonhp[enemy])
-        enemypartymaxhp.append(pokemonhp[enemy])
+        enemy = pokemonnames.index('Onix') # Find the index of 'Onix' in the universal pokemon list
+        enemypartynames.append(pokemonnames[enemy]) # Add the name of the indexed pokemon to the enemy's party
+        enemypartytypes.append(pokemontypes[enemy]) # Add the type of the indexed pokemon to the enemy's party
+        enemypartyattacks.append(pokemonattacks[enemy].copy()) # Add the attacks of the indexed pokemon to the enemy's party
+        enemypartydmg.append(pokemondmg[enemy].copy()) # Add the damage values of the indexed pokemon to the enemy's party
+        enemypartyhp.append(pokemonhp[enemy]) # Add the HP values of the indexed pokemon to the enemy's party
+        enemypartymaxhp.append(pokemonhp[enemy]) # Add the max HP values of the indexed pokemon to the enemy's party
 
-        printTextBox('The enemy summons a Geodude!')
+        printTextBox('The enemy summons a Geodude!') # Print what pokemon the enemy summoned
         battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 
         printTextBox('Congratulations, ' + name + '! You have defeated Brock, the rock-type gym leader!')   # Print text
@@ -421,11 +421,11 @@ while flag == True:     # Loop until the user defeats the pokemon gym
 
         printTextBox('You have won the Boulder Badge! Congratulations!')     # Inform user of their new badge
         input('Press Enter to continue:')    # Take input to continue
-        
+
         shop = ['Pokèball', 'Potion', 'Elixir', 'Super Potion', 'Super Elixir' ]   # List of items that the user can buy in the PokeMart by default
         printTextBox('New items have been added to the shop!')  # Tell user of shop updates
         input('Press Enter to continue:')    # Take input to continue
-        
+
         viridian_options[2] = 'Route 2'     # Set the third option to the next route rather than the gym
 
         printTextBox('You should heal before heading onto the next route.')     # Print Brock's advice
@@ -448,14 +448,14 @@ input('Press Enter to continue:')    # Take input to continue
 printTextBox('Pokèmon Trainer Paul has challenged you to a battle!')    # Tell user of challenge
 input('Press Enter to continue:')    # Take input to continue
 
-enemy = pokemonnames.index('Nidoran♂')
-enemypartynames = [pokemonnames[enemy]]
-enemypartytypes = [pokemontypes[enemy]]
-enemypartyattacks = [pokemonattacks[enemy].copy()]
-enemypartydmg = [pokemondmg[enemy].copy()]
-enemypartyhp = [pokemonhp[enemy]]
-enemypartymaxhp = [pokemonhp[enemy]]
-printTextBox('The enemy summons a Nidoran♂!')
+enemy = pokemonnames.index('Nidoran♂') # Find the index of 'Nidoran♂' in the universal pokemon list
+enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+enemypartymaxhp = [pokemonhp[enemy]] # Set the max HP values of the indexed pokemon to the enemy's party
+printTextBox('The enemy summons a Nidoran♂!')# Print what pokemon the enemy summoned
 
 battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 
@@ -469,23 +469,23 @@ input('Press enter to continue: ')   # Pause until user continues
 printOptionList(tallGrassChoice)    # Print the choices that the user can choose
 tall_grass = getUserDecision('', 'Go in the grass to encounter a pokemon, or Continue walking on the current route', tallGrassChoice)    # Take user input on their choice
 
-if tallGrassChoice[tall_grass] == 'Go in the grass':     # Check if user chose to go into the grass 
-    encounter_chance = random.random()
+if tallGrassChoice[tall_grass] == 'Go in the grass':     # Check if user chose to go into the grass
+    encounter_chance = random.random() # Generate a random number between 0 and 1
 
     if encounter_chance > 0.5:
-        enemy = pokemonnames.index('Nidoran♂')
-        printTextBox('You encountered a Nidoran♂')
+        enemy = pokemonnames.index('Nidoran♂') # Find the index of 'Nidoran♂' in the universal pokemon list
+        printTextBox('You encountered a Nidoran♂') # Print what pokemon the user encounters
 
     else:
-        enemy = pokemonnames.index('Nidoran♀')
-        printTextBox('You encountered a Nidoran♀!')
+        enemy = pokemonnames.index('Nidoran♀') # Find the index of 'Nidoran♀' in the universal pokemon list
+        printTextBox('You encountered a Nidoran♀!') # Print what pokemon the user encounters
 
-    enemypartynames = [pokemonnames[enemy]]
-    enemypartytypes = [pokemontypes[enemy]]
-    enemypartyattacks = [pokemonattacks[enemy].copy()]
-    enemypartydmg = [pokemondmg[enemy].copy()]
-    enemypartyhp = [pokemonhp[enemy]]
-    enemypartymaxhp = [pokemonhp[enemy]]
+    enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+    enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+    enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+    enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+    enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+    enemypartymaxhp = [pokemonhp[enemy]] # Set the max HP values of the indexed pokemon to the enemy's party
 
     battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, False)
 
@@ -495,14 +495,14 @@ input('Press enter to continue: ')   # Pause until user continues
 printTextBox('You have been challenged to a battle by Bug Catcher Amanda!')     # Print challenge
 input('Press enter to continue: ')   # Pause until user continues
 
-enemy = pokemonnames.index('Caterpie')
-enemypartynames = [pokemonnames[enemy]]
-enemypartytypes = [pokemontypes[enemy]]
-enemypartyattacks = [pokemonattacks[enemy].copy()]
-enemypartydmg = [pokemondmg[enemy].copy()]
-enemypartyhp = [pokemonhp[enemy]]
-enemypartymaxhp = [pokemonhp[enemy]]
-printTextBox('The enemy summons a Caterpie!')
+enemy = pokemonnames.index('Caterpie') # Find the index of 'Caterpie' in the universal pokemon list
+enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+enemypartymaxhp = [pokemonhp[enemy]] # Set the max HP values of the indexed pokemon to the enemy's party
+printTextBox('The enemy summons a Caterpie!') # Print what pokemon the enemy summoned
 
 battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 
@@ -522,18 +522,19 @@ while flag == True:     # Loop until user leaves Pewter
         printTextBox('You have chosen to go the the Pokèmon Center.')   # Tell the user their choice
         input('Press enter to continue: ')   # Pause until user continues
 
-        userpartyhp = userpartymaxhp.copy()
-        for index in range(0, len(userpartypp)):
-            userpartypp[index] = userpartymaxpp[index].copy()
+        userpartyhp = userpartymaxhp.copy() # Set the HP values of the pokemon in the user's party to their max values
+        for i in range(0, len(userpartypp)):
+            userpartypp[i] = userpartymaxpp[i].copy() # Set the PP values of the pokemon in the user's party to their max values
+
         printTextBox('HP and PP has been restored for all of your pokemon!')
 
     elif pewter_options[pewter_choice] == 'Pokèmart':    # Check if user chose to go to the pokemart
         printTextBox('You have chosen to go to the Pokèmart.')  # tell user their choice
         input('Press enter to continue: ')   # Pause until user continues
 
-        shopping_results = buyItem(shop, money)
-        money = shopping_results[0]
-        inventory.extend(shopping_results[1:])
+        shopping_results = buyItem(shop, money) # Start the shopping sequence
+        money = shopping_results[0] # Extract index 0 of the shopping results, and store it as the user's new money count
+        inventory.extend(shopping_results[1:]) # Extract the rest of the shopping results, and add it to the user's inventory
 
     elif pewter_options[pewter_choice] == 'Pokèmon Gym':  # Check if user chose to go to the Pokèmon Gym
         printTextBox('You have chosen to go to the Pokèmon Gym.')   # Tell user their choice
@@ -544,23 +545,23 @@ while flag == True:     # Loop until user leaves Pewter
 
         printTextBox('You have been challenged to a battle by Pewter City Gym Leader Misty!')   # Print challenge
 
-        enemy = pokemonnames.index('Staryu')
-        enemypartynames = [pokemonnames[enemy]]
-        enemypartytypes = [pokemontypes[enemy]]
-        enemypartyattacks = [pokemonattacks[enemy].copy()]
-        enemypartydmg = [pokemondmg[enemy].copy()]
-        enemypartyhp = [pokemonhp[enemy]]
-        enemypartymaxhp = [pokemonhp[enemy]]
+        enemy = pokemonnames.index('Staryu') # Find the index of 'Staryu' in the universal pokemon list
+        enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+        enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+        enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+        enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+        enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+        enemypartymaxhp = [pokemonhp[enemy]] # Set the max HP values of the indexed pokemon to the enemy's party
 
-        enemy = pokemonnames.index('Starmie')
-        enemypartynames.append(pokemonnames[enemy])
-        enemypartytypes.append(pokemontypes[enemy])
-        enemypartyattacks.append(pokemonattacks[enemy].copy())
-        enemypartydmg.append(pokemondmg[enemy].copy())
-        enemypartyhp.append(pokemonhp[enemy])
-        enemypartymaxhp.append(pokemonhp[enemy])
+        enemy = pokemonnames.index('Starmie') # Find the index of 'Starmie' in the universal pokemon list
+        enemypartynames.append(pokemonnames[enemy]) # Add the name of the indexed pokemon to the enemy's party
+        enemypartytypes.append(pokemontypes[enemy]) # Add the type of the indexed pokemon to the enemy's party
+        enemypartyattacks.append(pokemonattacks[enemy].copy()) # Add the attacks of the indexed pokemon to the enemy's party
+        enemypartydmg.append(pokemondmg[enemy].copy()) # Add the damage values of the indexed pokemon to the enemy's party
+        enemypartyhp.append(pokemonhp[enemy]) # Add the HP values of the indexed pokemon to the enemy's party
+        enemypartymaxhp.append(pokemonhp[enemy]) # Add the max HP values of the indexed pokemon to the enemy's party
 
-        printTextBox('The enemy summons a Staryu!')
+        printTextBox('The enemy summons a Staryu!') # Print what pokemon the enemy summoned
         battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 
         printTextBox('Congratulations, ' + name + '! You have defeated Misty, the water-type gym leader!')   # Print text
@@ -595,34 +596,34 @@ printTextBox('You have been challenged to a battle by Pokèmon Rival Blue!')    
 input('Press Enter to continue:')    # Take input to continue
 
 if userpartynames.count('Bulbasaur') == 1:     # Check user's starter to determine Blue's starter
-    enemy = pokemonnames.index('Squirtle')
-    printTextBox('The enemy summons a Squirtle!')
+    enemy = pokemonnames.index('Squirtle') # Find the index of 'Squirtle' universal pokemon list
+    printTextBox('The enemy summons a Squirtle!') # Print what pokemon the enemy summoned
 
 elif userpartynames.count('Charmander') == 1:  # Check user's starter to determine Blue's starter
-    enemy = pokemonnames.index('Bulbasaur')
-    printTextBox('The enemy summons a Bulbasaur!')
+    enemy = pokemonnames.index('Bulbasaur') # Find the index of 'Bulbasaur' universal pokemon list
+    printTextBox('The enemy summons a Bulbasaur!') # Print what pokemon the enemy summoned
 
 elif userpartynames.count('Squirtle') == 1:     # Check the user's starter to determine Blue's starter
-    enemy = pokemonnames.index('Charmander')
-    printTextBox('The enemy summons a Charmander!')
+    enemy = pokemonnames.index('Charmander') # Find the index of 'Charmander' universal pokemon list
+    printTextBox('The enemy summons a Charmander!') # Print what pokemon the enemy summoned
 
 else:   # Check for errors
     print('Exception not handled - contact programmer')     # Print error
 
-enemypartynames = [pokemonnames[enemy]]
-enemypartytypes = [pokemontypes[enemy]]
-enemypartyattacks = [pokemonattacks[enemy].copy()]
-enemypartydmg = [pokemondmg[enemy].copy()]
-enemypartyhp = [pokemonhp[enemy]]
-enemypartymaxhp = [pokemonhp[enemy]]
+enemypartynames = [pokemonnames[enemy]] # Set the name of the indexed pokemon to the enemy's party
+enemypartytypes = [pokemontypes[enemy]] # Set the type of the indexed pokemon to the enemy's party
+enemypartyattacks = [pokemonattacks[enemy].copy()] # Set the attacks of the indexed pokemon to the enemy's party
+enemypartydmg = [pokemondmg[enemy].copy()] # Set the damage values of the indexed pokemon to the enemy's party
+enemypartyhp = [pokemonhp[enemy]] # Set the HP values of the indexed pokemon to the enemy's party
+enemypartymaxhp = [pokemonhp[enemy]] # Set the max HP values of the indexed pokemon to the enemy's party
 
-enemy = pokemonnames.index('Rhyhorn')
-enemypartynames.append(pokemonnames[enemy])
-enemypartytypes.append(pokemontypes[enemy])
-enemypartyattacks.append(pokemonattacks[enemy].copy())
-enemypartydmg.append(pokemondmg[enemy].copy())
-enemypartyhp.append(pokemonhp[enemy])
-enemypartymaxhp.append(pokemonhp[enemy])
+enemy = pokemonnames.index('Rhyhorn') # Find the index of 'Rhyhorn' in the universal pokemon list
+enemypartynames.append(pokemonnames[enemy]) # Add the name of the indexed pokemon to the enemy's party
+enemypartytypes.append(pokemontypes[enemy]) # Add the type of the indexed pokemon to the enemy's party
+enemypartyattacks.append(pokemonattacks[enemy].copy()) # Add the attacks of the indexed pokemon to the enemy's party
+enemypartydmg.append(pokemondmg[enemy].copy()) # Add the damage values of the indexed pokemon to the enemy's party
+enemypartyhp.append(pokemonhp[enemy]) # Add the HP values of the indexed pokemon to the enemy's party
+enemypartymaxhp.append(pokemonhp[enemy]) # Add the max HP values of the indexed pokemon to the enemy's party
 
 battleresults = battleSequence(userpartynames, userpartytypes, userpartyattacks, userpartydmg, userpartypp, userpartymaxpp, userpartyhp, userpartymaxhp, inventory, enemypartynames, enemypartytypes, enemypartyattacks, enemypartydmg, enemypartyhp, enemypartymaxhp, True)
 
@@ -633,4 +634,3 @@ printTextBox('Well, ' + name + ', it seems you have defeated me. Congratulations
 input('Press Enter to continue:')    # Take input to continue
 
 printTextBox('That brings you to the end of your adventure! To continue, please purchase non-existant DLC with non-existant currency!')    # Print ending message
-
