@@ -24,7 +24,9 @@ Language: Python 3.x
 
 ---
 
-Description: blank
+Description: The player is put through an adventure where he can choose the
+pokemon he wants to use, and travel some of the Kanto region battling
+pokèmon gyms and pokèmon trainers!
 
 ---
 
@@ -35,7 +37,7 @@ There are no external libraries required to run the program.
 ---
 
 Features:
-- Create a character with a custom name, and gender
+- Create a character with a custom name, gender, and pokèmon
 - Catch Pokemon using Pokeballs and engage in battles with them
 - Routes where you can battle other trainers or Pokemon in the wild
 - Inventory system, where you can use items that heal your Pokemon, or other
