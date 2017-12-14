@@ -34,8 +34,8 @@ enemypokemon = 0 # Index of the enemy's current pokemon
 pokemonnames = ['Bulbasaur', 'Charmander', 'Squirtle', 'Rattata', 'Pidgey', 'Geodude', 'Onix', 'Staryu', 'Starmie', 'Rhyhorn', 'Nidoran♂', 'Nidoran♀', 'Caterpie'] # List of the names of every pokemon
 pokemontypes = ['Grass', 'Fire', 'Water', 'Normal', 'Flying', 'Rock', 'Rock', 'Water', 'Water', 'Rock', 'Poison', 'Poison', 'Bug'] # List of every pokemon's type
 pokemonattacks = [['Vine Whip', 'Razor Leaf'], ['Ember', 'Flame Burst'], ['Bubble', 'Water Gun'], ['Tackle'], ['Gust'], ['Rock Smash', 'Rock Slide'], ['Rock Slide', 'Earthquake'], ['Bubble', 'Water Gun'], ['Bubble', 'Surf'], ['Rock Smash', 'Earthquake'], ['Poison Sting', 'Poison Jab'], ['Poison Sting', 'Poison Jab'], ['Tackle']] # List of the attacks of every pokemon
-pokemondmg = [[3, 5], [3, 5], [3, 5], [3], [3], [1, 3], [3, 4], [2, 4], [2, 5], [2, 5], [1, 4], [1, 4], [3]] # List of the default damage values for the attacks of every pokemon
-pokemonpp = [[30, 10], [30, 10], [30, 10], [30], [40], [20, 10], [20, 10], [20, 20], [20, 10], [30, 10], [40, 15], [40, 15], [40]] # List of the default PP values for the attacks of every pokemon
+pokemondmg = [[3, 5], [5, 7], [3, 5], [3], [3], [1, 3], [3, 4], [2, 4], [2, 5], [2, 5], [1, 4], [1, 4], [3]] # List of the default damage values for the attacks of every pokemon
+pokemonpp = [[30, 10], [35, 20], [30, 10], [30], [40], [20, 10], [20, 10], [20, 20], [20, 10], [30, 10], [40, 15], [40, 15], [40]] # List of the default PP values for the attacks of every pokemon
 pokemonhp = [65, 65, 65, 20, 20, 35, 55, 40, 60, 60, 20, 20, 15] # List of the default HP values of every pokemon
 
 # Menu Options
