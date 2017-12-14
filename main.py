@@ -536,6 +536,9 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
 
     return [party1names, party1types, party1attacks, party1dmg, party1pp, party1maxpp, party1hp, party1maxhp, items] # Return the user's whole party, and their stats after the battle
 
+printTextBox('Welcome to Kevin and Eriks game of Pokèmon!')     # Introduce devs
+input('Press Enter to continue:')    # Take input to continue
+
 printTextBox('Hello there! Welcome to the world of pokémon! My name is Oak! People call me the pokémon Prof!') # Print Oak's speech
 input('Press Enter to continue:')    # Take input to continue
 
