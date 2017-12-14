@@ -301,11 +301,10 @@ def battleSequence(party1names, party1types, party1attacks, party1dmg, party1pp,
             printTextBox('You won the battle!') # If all of the enemy's pokemon has 0 HP, then tell the user they won the battle
             battleflag = False # Set the battle flag to False to end the battle sequence
 
-        elif (party2hp[enemypokemon] == 0):
+        elif party2hp[enemypokemon] == 0:
             enemypokemon += 1 # Summon a new enemy by changing the index of the enemy pokemon
             printTextBox('The enemy summons ' + str(party2names[enemypokemon]) + '!') # Tell the user the enemy's new pokemon
             printPokemonStats(party2names[enemypokemon], party2maxhp[enemypokemon], party2hp[enemypokemon]) # Display the stats of the enemy's pokemon
             printPokemonStats(party1names[currentpokemon], party1maxhp[currentpokemon], party1hp[currentpokemon]) # Display the stats of the user's pokemon
 
     return [party1names, party1types, party1attacks, party1dmg, party1pp, party1maxpp, party1hp, party1maxhp, items] # Return the user's whole party, and their stats after the battle
-
